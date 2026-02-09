@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Testing Overview</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="testing-overview">
+<h1>Testing Overview</h1>
+<p>The 5D Interpolator includes a comprehensive test suite ensuring reliability and correctness.</p>
+<section id="test-suite-summary">
+<h2>Test Suite Summary</h2>
+<p><strong>Total Tests</strong>: 52
+<strong>Code Coverage</strong>: 74.54%
+<strong>Testing Framework</strong>: pytest
+<strong>Coverage Tool</strong>: pytest-cov</p>
+</section>
+<section id="test-categories">
+<h2>Test Categories</h2>
+<p>The test suite is organized into two main categories:</p>
+<section id="unit-tests-28-tests">
+<h3>Unit Tests (28 tests)</h3>
+<p>Located in <code class="docutils literal notranslate"><span class="pre">backend/tests/unit/</span></code></p>
+<p><strong>test_neural_network.py</strong> (17 tests)</p>
+<p>Tests for the <code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork</span></code> class:</p>
+<ul class="simple">
+<li><p>Initialization with various configurations</p></li>
+<li><p>Model fitting and training</p></li>
+<li><p>Prediction functionality</p></li>
+<li><p>Performance evaluation metrics</p></li>
+<li><p>Hyperparameter configurations</p></li>
+<li><p>Error handling</p></li>
+</ul>
+<p><strong>test_data_handler.py</strong> (11 tests)</p>
+<p>Tests for data loading and preprocessing:</p>
+<ul class="simple">
+<li><p>Dataset loading from files</p></li>
+<li><p>Train/validation/test splitting</p></li>
+<li><p>Data standardization</p></li>
+<li><p>NaN/invalid value handling</p></li>
+<li><p>Input validation</p></li>
+</ul>
+</section>
+<section id="integration-tests-24-tests">
+<h3>Integration Tests (24 tests)</h3>
+<p>Located in <code class="docutils literal notranslate"><span class="pre">backend/tests/integration/</span></code></p>
+<p><strong>test_api_endpoints.py</strong> (24 tests)</p>
+<p>End-to-end API testing:</p>
+<ul class="simple">
+<li><p>Health check endpoints</p></li>
+<li><p>Dataset upload workflows</p></li>
+<li><p>Training workflows with various hyperparameters</p></li>
+<li><p>Prediction workflows (batch and single)</p></li>
+<li><p>Error handling and edge cases</p></li>
+<li><p>Complete end-to-end workflows</p></li>
+</ul>
+</section>
+</section>
+<section id="running-tests">
+<h2>Running Tests</h2>
+<section id="using-docker">
+<h3>Using Docker</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+./scripts/docker-dev.sh<span class="w"> </span>test-backend
+
+<span class="c1"># Run with coverage report</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>backend<span class="w"> </span>pytest<span class="w"> </span>--cov<span class="o">=</span>.<span class="w"> </span>--cov-report<span class="o">=</span>html
+
+<span class="c1"># Run specific test file</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>backend<span class="w"> </span>pytest<span class="w"> </span>tests/unit/test_neural_network.py
+
+<span class="c1"># Run with verbose output</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>backend<span class="w"> </span>pytest<span class="w"> </span>-v
+</pre></div>
+</div>
+</section>
+<section id="manual-installation">
+<h3>Manual Installation</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+
+<span class="c1"># Activate virtual environment (if using one)</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># Run all tests</span>
+pytest
+
+<span class="c1"># Run with coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>.<span class="w"> </span>--cov-report<span class="o">=</span>html<span class="w"> </span>--cov-report<span class="o">=</span>term
+
+<span class="c1"># Run specific tests</span>
+pytest<span class="w"> </span>tests/unit/
+pytest<span class="w"> </span>tests/integration/
+
+<span class="c1"># Run with markers</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="test-configuration">
+<h2>Test Configuration</h2>
+<section id="pytest-ini">
+<h3>pytest.ini</h3>
+<p>Located at <code class="docutils literal notranslate"><span class="pre">backend/pytest.ini</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="na">testpaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tests</span>
+<span class="na">python_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">test_*.py</span>
+<span class="na">python_classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Test*</span>
+<span class="na">python_functions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">test_*</span>
+<span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-v --tb=short --strict-markers</span>
+<span class="na">markers</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">unit</span><span class="o">:</span><span class="w"> </span><span class="s">Unit tests</span>
+<span class="w">    </span><span class="na">integration</span><span class="o">:</span><span class="w"> </span><span class="s">Integration tests</span>
+<span class="w">    </span><span class="na">slow</span><span class="o">:</span><span class="w"> </span><span class="s">Slow running tests</span>
+
+<span class="k">[coverage:run]</span>
+<span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.</span>
+<span class="na">omit</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">*/tests/*</span>
+<span class="w">    </span><span class="na">*/venv/*</span>
+<span class="w">    </span><span class="na">*/__pycache__/*</span>
+<span class="w">    </span><span class="na">*/site-packages/*</span>
+
+<span class="k">[coverage:report]</span>
+<span class="na">precision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">show_missing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">skip_covered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="test-fixtures">
+<h2>Test Fixtures</h2>
+<p>Shared fixtures are defined in <code class="docutils literal notranslate"><span class="pre">backend/tests/conftest.py</span></code>:</p>
+<section id="sample-data-small">
+<h3>sample_data_small</h3>
+<p>Generates small dataset (100 samples) for quick tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_data_small</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate small sample data for testing&quot;&quot;&quot;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</section>
+<section id="sample-data-medium">
+<h3>sample_data_medium</h3>
+<p>Generates medium dataset (1000 samples) for realistic tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_data_medium</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate medium sample data for testing&quot;&quot;&quot;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</section>
+<section id="temp-dataset-file">
+<h3>temp_dataset_file</h3>
+<p>Creates temporary dataset file for upload tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">temp_dataset_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">,</span> <span class="n">sample_data_small</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create temporary dataset file&quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sample_data_small</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">&quot;test_dataset.pkl&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filepath</span>
+</pre></div>
+</div>
+</section>
+<section id="test-client">
+<h3>test_client</h3>
+<p>FastAPI test client for API integration tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_client</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create FastAPI test client&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
+    <span class="k">return</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="reset-global-state">
+<h3>reset_global_state</h3>
+<p>Resets global state between tests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reset_global_state</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset global state before each test&quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">main</span>
+    <span class="n">main</span><span class="o">.</span><span class="n">processing_result</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">main</span><span class="o">.</span><span class="n">train_result</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">main</span><span class="o">.</span><span class="n">predict_input</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">yield</span>
+    <span class="c1"># Cleanup after test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="coverage-report">
+<h2>Coverage Report</h2>
+<section id="current-coverage-by-module">
+<h3>Current Coverage by Module</h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Module                              Statements    Missing    Coverage
+─────────────────────────────────────────────────────────────────────
+main.py                                    198         30      84.85%
+fivedreg/base_fivedreg.py                  106         15      85.85%
+fivedreg/data_hand/module.py                45          5      88.89%
+fivedreg/__init__.py                         3          0     100.00%
+─────────────────────────────────────────────────────────────────────
+TOTAL                                      352         50      74.54%
+</pre></div>
+</div>
+</section>
+<section id="viewing-coverage-reports">
+<h3>Viewing Coverage Reports</h3>
+<p><strong>HTML Report:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate HTML coverage report</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>.<span class="w"> </span>--cov-report<span class="o">=</span>html
+
+<span class="c1"># Open in browser</span>
+open<span class="w"> </span>backend/htmlcov/index.html<span class="w">  </span><span class="c1"># macOS</span>
+xdg-open<span class="w"> </span>backend/htmlcov/index.html<span class="w">  </span><span class="c1"># Linux</span>
+</pre></div>
+</div>
+<p><strong>Terminal Report:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>.<span class="w"> </span>--cov-report<span class="o">=</span>term-missing
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-test-cases">
+<h2>Example Test Cases</h2>
+<section id="unit-test-example">
+<h3>Unit Test Example</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_neural_network_initialization</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that neural network initializes with correct defaults&quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">hidden_layers</span> <span class="o">==</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">==</span> <span class="mf">0.001</span>
+    <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">max_iterations</span> <span class="o">==</span> <span class="mi">500</span>
+    <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">early_stopping</span> <span class="o">==</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="integration-test-example">
+<h3>Integration Test Example</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_complete_workflow</span><span class="p">(</span><span class="n">test_client</span><span class="p">,</span> <span class="n">temp_dataset_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test complete workflow: upload -&gt; train -&gt; predict&quot;&quot;&quot;</span>
+
+    <span class="c1"># Upload training dataset</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_dataset_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">test_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;/upload-fit-dataset/&quot;</span><span class="p">,</span>
+            <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;test.pkl&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)}</span>
+        <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+    <span class="c1"># Train model</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">test_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/start-training/&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hyperparameters&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;max_iterations&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}}</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="s2">&quot;function_result&quot;</span> <span class="ow">in</span> <span class="n">result</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;function_result&quot;</span><span class="p">][</span><span class="s2">&quot;r2&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
+
+    <span class="c1"># Single prediction</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">test_client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/predict-single/&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]}</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="s2">&quot;prediction&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="continuous-integration">
+<h2>Continuous Integration</h2>
+<p>The test suite is designed to run in CI/CD pipelines:</p>
+<section id="github-actions-example">
+<h3>GitHub Actions Example</h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tests</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.12&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cd backend</span>
+<span class="w">          </span><span class="no">pip install -r requirements.txt</span>
+<span class="w">          </span><span class="no">pip install -r requirements-dev.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cd backend</span>
+<span class="w">          </span><span class="no">pytest --cov=. --cov-report=xml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload coverage</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">codecov/codecov-action@v2</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="writing-new-tests">
+<h2>Writing New Tests</h2>
+<section id="guidelines">
+<h3>Guidelines</h3>
+<ol class="arabic simple">
+<li><p><strong>Test Naming</strong>: Use descriptive names starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p><strong>One Assertion Per Test</strong>: Keep tests focused</p></li>
+<li><p><strong>Use Fixtures</strong>: Leverage shared fixtures for setup</p></li>
+<li><p><strong>Test Edge Cases</strong>: Include boundary conditions</p></li>
+<li><p><strong>Mock External Dependencies</strong>: Use mocks for external services</p></li>
+</ol>
+</section>
+<section id="example-new-test">
+<h3>Example New Test</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastNeuralNetwork</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_custom_architecture</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test neural network with custom architecture&quot;&quot;&quot;</span>
+    <span class="c1"># Arrange</span>
+    <span class="n">custom_layers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span><span class="n">hidden_layers</span><span class="o">=</span><span class="n">custom_layers</span><span class="p">)</span>
+
+    <span class="c1"># Act</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+
+    <span class="c1"># Assert</span>
+    <span class="k">assert</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;hidden_layers&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">custom_layers</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-tests">
+<h2>Performance Tests</h2>
+<section id="training-speed-test">
+<h3>Training Speed Test</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_training_speed</span><span class="p">(</span><span class="n">sample_data_medium</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that training completes within time limit&quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sample_data_medium</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span><span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="k">assert</span> <span class="n">elapsed</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Training took </span><span class="si">{</span><span class="n">elapsed</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s (limit: 60s)&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting-tests">
+<h2>Troubleshooting Tests</h2>
+<section id="common-issues">
+<h3>Common Issues</h3>
+<p><strong>ImportError: No module named ‘main’</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure you&#39;re in backend directory</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+pytest
+</pre></div>
+</div>
+<p><strong>Coverage data not found</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete old coverage data</span>
+rm<span class="w"> </span>.coverage
+pytest<span class="w"> </span>--cov<span class="o">=</span>.
+</pre></div>
+</div>
+<p><strong>Tests hang or timeout</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reduce iterations in tests</span>
+<span class="c1"># Check for infinite loops</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps</h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">coverage</span> - Detailed coverage analysis</p></li>
+<li><p><a class="reference internal" href="../api/backend.xhtml"><span class="doc">Backend API Reference</span></a> - API testing reference</p></li>
+<li><p><a class="reference internal" href="../deployment/local.xhtml"><span class="doc">Local Deployment Guide</span></a> - Local testing setup</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

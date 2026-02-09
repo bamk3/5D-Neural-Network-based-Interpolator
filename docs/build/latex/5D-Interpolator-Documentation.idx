@@ -1,0 +1,14 @@
+\indexentry{module@\spxentry{module}!fivedreg.base\_fivedreg@\spxentry{fivedreg.base\_fivedreg}|hyperpage}{50}
+\indexentry{fivedreg.base\_fivedreg@\spxentry{fivedreg.base\_fivedreg}!module@\spxentry{module}|hyperpage}{50}
+\indexentry{FastNeuralNetwork (class in fivedreg.base\_fivedreg)@\spxentry{FastNeuralNetwork}\spxextra{class in fivedreg.base\_fivedreg}|hyperpage}{50}
+\indexentry{\_\_init\_\_() (fivedreg.base\_fivedreg.FastNeuralNetwork method)@\spxentry{\_\_init\_\_()}\spxextra{fivedreg.base\_fivedreg.FastNeuralNetwork method}|hyperpage}{51}
+\indexentry{fit() (fivedreg.base\_fivedreg.FastNeuralNetwork method)@\spxentry{fit()}\spxextra{fivedreg.base\_fivedreg.FastNeuralNetwork method}|hyperpage}{51}
+\indexentry{predict() (fivedreg.base\_fivedreg.FastNeuralNetwork method)@\spxentry{predict()}\spxextra{fivedreg.base\_fivedreg.FastNeuralNetwork method}|hyperpage}{51}
+\indexentry{evaluate() (fivedreg.base\_fivedreg.FastNeuralNetwork method)@\spxentry{evaluate()}\spxextra{fivedreg.base\_fivedreg.FastNeuralNetwork method}|hyperpage}{51}
+\indexentry{get\_params() (fivedreg.base\_fivedreg.FastNeuralNetwork method)@\spxentry{get\_params()}\spxextra{fivedreg.base\_fivedreg.FastNeuralNetwork method}|hyperpage}{51}
+\indexentry{benchmark\_training\_speed() (in module fivedreg.base\_fivedreg)@\spxentry{benchmark\_training\_speed()}\spxextra{in module fivedreg.base\_fivedreg}|hyperpage}{52}
+\indexentry{start\_predict() (in module fivedreg.base\_fivedreg)@\spxentry{start\_predict()}\spxextra{in module fivedreg.base\_fivedreg}|hyperpage}{52}
+\indexentry{demonstrate\_configurability() (in module fivedreg.base\_fivedreg)@\spxentry{demonstrate\_configurability()}\spxextra{in module fivedreg.base\_fivedreg}|hyperpage}{52}
+\indexentry{module@\spxentry{module}!fivedreg.data\_hand.module@\spxentry{fivedreg.data\_hand.module}|hyperpage}{52}
+\indexentry{fivedreg.data\_hand.module@\spxentry{fivedreg.data\_hand.module}!module@\spxentry{module}|hyperpage}{52}
+\indexentry{load\_dataset() (in module fivedreg.data\_hand.module)@\spxentry{load\_dataset()}\spxextra{in module fivedreg.data\_hand.module}|hyperpage}{52}

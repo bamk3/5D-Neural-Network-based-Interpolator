@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Local Deployment Guide</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="local-deployment-guide">
+<h1>Local Deployment Guide</h1>
+<p>Complete guide for deploying the 5D Interpolator on your local machine.</p>
+<section id="quick-deploy-script">
+<h2>Quick Deploy Script</h2>
+<p>A comprehensive deployment script is provided for one-command setup:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make executable</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>scripts/deploy-local.sh
+
+<span class="c1"># Run deployment</span>
+./scripts/deploy-local.sh
+</pre></div>
+</div>
+<p>This script will:</p>
+<ol class="arabic simple">
+<li><p>Check all prerequisites</p></li>
+<li><p>Set up environment configuration</p></li>
+<li><p>Start backend and frontend services</p></li>
+<li><p>Verify deployment</p></li>
+<li><p>Display access URLs</p></li>
+</ol>
+</section>
+<section id="manual-deployment-steps">
+<h2>Manual Deployment Steps</h2>
+<p>If you prefer manual deployment or need to troubleshoot:</p>
+<section id="step-1-prerequisites-check">
+<h3>Step 1: Prerequisites Check</h3>
+<p><strong>Verify Python:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>--version<span class="w">  </span><span class="c1"># Should be 3.12+</span>
+</pre></div>
+</div>
+<p><strong>Verify Node.js:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node<span class="w"> </span>--version<span class="w">  </span><span class="c1"># Should be 20+</span>
+npm<span class="w"> </span>--version<span class="w">   </span><span class="c1"># Should be 10.8+</span>
+</pre></div>
+</div>
+<p><strong>Install Missing Dependencies:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>python@3.12<span class="w"> </span>node
+
+<span class="c1"># Ubuntu/Debian</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12<span class="w"> </span>nodejs<span class="w"> </span>npm
+</pre></div>
+</div>
+</section>
+<section id="step-2-backend-setup">
+<h3>Step 2: Backend Setup</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+
+<span class="c1"># Create virtual environment</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+
+<span class="c1"># Activate virtual environment</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># macOS/Linux</span>
+<span class="c1"># Or on Windows:</span>
+<span class="c1"># venv\Scripts\activate</span>
+
+<span class="c1"># Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Verify installation</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import fastapi; import sklearn; print(&#39;Backend ready!&#39;)&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-frontend-setup">
+<h3>Step 3: Frontend Setup</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+
+<span class="c1"># Install dependencies</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># Verify installation</span>
+npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">  </span><span class="c1"># Should complete without errors</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-start-services">
+<h3>Step 4: Start Services</h3>
+<p><strong>Terminal 1 - Backend:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+<p>Expected output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>INFO:     Uvicorn running on http://0.0.0.0:8000
+INFO:     Application startup complete.
+</pre></div>
+</div>
+<p><strong>Terminal 2 - Frontend:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+<p>Expected output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▲ Next.js 16.0.3
+- Local:        http://localhost:3000
+- Ready in 2.1s
+</pre></div>
+</div>
+</section>
+<section id="step-5-verify-deployment">
+<h3>Step 5: Verify Deployment</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test backend</span>
+curl<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Expected: {&quot;status&quot;:&quot;healthy&quot;,&quot;service&quot;:&quot;5D Interpolator Backend by bamk3&quot;}</span>
+
+<span class="c1"># Test frontend</span>
+curl<span class="w"> </span>-I<span class="w"> </span>http://localhost:3000
+
+<span class="c1"># Expected: HTTP/1.1 200 OK</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="access-the-application">
+<h2>Access the Application</h2>
+<p>Once deployed, access at:</p>
+<ul class="simple">
+<li><p><strong>Main Application</strong>: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p></li>
+<li><p><strong>API Documentation</strong>: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+<li><p><strong>Alternative API Docs</strong>: <a class="reference external" href="http://localhost:8000/redoc">http://localhost:8000/redoc</a></p></li>
+</ul>
+</section>
+<section id="using-the-application">
+<h2>Using the Application</h2>
+<section id="upload-sample-dataset">
+<h3>Upload Sample Dataset</h3>
+<p>A sample dataset is provided for testing. Create it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Generate sample data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># 5D input features</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Target: sum of squares with noise</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Save training data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample_training.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Save prediction data</span>
+<span class="n">X_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample_prediction.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">X_pred</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Upload via UI:</p>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference external" href="http://localhost:3000/upload">http://localhost:3000/upload</a></p></li>
+<li><p>Select “Training” type</p></li>
+<li><p>Upload <code class="docutils literal notranslate"><span class="pre">sample_training.pkl</span></code></p></li>
+<li><p>Proceed to training</p></li>
+</ol>
+</section>
+</section>
+<section id="environment-configuration">
+<h2>Environment Configuration</h2>
+<p>Create <code class="docutils literal notranslate"><span class="pre">.env</span></code> file in project root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy from template</span>
+cp<span class="w"> </span>.env.development<span class="w"> </span>.env
+</pre></div>
+</div>
+<p>Key variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend</span>
+<span class="nv">BACKEND_PORT</span><span class="o">=</span><span class="m">8000</span>
+<span class="nv">CORS_ORIGINS</span><span class="o">=</span>http://localhost:3000
+
+<span class="c1"># Frontend</span>
+<span class="nv">FRONTEND_PORT</span><span class="o">=</span><span class="m">3000</span>
+<span class="nv">NEXT_PUBLIC_API_URL</span><span class="o">=</span>http://localhost:8000
+
+<span class="c1"># Development</span>
+<span class="nv">DEBUG</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>INFO
+</pre></div>
+</div>
+</section>
+<section id="managing-services">
+<h2>Managing Services</h2>
+<section id="stop-services">
+<h3>Stop Services</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Press Ctrl+C in each terminal running the services</span>
+</pre></div>
+</div>
+</section>
+<section id="restart-services">
+<h3>Restart Services</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+
+<span class="c1"># Frontend</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="check-running-services">
+<h3>Check Running Services</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check what&#39;s using port 8000</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:8000
+
+<span class="c1"># Check what&#39;s using port 3000</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:3000
+</pre></div>
+</div>
+</section>
+<section id="kill-services">
+<h3>Kill Services</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kill process on port 8000</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:8000<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9
+
+<span class="c1"># Kill process on port 3000</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:3000<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting</h2>
+<section id="port-already-in-use">
+<h3>Port Already in Use</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: Kill the process</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:8000
+<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+
+<span class="c1"># Option 2: Use different port</span>
+<span class="c1"># Backend:</span>
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--port<span class="w"> </span><span class="m">8001</span>
+
+<span class="c1"># Frontend: Edit package.json</span>
+<span class="s2">&quot;dev&quot;</span>:<span class="w"> </span><span class="s2">&quot;next dev -p 3001&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="module-not-found-errors">
+<h3>Module Not Found Errors</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Frontend</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="permission-errors">
+<h3>Permission Errors</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python venv creation fails</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>.
+
+<span class="c1"># npm install fails</span>
+npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules
+npm<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="database-state-issues">
+<h3>Database/State Issues</h3>
+<p>The application uses in-memory state. To reset:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stop services</span>
+<span class="c1"># Delete uploaded files</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>backend/uploaded_datasets/*
+
+<span class="c1"># Restart services</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-optimization">
+<h2>Performance Optimization</h2>
+<section id="backend-optimization">
+<h3>Backend Optimization</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use production server (gunicorn)</span>
+pip<span class="w"> </span>install<span class="w"> </span>gunicorn
+gunicorn<span class="w"> </span>main:app<span class="w"> </span>--workers<span class="w"> </span><span class="m">4</span><span class="w"> </span>--worker-class<span class="w"> </span>uvicorn.workers.UvicornWorker<span class="w"> </span>--bind<span class="w"> </span><span class="m">0</span>.0.0.0:8000
+</pre></div>
+</div>
+</section>
+<section id="frontend-optimization">
+<h3>Frontend Optimization</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build for production</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>build
+npm<span class="w"> </span>start<span class="w">  </span><span class="c1"># Runs optimized production build</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-persistence">
+<h2>Data Persistence</h2>
+<p>Uploaded datasets are stored in:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>backend/
+└── uploaded_datasets/
+    ├── training_dataset.pkl
+    └── prediction_dataset.pkl
+</pre></div>
+</div>
+<p>Backup and restore:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backup</span>
+tar<span class="w"> </span>-czf<span class="w"> </span>datasets_backup.tar.gz<span class="w"> </span>backend/uploaded_datasets/
+
+<span class="c1"># Restore</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span>datasets_backup.tar.gz
+</pre></div>
+</div>
+</section>
+<section id="development-mode-features">
+<h2>Development Mode Features</h2>
+<section id="hot-reload">
+<h3>Hot Reload</h3>
+<p>Both backend and frontend support hot reload:</p>
+<ul class="simple">
+<li><p><strong>Backend</strong>: Changes to Python files trigger automatic reload</p></li>
+<li><p><strong>Frontend</strong>: Changes to React components update instantly</p></li>
+</ul>
+</section>
+<section id="debug-mode">
+<h3>Debug Mode</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend with debug logging</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+
+<span class="c1"># Frontend with debug</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">  </span><span class="c1"># Already in debug mode</span>
+</pre></div>
+</div>
+</section>
+<section id="api-testing">
+<h3>API Testing</h3>
+<p>Use the interactive API docs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a> (Swagger UI)</p></li>
+<li><p>Test endpoints directly in browser</p></li>
+<li><p>View request/response schemas</p></li>
+</ul>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps</h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">docker</span> - Deploy using Docker</p></li>
+<li><p><span class="xref std std-doc">production</span> - Production deployment guide</p></li>
+<li><p><a class="reference internal" href="../testing/overview.xhtml"><span class="doc">Testing Overview</span></a> - Run test suite</p></li>
+<li><p><a class="reference internal" href="../quickstart.xhtml"><span class="doc">Quick Start Guide</span></a> - Application usage guide</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

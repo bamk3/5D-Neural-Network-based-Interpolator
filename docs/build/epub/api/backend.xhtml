@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Backend API Reference</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="backend-api-reference">
+<h1>Backend API Reference</h1>
+<p>This document provides a complete reference for the FastAPI backend REST API.</p>
+<section id="base-url">
+<h2>Base URL</h2>
+<ul class="simple">
+<li><p><strong>Development</strong>: <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code></p></li>
+<li><p><strong>Production</strong>: Configure via <code class="docutils literal notranslate"><span class="pre">BACKEND_URL</span></code> environment variable</p></li>
+</ul>
+</section>
+<section id="interactive-documentation">
+<h2>Interactive Documentation</h2>
+<p>FastAPI provides automatic interactive documentation:</p>
+<ul class="simple">
+<li><p><strong>Swagger UI</strong>: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+<li><p><strong>ReDoc</strong>: <a class="reference external" href="http://localhost:8000/redoc">http://localhost:8000/redoc</a></p></li>
+</ul>
+</section>
+<section id="health-status-endpoints">
+<h2>Health &amp; Status Endpoints</h2>
+<section id="get">
+<h3>GET /</h3>
+<p>Welcome message and service identification.</p>
+<p><strong>Response:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello from the 5D Interpolator Backend by bamk3!&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-health">
+<h3>GET /health</h3>
+<p>Health check endpoint for monitoring and Docker containers.</p>
+<p><strong>Response:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;healthy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5D Interpolator Backend by bamk3&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-status">
+<h3>GET /status</h3>
+<p>Get the current status of uploaded data and trained models.</p>
+<p><strong>Response:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;training_data_uploaded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model_trained&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prediction_data_uploaded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Fields:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">training_data_uploaded</span></code> (boolean): Whether training dataset is loaded</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_trained</span></code> (boolean): Whether a model has been trained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prediction_data_uploaded</span></code> (boolean): Whether prediction dataset is loaded</p></li>
+</ul>
+</section>
+</section>
+<section id="dataset-upload-endpoints">
+<h2>Dataset Upload Endpoints</h2>
+<section id="post-upload-fit-dataset">
+<h3>POST /upload-fit-dataset/</h3>
+<p>Upload a training dataset for model fitting.</p>
+<p><strong>Request:</strong></p>
+<ul class="simple">
+<li><p><strong>Method</strong>: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p></li>
+<li><p><strong>Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">multipart/form-data</span></code></p></li>
+<li><p><strong>Body</strong>: File upload with key <code class="docutils literal notranslate"><span class="pre">file</span></code></p></li>
+</ul>
+<p><strong>File Requirements:</strong></p>
+<ul class="simple">
+<li><p><strong>Format</strong>: Python pickle (<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>)</p></li>
+<li><p><strong>Structure</strong>: Dictionary with keys:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: NumPy array of shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">5)</span></code> - feature matrix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: NumPy array of shape <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> - target vector</p></li>
+</ul>
+</li>
+<li><p><strong>Validation</strong>: Automatic shape and format checking</p></li>
+</ul>
+<p><strong>Example using curl:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8000/upload-fit-dataset/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-F<span class="w"> </span><span class="s2">&quot;file=@training_data.pkl&quot;</span>
+</pre></div>
+</div>
+<p><strong>Success Response (200 OK):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Training dataset uploaded and validated successfully&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;training_data.pkl&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filepath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uploaded_datasets/training_data.pkl&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;processing_result&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./uploaded_datasets/training_data.pkl&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;X_preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">],</span><span class="w"> </span><span class="err">...</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;y_preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">3.45</span><span class="p">,</span><span class="w"> </span><span class="mf">2.11</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;total_samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;X_shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;y_shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1000</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;valid&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Error Responses:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code>: Invalid file format or structure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code>: Server error during processing</p></li>
+</ul>
+</section>
+<section id="post-upload-predict-dataset">
+<h3>POST /upload-predict-dataset/</h3>
+<p>Upload a prediction dataset.</p>
+<p><strong>Request:</strong></p>
+<ul class="simple">
+<li><p><strong>Method</strong>: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p></li>
+<li><p><strong>Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">multipart/form-data</span></code></p></li>
+<li><p><strong>Body</strong>: File upload with key <code class="docutils literal notranslate"><span class="pre">file</span></code></p></li>
+</ul>
+<p><strong>File Requirements:</strong></p>
+<ul class="simple">
+<li><p><strong>Format</strong>: Python pickle (<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>)</p></li>
+<li><p><strong>Structure</strong>: NumPy array of shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">5)</span></code></p></li>
+</ul>
+<p><strong>Example using curl:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8000/upload-predict-dataset/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-F<span class="w"> </span><span class="s2">&quot;file=@prediction_data.pkl&quot;</span>
+</pre></div>
+</div>
+<p><strong>Success Response (200 OK):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prediction dataset uploaded and validated successfully&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prediction_data.pkl&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filepath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uploaded_datasets/prediction_data.pkl&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;predict_input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./uploaded_datasets/prediction_data.pkl&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;X_preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">],</span><span class="w"> </span><span class="err">...</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;total_samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;X_shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;valid&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="model-training-endpoints">
+<h2>Model Training Endpoints</h2>
+<section id="get-hyperparameters-defaults">
+<h3>GET /hyperparameters/defaults</h3>
+<p>Get default hyperparameter values.</p>
+<p><strong>Response:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;hidden_layer_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hidden_layer_2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hidden_layer_3&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;max_iterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;early_stopping&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="post-start-training">
+<h3>POST /start-training/</h3>
+<p>Train a neural network model with optional custom hyperparameters.</p>
+<p><strong>Request:</strong></p>
+<ul class="simple">
+<li><p><strong>Method</strong>: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p></li>
+<li><p><strong>Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></li>
+<li><p><strong>Body</strong> (optional):</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;hyperparameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_3&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_iterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;early_stopping&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Hyperparameter Constraints:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden_layer_1</span></code>: 8-256 (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden_layer_2</span></code>: 8-128 (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden_layer_3</span></code>: 4-64 (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>: 0.0001-0.01 (float)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_iterations</span></code>: 100-2000 (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">early_stopping</span></code>: true/false (boolean)</p></li>
+</ul>
+<p><strong>Example using curl:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># With default hyperparameters</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/start-training/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{}&#39;</span>
+
+<span class="c1"># With custom hyperparameters</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/start-training/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;hyperparameters&quot;: {</span>
+<span class="s1">      &quot;hidden_layer_1&quot;: 128,</span>
+<span class="s1">      &quot;hidden_layer_2&quot;: 64,</span>
+<span class="s1">      &quot;hidden_layer_3&quot;: 32,</span>
+<span class="s1">      &quot;learning_rate&quot;: 0.01,</span>
+<span class="s1">      &quot;max_iterations&quot;: 1000,</span>
+<span class="s1">      &quot;early_stopping&quot;: true</span>
+<span class="s1">    }</span>
+<span class="s1">  }&#39;</span>
+</pre></div>
+</div>
+<p><strong>Success Response (200 OK):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Training job initiated and completed successfully.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;function_result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;mse&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0123</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mae&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0987</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rmse&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1109</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;r2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9876</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;hyperparameters_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_iterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;early_stopping&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Error Response (400 Bad Request):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No training data uploaded. Please upload a dataset first.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="prediction-endpoints">
+<h2>Prediction Endpoints</h2>
+<section id="post-start-predict">
+<h3>POST /start-predict/</h3>
+<p>Generate batch predictions using uploaded dataset.</p>
+<p><strong>Request:</strong></p>
+<ul class="simple">
+<li><p><strong>Method</strong>: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p></li>
+<li><p><strong>Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></li>
+<li><p><strong>Body</strong>: <code class="docutils literal notranslate"><span class="pre">{}</span></code> (empty JSON object)</p></li>
+</ul>
+<p><strong>Prerequisites:</strong></p>
+<ul class="simple">
+<li><p>Model must be trained</p></li>
+<li><p>Prediction dataset must be uploaded</p></li>
+</ul>
+<p><strong>Example using curl:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/start-predict/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{}&#39;</span>
+</pre></div>
+</div>
+<p><strong>Success Response (200 OK):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Batch prediction completed successfully.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;function_result&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[3.456 2.789 1.234 ...]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prediction_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;batch&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="post-predict-single">
+<h3>POST /predict-single/</h3>
+<p>Generate a single prediction from 5 input features.</p>
+<p><strong>Request:</strong></p>
+<ul class="simple">
+<li><p><strong>Method</strong>: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p></li>
+<li><p><strong>Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></li>
+<li><p><strong>Body</strong>:</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Prerequisites:</strong></p>
+<ul class="simple">
+<li><p>Model must be trained</p></li>
+</ul>
+<p><strong>Example using curl:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/predict-single/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;features&quot;: [1.2, -0.5, 0.9, -1.2, 0.5]}&#39;</span>
+</pre></div>
+</div>
+<p><strong>Success Response (200 OK):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Single prediction completed successfully.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;input_features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;prediction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.456789</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prediction_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;single&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Error Response (400 Bad Request):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Expected 5 features, got 3&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="python-client-examples">
+<h2>Python Client Examples</h2>
+<section id="using-requests-library">
+<h3>Using requests library</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000&quot;</span>
+
+<span class="c1"># Upload training dataset</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;training_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/upload-fit-dataset/&quot;</span><span class="p">,</span>
+        <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">f</span><span class="p">}</span>
+    <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+<span class="c1"># Train model with custom hyperparameters</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/start-training/&quot;</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;hyperparameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;hidden_layer_1&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+            <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+            <span class="s2">&quot;max_iterations&quot;</span><span class="p">:</span> <span class="mi">1000</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+<span class="c1"># Single prediction</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/predict-single/&quot;</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="error-handling">
+<h2>Error Handling</h2>
+<p>All endpoints use standard HTTP status codes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code>: Successful request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code>: Invalid input or missing prerequisites</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Entity</span></code>: Validation error</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code>: Server-side error</p></li>
+</ul>
+<p>Error responses include a <code class="docutils literal notranslate"><span class="pre">detail</span></code> field with description:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error description here&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="rate-limiting">
+<h2>Rate Limiting</h2>
+<p>Currently no rate limiting is implemented. For production deployment, consider adding rate limiting middleware.</p>
+</section>
+<section id="authentication">
+<h2>Authentication</h2>
+<p>Currently no authentication is required. For production deployment with sensitive data, implement authentication middleware.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

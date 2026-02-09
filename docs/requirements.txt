@@ -1,0 +1,13 @@
+# Sphinx documentation requirements
+sphinx>=7.0.0
+sphinx-rtd-theme>=2.0.0
+sphinx-autodoc-typehints>=1.25.0
+
+# PDF generation (fallback if LaTeX not available)
+rst2pdf>=0.101
+
+# Backend dependencies (required for autodoc to import modules)
+numpy>=1.24.0
+scikit-learn>=1.3.0
+fastapi>=0.104.0
+python-multipart>=0.0.6

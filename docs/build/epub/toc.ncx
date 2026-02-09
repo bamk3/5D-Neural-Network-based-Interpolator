@@ -1,0 +1,2282 @@
+<?xml version="1.0"?>
+<ncx version="2005-1" xmlns="http://www.daisy.org/z3986/2005/ncx/">
+  <head>
+    <meta name="dtb:uid" content="unknown"/>
+    <meta name="dtb:depth" content="3"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    <text>5D Neural Network Interpolator</text>
+  </docTitle>
+  <navMap>    
+    <navPoint id="navPoint1" playOrder="1">
+      <navLabel>
+        <text>5D Neural Network Interpolator Documentation</text>
+      </navLabel>
+      <content src="index.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint2" playOrder="2">
+      <navLabel>
+        <text>Installation Guide</text>
+      </navLabel>
+      <content src="installation.xhtml" />  
+      <navPoint id="navPoint3" playOrder="2">
+        <navLabel>
+          <text>Installation Guide</text>
+        </navLabel>
+        <content src="installation.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint4" playOrder="3">
+        <navLabel>
+          <text>Prerequisites</text>
+        </navLabel>
+        <content src="installation.xhtml#prerequisites" />  
+        <navPoint id="navPoint5" playOrder="3">
+          <navLabel>
+            <text>Prerequisites</text>
+          </navLabel>
+          <content src="installation.xhtml#prerequisites" />  
+        </navPoint>
+        <navPoint id="navPoint6" playOrder="4">
+          <navLabel>
+            <text>System Requirements</text>
+          </navLabel>
+          <content src="installation.xhtml#system-requirements" />  
+        </navPoint>
+        <navPoint id="navPoint7" playOrder="5">
+          <navLabel>
+            <text>Software Requirements</text>
+          </navLabel>
+          <content src="installation.xhtml#software-requirements" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint8" playOrder="6">
+        <navLabel>
+          <text>Installation Methods</text>
+        </navLabel>
+        <content src="installation.xhtml#installation-methods" />  
+        <navPoint id="navPoint9" playOrder="6">
+          <navLabel>
+            <text>Installation Methods</text>
+          </navLabel>
+          <content src="installation.xhtml#installation-methods" />  
+        </navPoint>
+        <navPoint id="navPoint10" playOrder="7">
+          <navLabel>
+            <text>Method 1: Docker Installation (Recommended)</text>
+          </navLabel>
+          <content src="installation.xhtml#method-1-docker-installation-recommended" />  
+        </navPoint>
+        <navPoint id="navPoint11" playOrder="8">
+          <navLabel>
+            <text>Method 2: Manual Installation</text>
+          </navLabel>
+          <content src="installation.xhtml#method-2-manual-installation" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint12" playOrder="9">
+        <navLabel>
+          <text>Environment Configuration</text>
+        </navLabel>
+        <content src="installation.xhtml#environment-configuration" />  
+        <navPoint id="navPoint13" playOrder="9">
+          <navLabel>
+            <text>Environment Configuration</text>
+          </navLabel>
+          <content src="installation.xhtml#environment-configuration" />  
+        </navPoint>
+        <navPoint id="navPoint14" playOrder="10">
+          <navLabel>
+            <text>Environment Variables</text>
+          </navLabel>
+          <content src="installation.xhtml#environment-variables" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint15" playOrder="11">
+        <navLabel>
+          <text>Troubleshooting</text>
+        </navLabel>
+        <content src="installation.xhtml#troubleshooting" />  
+        <navPoint id="navPoint16" playOrder="11">
+          <navLabel>
+            <text>Troubleshooting</text>
+          </navLabel>
+          <content src="installation.xhtml#troubleshooting" />  
+        </navPoint>
+        <navPoint id="navPoint17" playOrder="12">
+          <navLabel>
+            <text>Docker Issues</text>
+          </navLabel>
+          <content src="installation.xhtml#docker-issues" />  
+        </navPoint>
+        <navPoint id="navPoint18" playOrder="13">
+          <navLabel>
+            <text>Permission Issues (Linux)</text>
+          </navLabel>
+          <content src="installation.xhtml#permission-issues-linux" />  
+        </navPoint>
+        <navPoint id="navPoint19" playOrder="14">
+          <navLabel>
+            <text>Python/Node Issues</text>
+          </navLabel>
+          <content src="installation.xhtml#python-node-issues" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint20" playOrder="15">
+        <navLabel>
+          <text>Verifying Installation</text>
+        </navLabel>
+        <content src="installation.xhtml#verifying-installation" />  
+      </navPoint>
+      <navPoint id="navPoint21" playOrder="16">
+        <navLabel>
+          <text>Building Documentation</text>
+        </navLabel>
+        <content src="installation.xhtml#building-documentation" />  
+        <navPoint id="navPoint22" playOrder="16">
+          <navLabel>
+            <text>Building Documentation</text>
+          </navLabel>
+          <content src="installation.xhtml#building-documentation" />  
+        </navPoint>
+        <navPoint id="navPoint23" playOrder="17">
+          <navLabel>
+            <text>Quick Build</text>
+          </navLabel>
+          <content src="installation.xhtml#quick-build" />  
+        </navPoint>
+        <navPoint id="navPoint24" playOrder="18">
+          <navLabel>
+            <text>Manual Build</text>
+          </navLabel>
+          <content src="installation.xhtml#manual-build" />  
+        </navPoint>
+        <navPoint id="navPoint25" playOrder="19">
+          <navLabel>
+            <text>Rebuilding Documentation</text>
+          </navLabel>
+          <content src="installation.xhtml#rebuilding-documentation" />  
+        </navPoint>
+        <navPoint id="navPoint26" playOrder="20">
+          <navLabel>
+            <text>Documentation Requirements</text>
+          </navLabel>
+          <content src="installation.xhtml#documentation-requirements" />  
+        </navPoint>
+        <navPoint id="navPoint27" playOrder="21">
+          <navLabel>
+            <text>Downloading Documentation</text>
+          </navLabel>
+          <content src="installation.xhtml#downloading-documentation" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint28" playOrder="22">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="installation.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint29" playOrder="23">
+      <navLabel>
+        <text>Quick Start Guide</text>
+      </navLabel>
+      <content src="quickstart.xhtml" />  
+      <navPoint id="navPoint30" playOrder="23">
+        <navLabel>
+          <text>Quick Start Guide</text>
+        </navLabel>
+        <content src="quickstart.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint31" playOrder="24">
+        <navLabel>
+          <text>Overview</text>
+        </navLabel>
+        <content src="quickstart.xhtml#overview" />  
+      </navPoint>
+      <navPoint id="navPoint32" playOrder="25">
+        <navLabel>
+          <text>Starting the Application</text>
+        </navLabel>
+        <content src="quickstart.xhtml#starting-the-application" />  
+        <navPoint id="navPoint33" playOrder="25">
+          <navLabel>
+            <text>Starting the Application</text>
+          </navLabel>
+          <content src="quickstart.xhtml#starting-the-application" />  
+        </navPoint>
+        <navPoint id="navPoint34" playOrder="26">
+          <navLabel>
+            <text>Using Docker (recommended)</text>
+          </navLabel>
+          <content src="quickstart.xhtml#using-docker-recommended" />  
+        </navPoint>
+        <navPoint id="navPoint35" playOrder="27">
+          <navLabel>
+            <text>Soft Manual Start (Using local-build shell script)</text>
+          </navLabel>
+          <content src="quickstart.xhtml#soft-manual-start-using-local-build-shell-script" />  
+        </navPoint>
+        <navPoint id="navPoint36" playOrder="28">
+          <navLabel>
+            <text>Manual Start</text>
+          </navLabel>
+          <content src="quickstart.xhtml#manual-start" />  
+        </navPoint>
+        <navPoint id="navPoint37" playOrder="29">
+          <navLabel>
+            <text>Access the Application</text>
+          </navLabel>
+          <content src="quickstart.xhtml#access-the-application" />  
+        </navPoint>
+        <navPoint id="navPoint38" playOrder="30">
+          <navLabel>
+            <text>Build the documentation</text>
+          </navLabel>
+          <content src="quickstart.xhtml#build-the-documentation" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint39" playOrder="31">
+        <navLabel>
+          <text>Step-by-Step Workflow</text>
+        </navLabel>
+        <content src="quickstart.xhtml#step-by-step-workflow" />  
+        <navPoint id="navPoint40" playOrder="31">
+          <navLabel>
+            <text>Step-by-Step Workflow</text>
+          </navLabel>
+          <content src="quickstart.xhtml#step-by-step-workflow" />  
+        </navPoint>
+        <navPoint id="navPoint41" playOrder="32">
+          <navLabel>
+            <text>Step 1: Upload Training Dataset</text>
+          </navLabel>
+          <content src="quickstart.xhtml#step-1-upload-training-dataset" />  
+        </navPoint>
+        <navPoint id="navPoint42" playOrder="33">
+          <navLabel>
+            <text>Step 2: Configure Hyperparameters</text>
+          </navLabel>
+          <content src="quickstart.xhtml#step-2-configure-hyperparameters" />  
+        </navPoint>
+        <navPoint id="navPoint43" playOrder="34">
+          <navLabel>
+            <text>Step 3: Train the Model</text>
+          </navLabel>
+          <content src="quickstart.xhtml#step-3-train-the-model" />  
+        </navPoint>
+        <navPoint id="navPoint44" playOrder="35">
+          <navLabel>
+            <text>Step 4: Make Predictions</text>
+          </navLabel>
+          <content src="quickstart.xhtml#step-4-make-predictions" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint45" playOrder="36">
+        <navLabel>
+          <text>Common Workflows</text>
+        </navLabel>
+        <content src="quickstart.xhtml#common-workflows" />  
+        <navPoint id="navPoint46" playOrder="36">
+          <navLabel>
+            <text>Common Workflows</text>
+          </navLabel>
+          <content src="quickstart.xhtml#common-workflows" />  
+        </navPoint>
+        <navPoint id="navPoint47" playOrder="37">
+          <navLabel>
+            <text>Experiment with Hyperparameters</text>
+          </navLabel>
+          <content src="quickstart.xhtml#experiment-with-hyperparameters" />  
+        </navPoint>
+        <navPoint id="navPoint48" playOrder="38">
+          <navLabel>
+            <text>Quick Iteration Cycle</text>
+          </navLabel>
+          <content src="quickstart.xhtml#quick-iteration-cycle" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint49" playOrder="39">
+        <navLabel>
+          <text>Best Practices</text>
+        </navLabel>
+        <content src="quickstart.xhtml#best-practices" />  
+        <navPoint id="navPoint50" playOrder="39">
+          <navLabel>
+            <text>Best Practices</text>
+          </navLabel>
+          <content src="quickstart.xhtml#best-practices" />  
+        </navPoint>
+        <navPoint id="navPoint51" playOrder="40">
+          <navLabel>
+            <text>Dataset Preparation</text>
+          </navLabel>
+          <content src="quickstart.xhtml#dataset-preparation" />  
+        </navPoint>
+        <navPoint id="navPoint52" playOrder="41">
+          <navLabel>
+            <text>Model Training</text>
+          </navLabel>
+          <content src="quickstart.xhtml#model-training" />  
+        </navPoint>
+        <navPoint id="navPoint53" playOrder="42">
+          <navLabel>
+            <text>Performance Tips</text>
+          </navLabel>
+          <content src="quickstart.xhtml#performance-tips" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint54" playOrder="43">
+        <navLabel>
+          <text>Troubleshooting Quick Start Issues</text>
+        </navLabel>
+        <content src="quickstart.xhtml#troubleshooting-quick-start-issues" />  
+      </navPoint>
+      <navPoint id="navPoint55" playOrder="44">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="quickstart.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint56" playOrder="45">
+      <navLabel>
+        <text>Usage Guide</text>
+      </navLabel>
+      <content src="usage.xhtml" />  
+      <navPoint id="navPoint57" playOrder="45">
+        <navLabel>
+          <text>Usage Guide</text>
+        </navLabel>
+        <content src="usage.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint58" playOrder="46">
+        <navLabel>
+          <text>Application Workflow</text>
+        </navLabel>
+        <content src="usage.xhtml#application-workflow" />  
+      </navPoint>
+      <navPoint id="navPoint59" playOrder="47">
+        <navLabel>
+          <text>Step 1: Upload Training Dataset</text>
+        </navLabel>
+        <content src="usage.xhtml#step-1-upload-training-dataset" />  
+        <navPoint id="navPoint60" playOrder="47">
+          <navLabel>
+            <text>Step 1: Upload Training Dataset</text>
+          </navLabel>
+          <content src="usage.xhtml#step-1-upload-training-dataset" />  
+        </navPoint>
+        <navPoint id="navPoint61" playOrder="48">
+          <navLabel>
+            <text>Dataset Requirements</text>
+          </navLabel>
+          <content src="usage.xhtml#dataset-requirements" />  
+        </navPoint>
+        <navPoint id="navPoint62" playOrder="49">
+          <navLabel>
+            <text>Example Dataset Creation</text>
+          </navLabel>
+          <content src="usage.xhtml#example-dataset-creation" />  
+        </navPoint>
+        <navPoint id="navPoint63" playOrder="50">
+          <navLabel>
+            <text>Upload Process</text>
+          </navLabel>
+          <content src="usage.xhtml#upload-process" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint64" playOrder="51">
+        <navLabel>
+          <text>Step 2: Train Model</text>
+        </navLabel>
+        <content src="usage.xhtml#step-2-train-model" />  
+        <navPoint id="navPoint65" playOrder="51">
+          <navLabel>
+            <text>Step 2: Train Model</text>
+          </navLabel>
+          <content src="usage.xhtml#step-2-train-model" />  
+        </navPoint>
+        <navPoint id="navPoint66" playOrder="52">
+          <navLabel>
+            <text>Hyperparameter Configuration</text>
+          </navLabel>
+          <content src="usage.xhtml#hyperparameter-configuration" />  
+        </navPoint>
+        <navPoint id="navPoint67" playOrder="53">
+          <navLabel>
+            <text>Recommended Configurations</text>
+          </navLabel>
+          <content src="usage.xhtml#recommended-configurations" />  
+        </navPoint>
+        <navPoint id="navPoint68" playOrder="54">
+          <navLabel>
+            <text>Training Process</text>
+          </navLabel>
+          <content src="usage.xhtml#training-process" />  
+        </navPoint>
+        <navPoint id="navPoint69" playOrder="55">
+          <navLabel>
+            <text>Understanding Training Results</text>
+          </navLabel>
+          <content src="usage.xhtml#understanding-training-results" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint70" playOrder="56">
+        <navLabel>
+          <text>Step 3: Make Predictions</text>
+        </navLabel>
+        <content src="usage.xhtml#step-3-make-predictions" />  
+        <navPoint id="navPoint71" playOrder="56">
+          <navLabel>
+            <text>Step 3: Make Predictions</text>
+          </navLabel>
+          <content src="usage.xhtml#step-3-make-predictions" />  
+        </navPoint>
+        <navPoint id="navPoint72" playOrder="57">
+          <navLabel>
+            <text>Batch Prediction</text>
+          </navLabel>
+          <content src="usage.xhtml#batch-prediction" />  
+        </navPoint>
+        <navPoint id="navPoint73" playOrder="58">
+          <navLabel>
+            <text>Single Prediction</text>
+          </navLabel>
+          <content src="usage.xhtml#single-prediction" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint74" playOrder="59">
+        <navLabel>
+          <text>Advanced Usage</text>
+        </navLabel>
+        <content src="usage.xhtml#advanced-usage" />  
+        <navPoint id="navPoint75" playOrder="59">
+          <navLabel>
+            <text>Advanced Usage</text>
+          </navLabel>
+          <content src="usage.xhtml#advanced-usage" />  
+        </navPoint>
+        <navPoint id="navPoint76" playOrder="60">
+          <navLabel>
+            <text>Experimenting with Hyperparameters</text>
+          </navLabel>
+          <content src="usage.xhtml#experimenting-with-hyperparameters" />  
+        </navPoint>
+        <navPoint id="navPoint77" playOrder="61">
+          <navLabel>
+            <text>API Usage</text>
+          </navLabel>
+          <content src="usage.xhtml#api-usage" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint78" playOrder="62">
+        <navLabel>
+          <text>Tips and Best Practices</text>
+        </navLabel>
+        <content src="usage.xhtml#tips-and-best-practices" />  
+        <navPoint id="navPoint79" playOrder="62">
+          <navLabel>
+            <text>Tips and Best Practices</text>
+          </navLabel>
+          <content src="usage.xhtml#tips-and-best-practices" />  
+        </navPoint>
+        <navPoint id="navPoint80" playOrder="63">
+          <navLabel>
+            <text>Dataset Preparation</text>
+          </navLabel>
+          <content src="usage.xhtml#dataset-preparation" />  
+        </navPoint>
+        <navPoint id="navPoint81" playOrder="64">
+          <navLabel>
+            <text>Model Training</text>
+          </navLabel>
+          <content src="usage.xhtml#model-training" />  
+        </navPoint>
+        <navPoint id="navPoint82" playOrder="65">
+          <navLabel>
+            <text>Prediction</text>
+          </navLabel>
+          <content src="usage.xhtml#prediction" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint83" playOrder="66">
+        <navLabel>
+          <text>Troubleshooting</text>
+        </navLabel>
+        <content src="usage.xhtml#troubleshooting" />  
+        <navPoint id="navPoint84" playOrder="66">
+          <navLabel>
+            <text>Troubleshooting</text>
+          </navLabel>
+          <content src="usage.xhtml#troubleshooting" />  
+        </navPoint>
+        <navPoint id="navPoint85" playOrder="67">
+          <navLabel>
+            <text>Training Issues</text>
+          </navLabel>
+          <content src="usage.xhtml#training-issues" />  
+        </navPoint>
+        <navPoint id="navPoint86" playOrder="68">
+          <navLabel>
+            <text>Prediction Issues</text>
+          </navLabel>
+          <content src="usage.xhtml#prediction-issues" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint87" playOrder="69">
+        <navLabel>
+          <text>Keyboard Shortcuts</text>
+        </navLabel>
+        <content src="usage.xhtml#keyboard-shortcuts" />  
+      </navPoint>
+      <navPoint id="navPoint88" playOrder="70">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="usage.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint89" playOrder="71">
+      <navLabel>
+        <text>Dataset Specifications</text>
+      </navLabel>
+      <content src="datasets.xhtml" />  
+      <navPoint id="navPoint90" playOrder="71">
+        <navLabel>
+          <text>Dataset Specifications</text>
+        </navLabel>
+        <content src="datasets.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint91" playOrder="72">
+        <navLabel>
+          <text>Training Dataset Format</text>
+        </navLabel>
+        <content src="datasets.xhtml#training-dataset-format" />  
+        <navPoint id="navPoint92" playOrder="72">
+          <navLabel>
+            <text>Training Dataset Format</text>
+          </navLabel>
+          <content src="datasets.xhtml#training-dataset-format" />  
+        </navPoint>
+        <navPoint id="navPoint93" playOrder="73">
+          <navLabel>
+            <text>Structure</text>
+          </navLabel>
+          <content src="datasets.xhtml#structure" />  
+        </navPoint>
+        <navPoint id="navPoint94" playOrder="74">
+          <navLabel>
+            <text>Requirements</text>
+          </navLabel>
+          <content src="datasets.xhtml#requirements" />  
+        </navPoint>
+        <navPoint id="navPoint95" playOrder="75">
+          <navLabel>
+            <text>Example Creation</text>
+          </navLabel>
+          <content src="datasets.xhtml#example-creation" />  
+        </navPoint>
+        <navPoint id="navPoint96" playOrder="76">
+          <navLabel>
+            <text>Validation</text>
+          </navLabel>
+          <content src="datasets.xhtml#validation" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint97" playOrder="77">
+        <navLabel>
+          <text>Prediction Dataset Format</text>
+        </navLabel>
+        <content src="datasets.xhtml#prediction-dataset-format" />  
+        <navPoint id="navPoint98" playOrder="77">
+          <navLabel>
+            <text>Prediction Dataset Format</text>
+          </navLabel>
+          <content src="datasets.xhtml#prediction-dataset-format" />  
+        </navPoint>
+        <navPoint id="navPoint99" playOrder="78">
+          <navLabel>
+            <text>Structure</text>
+          </navLabel>
+          <content src="datasets.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint100" playOrder="79">
+          <navLabel>
+            <text>Requirements</text>
+          </navLabel>
+          <content src="datasets.xhtml#id2" />  
+        </navPoint>
+        <navPoint id="navPoint101" playOrder="80">
+          <navLabel>
+            <text>Example Creation</text>
+          </navLabel>
+          <content src="datasets.xhtml#id3" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint102" playOrder="81">
+        <navLabel>
+          <text>Data Preprocessing</text>
+        </navLabel>
+        <content src="datasets.xhtml#data-preprocessing" />  
+        <navPoint id="navPoint103" playOrder="81">
+          <navLabel>
+            <text>Data Preprocessing</text>
+          </navLabel>
+          <content src="datasets.xhtml#data-preprocessing" />  
+        </navPoint>
+        <navPoint id="navPoint104" playOrder="82">
+          <navLabel>
+            <text>Automatic Standardization</text>
+          </navLabel>
+          <content src="datasets.xhtml#automatic-standardization" />  
+        </navPoint>
+        <navPoint id="navPoint105" playOrder="83">
+          <navLabel>
+            <text>Data Splitting</text>
+          </navLabel>
+          <content src="datasets.xhtml#data-splitting" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint106" playOrder="84">
+        <navLabel>
+          <text>Best Practices</text>
+        </navLabel>
+        <content src="datasets.xhtml#best-practices" />  
+        <navPoint id="navPoint107" playOrder="84">
+          <navLabel>
+            <text>Best Practices</text>
+          </navLabel>
+          <content src="datasets.xhtml#best-practices" />  
+        </navPoint>
+        <navPoint id="navPoint108" playOrder="85">
+          <navLabel>
+            <text>Dataset Size</text>
+          </navLabel>
+          <content src="datasets.xhtml#dataset-size" />  
+        </navPoint>
+        <navPoint id="navPoint109" playOrder="86">
+          <navLabel>
+            <text>Data Quality</text>
+          </navLabel>
+          <content src="datasets.xhtml#data-quality" />  
+        </navPoint>
+        <navPoint id="navPoint110" playOrder="87">
+          <navLabel>
+            <text>Feature Engineering</text>
+          </navLabel>
+          <content src="datasets.xhtml#feature-engineering" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint111" playOrder="88">
+        <navLabel>
+          <text>Common Use Cases</text>
+        </navLabel>
+        <content src="datasets.xhtml#common-use-cases" />  
+        <navPoint id="navPoint112" playOrder="88">
+          <navLabel>
+            <text>Common Use Cases</text>
+          </navLabel>
+          <content src="datasets.xhtml#common-use-cases" />  
+        </navPoint>
+        <navPoint id="navPoint113" playOrder="89">
+          <navLabel>
+            <text>Regression Problems</text>
+          </navLabel>
+          <content src="datasets.xhtml#regression-problems" />  
+        </navPoint>
+        <navPoint id="navPoint114" playOrder="90">
+          <navLabel>
+            <text>Scientific Data</text>
+          </navLabel>
+          <content src="datasets.xhtml#scientific-data" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint115" playOrder="91">
+        <navLabel>
+          <text>Troubleshooting</text>
+        </navLabel>
+        <content src="datasets.xhtml#troubleshooting" />  
+        <navPoint id="navPoint116" playOrder="91">
+          <navLabel>
+            <text>Troubleshooting</text>
+          </navLabel>
+          <content src="datasets.xhtml#troubleshooting" />  
+        </navPoint>
+        <navPoint id="navPoint117" playOrder="92">
+          <navLabel>
+            <text>Common Errors</text>
+          </navLabel>
+          <content src="datasets.xhtml#common-errors" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint118" playOrder="93">
+        <navLabel>
+          <text>Dataset Templates</text>
+        </navLabel>
+        <content src="datasets.xhtml#dataset-templates" />  
+        <navPoint id="navPoint119" playOrder="93">
+          <navLabel>
+            <text>Dataset Templates</text>
+          </navLabel>
+          <content src="datasets.xhtml#dataset-templates" />  
+        </navPoint>
+        <navPoint id="navPoint120" playOrder="94">
+          <navLabel>
+            <text>Simple Template</text>
+          </navLabel>
+          <content src="datasets.xhtml#simple-template" />  
+        </navPoint>
+        <navPoint id="navPoint121" playOrder="95">
+          <navLabel>
+            <text>Complex Template</text>
+          </navLabel>
+          <content src="datasets.xhtml#complex-template" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint122" playOrder="96">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="datasets.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint123" playOrder="97">
+      <navLabel>
+        <text>Backend API Reference</text>
+      </navLabel>
+      <content src="api/backend.xhtml" />  
+      <navPoint id="navPoint124" playOrder="97">
+        <navLabel>
+          <text>Backend API Reference</text>
+        </navLabel>
+        <content src="api/backend.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint125" playOrder="98">
+        <navLabel>
+          <text>Base URL</text>
+        </navLabel>
+        <content src="api/backend.xhtml#base-url" />  
+      </navPoint>
+      <navPoint id="navPoint126" playOrder="99">
+        <navLabel>
+          <text>Interactive Documentation</text>
+        </navLabel>
+        <content src="api/backend.xhtml#interactive-documentation" />  
+      </navPoint>
+      <navPoint id="navPoint127" playOrder="100">
+        <navLabel>
+          <text>Health &amp; Status Endpoints</text>
+        </navLabel>
+        <content src="api/backend.xhtml#health-status-endpoints" />  
+        <navPoint id="navPoint128" playOrder="100">
+          <navLabel>
+            <text>Health &amp; Status Endpoints</text>
+          </navLabel>
+          <content src="api/backend.xhtml#health-status-endpoints" />  
+        </navPoint>
+        <navPoint id="navPoint129" playOrder="101">
+          <navLabel>
+            <text>GET /</text>
+          </navLabel>
+          <content src="api/backend.xhtml#get" />  
+        </navPoint>
+        <navPoint id="navPoint130" playOrder="102">
+          <navLabel>
+            <text>GET /health</text>
+          </navLabel>
+          <content src="api/backend.xhtml#get-health" />  
+        </navPoint>
+        <navPoint id="navPoint131" playOrder="103">
+          <navLabel>
+            <text>GET /status</text>
+          </navLabel>
+          <content src="api/backend.xhtml#get-status" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint132" playOrder="104">
+        <navLabel>
+          <text>Dataset Upload Endpoints</text>
+        </navLabel>
+        <content src="api/backend.xhtml#dataset-upload-endpoints" />  
+        <navPoint id="navPoint133" playOrder="104">
+          <navLabel>
+            <text>Dataset Upload Endpoints</text>
+          </navLabel>
+          <content src="api/backend.xhtml#dataset-upload-endpoints" />  
+        </navPoint>
+        <navPoint id="navPoint134" playOrder="105">
+          <navLabel>
+            <text>POST /upload-fit-dataset/</text>
+          </navLabel>
+          <content src="api/backend.xhtml#post-upload-fit-dataset" />  
+        </navPoint>
+        <navPoint id="navPoint135" playOrder="106">
+          <navLabel>
+            <text>POST /upload-predict-dataset/</text>
+          </navLabel>
+          <content src="api/backend.xhtml#post-upload-predict-dataset" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint136" playOrder="107">
+        <navLabel>
+          <text>Model Training Endpoints</text>
+        </navLabel>
+        <content src="api/backend.xhtml#model-training-endpoints" />  
+        <navPoint id="navPoint137" playOrder="107">
+          <navLabel>
+            <text>Model Training Endpoints</text>
+          </navLabel>
+          <content src="api/backend.xhtml#model-training-endpoints" />  
+        </navPoint>
+        <navPoint id="navPoint138" playOrder="108">
+          <navLabel>
+            <text>GET /hyperparameters/defaults</text>
+          </navLabel>
+          <content src="api/backend.xhtml#get-hyperparameters-defaults" />  
+        </navPoint>
+        <navPoint id="navPoint139" playOrder="109">
+          <navLabel>
+            <text>POST /start-training/</text>
+          </navLabel>
+          <content src="api/backend.xhtml#post-start-training" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint140" playOrder="110">
+        <navLabel>
+          <text>Prediction Endpoints</text>
+        </navLabel>
+        <content src="api/backend.xhtml#prediction-endpoints" />  
+        <navPoint id="navPoint141" playOrder="110">
+          <navLabel>
+            <text>Prediction Endpoints</text>
+          </navLabel>
+          <content src="api/backend.xhtml#prediction-endpoints" />  
+        </navPoint>
+        <navPoint id="navPoint142" playOrder="111">
+          <navLabel>
+            <text>POST /start-predict/</text>
+          </navLabel>
+          <content src="api/backend.xhtml#post-start-predict" />  
+        </navPoint>
+        <navPoint id="navPoint143" playOrder="112">
+          <navLabel>
+            <text>POST /predict-single/</text>
+          </navLabel>
+          <content src="api/backend.xhtml#post-predict-single" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint144" playOrder="113">
+        <navLabel>
+          <text>Python Client Examples</text>
+        </navLabel>
+        <content src="api/backend.xhtml#python-client-examples" />  
+        <navPoint id="navPoint145" playOrder="113">
+          <navLabel>
+            <text>Python Client Examples</text>
+          </navLabel>
+          <content src="api/backend.xhtml#python-client-examples" />  
+        </navPoint>
+        <navPoint id="navPoint146" playOrder="114">
+          <navLabel>
+            <text>Using requests library</text>
+          </navLabel>
+          <content src="api/backend.xhtml#using-requests-library" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint147" playOrder="115">
+        <navLabel>
+          <text>Error Handling</text>
+        </navLabel>
+        <content src="api/backend.xhtml#error-handling" />  
+      </navPoint>
+      <navPoint id="navPoint148" playOrder="116">
+        <navLabel>
+          <text>Rate Limiting</text>
+        </navLabel>
+        <content src="api/backend.xhtml#rate-limiting" />  
+      </navPoint>
+      <navPoint id="navPoint149" playOrder="117">
+        <navLabel>
+          <text>Authentication</text>
+        </navLabel>
+        <content src="api/backend.xhtml#authentication" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint150" playOrder="118">
+      <navLabel>
+        <text>Frontend Components</text>
+      </navLabel>
+      <content src="api/frontend.xhtml" />  
+      <navPoint id="navPoint151" playOrder="118">
+        <navLabel>
+          <text>Frontend Components</text>
+        </navLabel>
+        <content src="api/frontend.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint152" playOrder="119">
+        <navLabel>
+          <text>Technology Stack</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#technology-stack" />  
+      </navPoint>
+      <navPoint id="navPoint153" playOrder="120">
+        <navLabel>
+          <text>Project Structure</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#project-structure" />  
+      </navPoint>
+      <navPoint id="navPoint154" playOrder="121">
+        <navLabel>
+          <text>Root Layout</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#root-layout" />  
+      </navPoint>
+      <navPoint id="navPoint155" playOrder="122">
+        <navLabel>
+          <text>Home Page</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#home-page" />  
+      </navPoint>
+      <navPoint id="navPoint156" playOrder="123">
+        <navLabel>
+          <text>Upload Page</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#upload-page" />  
+        <navPoint id="navPoint157" playOrder="123">
+          <navLabel>
+            <text>Upload Page</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#upload-page" />  
+        </navPoint>
+        <navPoint id="navPoint158" playOrder="124">
+          <navLabel>
+            <text>State Management</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#state-management" />  
+        </navPoint>
+        <navPoint id="navPoint159" playOrder="125">
+          <navLabel>
+            <text>Upload Process</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#upload-process" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint160" playOrder="126">
+        <navLabel>
+          <text>Train Page</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#train-page" />  
+        <navPoint id="navPoint161" playOrder="126">
+          <navLabel>
+            <text>Train Page</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#train-page" />  
+        </navPoint>
+        <navPoint id="navPoint162" playOrder="127">
+          <navLabel>
+            <text>State Management</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint163" playOrder="128">
+          <navLabel>
+            <text>Hyperparameter Controls</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#hyperparameter-controls" />  
+        </navPoint>
+        <navPoint id="navPoint164" playOrder="129">
+          <navLabel>
+            <text>Training Process</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#training-process" />  
+        </navPoint>
+        <navPoint id="navPoint165" playOrder="130">
+          <navLabel>
+            <text>Results Display</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#results-display" />  
+        </navPoint>
+        <navPoint id="navPoint166" playOrder="131">
+          <navLabel>
+            <text>Button Logic</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#button-logic" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint167" playOrder="132">
+        <navLabel>
+          <text>Predict Page</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#predict-page" />  
+        <navPoint id="navPoint168" playOrder="132">
+          <navLabel>
+            <text>Predict Page</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#predict-page" />  
+        </navPoint>
+        <navPoint id="navPoint169" playOrder="133">
+          <navLabel>
+            <text>State Management</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#id2" />  
+        </navPoint>
+        <navPoint id="navPoint170" playOrder="134">
+          <navLabel>
+            <text>Batch Prediction</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#batch-prediction" />  
+        </navPoint>
+        <navPoint id="navPoint171" playOrder="135">
+          <navLabel>
+            <text>Single Prediction</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#single-prediction" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint172" playOrder="136">
+        <navLabel>
+          <text>Styling</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#styling" />  
+        <navPoint id="navPoint173" playOrder="136">
+          <navLabel>
+            <text>Styling</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#styling" />  
+        </navPoint>
+        <navPoint id="navPoint174" playOrder="137">
+          <navLabel>
+            <text>Global Styles</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#global-styles" />  
+        </navPoint>
+        <navPoint id="navPoint175" playOrder="138">
+          <navLabel>
+            <text>Common Patterns</text>
+          </navLabel>
+          <content src="api/frontend.xhtml#common-patterns" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint176" playOrder="139">
+        <navLabel>
+          <text>Error Handling</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#error-handling" />  
+      </navPoint>
+      <navPoint id="navPoint177" playOrder="140">
+        <navLabel>
+          <text>Responsive Design</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#responsive-design" />  
+      </navPoint>
+      <navPoint id="navPoint178" playOrder="141">
+        <navLabel>
+          <text>Dark Mode</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#dark-mode" />  
+      </navPoint>
+      <navPoint id="navPoint179" playOrder="142">
+        <navLabel>
+          <text>Best Practices</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#best-practices" />  
+      </navPoint>
+      <navPoint id="navPoint180" playOrder="143">
+        <navLabel>
+          <text>Development</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#development" />  
+      </navPoint>
+      <navPoint id="navPoint181" playOrder="144">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="api/frontend.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint182" playOrder="145">
+      <navLabel>
+        <text>Neural Network Module</text>
+      </navLabel>
+      <content src="api/neural_network.xhtml" />  
+      <navPoint id="navPoint183" playOrder="145">
+        <navLabel>
+          <text>Neural Network Module</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint184" playOrder="146">
+        <navLabel>
+          <text>Module Overview</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml#module-fivedreg.base_fivedreg" />  
+      </navPoint>
+      <navPoint id="navPoint185" playOrder="147">
+        <navLabel>
+          <text>FastNeuralNetwork Class</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml#fastneuralnetwork-class" />  
+        <navPoint id="navPoint186" playOrder="147">
+          <navLabel>
+            <text>FastNeuralNetwork Class</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#fastneuralnetwork-class" />  
+        </navPoint>
+        <navPoint id="navPoint187" playOrder="148">
+          <navLabel>
+            <text>FastNeuralNetwork</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#fivedreg.base_fivedreg.FastNeuralNetwork" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint188" playOrder="149">
+        <navLabel>
+          <text>Top-Level Functions</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml#top-level-functions" />  
+        <navPoint id="navPoint189" playOrder="149">
+          <navLabel>
+            <text>Top-Level Functions</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#top-level-functions" />  
+        </navPoint>
+        <navPoint id="navPoint190" playOrder="150">
+          <navLabel>
+            <text>benchmark_training_speed</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#benchmark-training-speed" />  
+        </navPoint>
+        <navPoint id="navPoint191" playOrder="151">
+          <navLabel>
+            <text>start_predict</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#start-predict" />  
+        </navPoint>
+        <navPoint id="navPoint192" playOrder="152">
+          <navLabel>
+            <text>demonstrate_configurability</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#demonstrate-configurability" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint193" playOrder="153">
+        <navLabel>
+          <text>Data Handling Module</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml#module-fivedreg.data_hand.module" />  
+        <navPoint id="navPoint194" playOrder="153">
+          <navLabel>
+            <text>Data Handling Module</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#module-fivedreg.data_hand.module" />  
+        </navPoint>
+        <navPoint id="navPoint195" playOrder="154">
+          <navLabel>
+            <text>load_dataset()</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#fivedreg.data_hand.module.load_dataset" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint196" playOrder="155">
+        <navLabel>
+          <text>Usage Examples</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml#usage-examples" />  
+        <navPoint id="navPoint197" playOrder="155">
+          <navLabel>
+            <text>Usage Examples</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#usage-examples" />  
+        </navPoint>
+        <navPoint id="navPoint198" playOrder="156">
+          <navLabel>
+            <text>Basic Training</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#basic-training" />  
+        </navPoint>
+        <navPoint id="navPoint199" playOrder="157">
+          <navLabel>
+            <text>Custom Configuration</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#custom-configuration" />  
+        </navPoint>
+        <navPoint id="navPoint200" playOrder="158">
+          <navLabel>
+            <text>Using Benchmark Function</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#using-benchmark-function" />  
+        </navPoint>
+        <navPoint id="navPoint201" playOrder="159">
+          <navLabel>
+            <text>Making Predictions</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#making-predictions" />  
+        </navPoint>
+        <navPoint id="navPoint202" playOrder="160">
+          <navLabel>
+            <text>Model Evaluation</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#model-evaluation" />  
+        </navPoint>
+        <navPoint id="navPoint203" playOrder="161">
+          <navLabel>
+            <text>Getting Model Parameters</text>
+          </navLabel>
+          <content src="api/neural_network.xhtml#getting-model-parameters" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint204" playOrder="162">
+        <navLabel>
+          <text>See Also</text>
+        </navLabel>
+        <content src="api/neural_network.xhtml#see-also" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint205" playOrder="163">
+      <navLabel>
+        <text>Performance and Profiling</text>
+      </navLabel>
+      <content src="performance.xhtml" />  
+      <navPoint id="navPoint206" playOrder="163">
+        <navLabel>
+          <text>Performance and Profiling</text>
+        </navLabel>
+        <content src="performance.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint207" playOrder="164">
+        <navLabel>
+          <text>Executive Summary</text>
+        </navLabel>
+        <content src="performance.xhtml#executive-summary" />  
+      </navPoint>
+      <navPoint id="navPoint208" playOrder="165">
+        <navLabel>
+          <text>Test Configuration</text>
+        </navLabel>
+        <content src="performance.xhtml#test-configuration" />  
+      </navPoint>
+      <navPoint id="navPoint209" playOrder="166">
+        <navLabel>
+          <text>Benchmark Results</text>
+        </navLabel>
+        <content src="performance.xhtml#benchmark-results" />  
+        <navPoint id="navPoint210" playOrder="166">
+          <navLabel>
+            <text>Benchmark Results</text>
+          </navLabel>
+          <content src="performance.xhtml#benchmark-results" />  
+        </navPoint>
+        <navPoint id="navPoint211" playOrder="167">
+          <navLabel>
+            <text>Training Time Analysis</text>
+          </navLabel>
+          <content src="performance.xhtml#training-time-analysis" />  
+        </navPoint>
+        <navPoint id="navPoint212" playOrder="168">
+          <navLabel>
+            <text>Scaling Behavior</text>
+          </navLabel>
+          <content src="performance.xhtml#scaling-behavior" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint213" playOrder="169">
+        <navLabel>
+          <text>Memory Profiling</text>
+        </navLabel>
+        <content src="performance.xhtml#memory-profiling" />  
+        <navPoint id="navPoint214" playOrder="169">
+          <navLabel>
+            <text>Memory Profiling</text>
+          </navLabel>
+          <content src="performance.xhtml#memory-profiling" />  
+        </navPoint>
+        <navPoint id="navPoint215" playOrder="170">
+          <navLabel>
+            <text>Training Memory Usage</text>
+          </navLabel>
+          <content src="performance.xhtml#training-memory-usage" />  
+        </navPoint>
+        <navPoint id="navPoint216" playOrder="171">
+          <navLabel>
+            <text>Prediction Memory Usage</text>
+          </navLabel>
+          <content src="performance.xhtml#prediction-memory-usage" />  
+        </navPoint>
+        <navPoint id="navPoint217" playOrder="172">
+          <navLabel>
+            <text>Memory Breakdown</text>
+          </navLabel>
+          <content src="performance.xhtml#memory-breakdown" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint218" playOrder="173">
+        <navLabel>
+          <text>Accuracy Metrics</text>
+        </navLabel>
+        <content src="performance.xhtml#accuracy-metrics" />  
+        <navPoint id="navPoint219" playOrder="173">
+          <navLabel>
+            <text>Accuracy Metrics</text>
+          </navLabel>
+          <content src="performance.xhtml#accuracy-metrics" />  
+        </navPoint>
+        <navPoint id="navPoint220" playOrder="174">
+          <navLabel>
+            <text>R² Score Analysis</text>
+          </navLabel>
+          <content src="performance.xhtml#r2-score-analysis" />  
+        </navPoint>
+        <navPoint id="navPoint221" playOrder="175">
+          <navLabel>
+            <text>Error Metrics</text>
+          </navLabel>
+          <content src="performance.xhtml#error-metrics" />  
+        </navPoint>
+        <navPoint id="navPoint222" playOrder="176">
+          <navLabel>
+            <text>Accuracy vs. Dataset Size</text>
+          </navLabel>
+          <content src="performance.xhtml#accuracy-vs-dataset-size" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint223" playOrder="177">
+        <navLabel>
+          <text>Computational Characteristics</text>
+        </navLabel>
+        <content src="performance.xhtml#computational-characteristics" />  
+        <navPoint id="navPoint224" playOrder="177">
+          <navLabel>
+            <text>Computational Characteristics</text>
+          </navLabel>
+          <content src="performance.xhtml#computational-characteristics" />  
+        </navPoint>
+        <navPoint id="navPoint225" playOrder="178">
+          <navLabel>
+            <text>Training Speed Breakdown</text>
+          </navLabel>
+          <content src="performance.xhtml#training-speed-breakdown" />  
+        </navPoint>
+        <navPoint id="navPoint226" playOrder="179">
+          <navLabel>
+            <text>Early Stopping Impact</text>
+          </navLabel>
+          <content src="performance.xhtml#early-stopping-impact" />  
+        </navPoint>
+        <navPoint id="navPoint227" playOrder="180">
+          <navLabel>
+            <text>CPU Utilization</text>
+          </navLabel>
+          <content src="performance.xhtml#cpu-utilization" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint228" playOrder="181">
+        <navLabel>
+          <text>Model Size and Storage</text>
+        </navLabel>
+        <content src="performance.xhtml#model-size-and-storage" />  
+        <navPoint id="navPoint229" playOrder="181">
+          <navLabel>
+            <text>Model Size and Storage</text>
+          </navLabel>
+          <content src="performance.xhtml#model-size-and-storage" />  
+        </navPoint>
+        <navPoint id="navPoint230" playOrder="182">
+          <navLabel>
+            <text>Serialized Model Size</text>
+          </navLabel>
+          <content src="performance.xhtml#serialized-model-size" />  
+        </navPoint>
+        <navPoint id="navPoint231" playOrder="183">
+          <navLabel>
+            <text>Storage Requirements</text>
+          </navLabel>
+          <content src="performance.xhtml#storage-requirements" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint232" playOrder="184">
+        <navLabel>
+          <text>Scalability Analysis</text>
+        </navLabel>
+        <content src="performance.xhtml#scalability-analysis" />  
+        <navPoint id="navPoint233" playOrder="184">
+          <navLabel>
+            <text>Scalability Analysis</text>
+          </navLabel>
+          <content src="performance.xhtml#scalability-analysis" />  
+        </navPoint>
+        <navPoint id="navPoint234" playOrder="185">
+          <navLabel>
+            <text>Projected Performance</text>
+          </navLabel>
+          <content src="performance.xhtml#projected-performance" />  
+        </navPoint>
+        <navPoint id="navPoint235" playOrder="186">
+          <navLabel>
+            <text>Bottleneck Analysis</text>
+          </navLabel>
+          <content src="performance.xhtml#bottleneck-analysis" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint236" playOrder="187">
+        <navLabel>
+          <text>Comparison with Alternatives</text>
+        </navLabel>
+        <content src="performance.xhtml#comparison-with-alternatives" />  
+        <navPoint id="navPoint237" playOrder="187">
+          <navLabel>
+            <text>Comparison with Alternatives</text>
+          </navLabel>
+          <content src="performance.xhtml#comparison-with-alternatives" />  
+        </navPoint>
+        <navPoint id="navPoint238" playOrder="188">
+          <navLabel>
+            <text>vs. Traditional Methods</text>
+          </navLabel>
+          <content src="performance.xhtml#vs-traditional-methods" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint239" playOrder="189">
+        <navLabel>
+          <text>Best Practices</text>
+        </navLabel>
+        <content src="performance.xhtml#best-practices" />  
+        <navPoint id="navPoint240" playOrder="189">
+          <navLabel>
+            <text>Best Practices</text>
+          </navLabel>
+          <content src="performance.xhtml#best-practices" />  
+        </navPoint>
+        <navPoint id="navPoint241" playOrder="190">
+          <navLabel>
+            <text>Dataset Size Recommendations</text>
+          </navLabel>
+          <content src="performance.xhtml#dataset-size-recommendations" />  
+        </navPoint>
+        <navPoint id="navPoint242" playOrder="191">
+          <navLabel>
+            <text>Hyperparameter Tuning</text>
+          </navLabel>
+          <content src="performance.xhtml#hyperparameter-tuning" />  
+        </navPoint>
+        <navPoint id="navPoint243" playOrder="192">
+          <navLabel>
+            <text>Memory Optimization</text>
+          </navLabel>
+          <content src="performance.xhtml#memory-optimization" />  
+        </navPoint>
+        <navPoint id="navPoint244" playOrder="193">
+          <navLabel>
+            <text>Performance Monitoring</text>
+          </navLabel>
+          <content src="performance.xhtml#performance-monitoring" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint245" playOrder="194">
+        <navLabel>
+          <text>Running Benchmarks</text>
+        </navLabel>
+        <content src="performance.xhtml#running-benchmarks" />  
+        <navPoint id="navPoint246" playOrder="194">
+          <navLabel>
+            <text>Running Benchmarks</text>
+          </navLabel>
+          <content src="performance.xhtml#running-benchmarks" />  
+        </navPoint>
+        <navPoint id="navPoint247" playOrder="195">
+          <navLabel>
+            <text>Automated Benchmarking</text>
+          </navLabel>
+          <content src="performance.xhtml#automated-benchmarking" />  
+        </navPoint>
+        <navPoint id="navPoint248" playOrder="196">
+          <navLabel>
+            <text>Custom Benchmarks</text>
+          </navLabel>
+          <content src="performance.xhtml#custom-benchmarks" />  
+        </navPoint>
+        <navPoint id="navPoint249" playOrder="197">
+          <navLabel>
+            <text>Interpreting Results</text>
+          </navLabel>
+          <content src="performance.xhtml#interpreting-results" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint250" playOrder="198">
+        <navLabel>
+          <text>Profiling Tools</text>
+        </navLabel>
+        <content src="performance.xhtml#profiling-tools" />  
+        <navPoint id="navPoint251" playOrder="198">
+          <navLabel>
+            <text>Profiling Tools</text>
+          </navLabel>
+          <content src="performance.xhtml#profiling-tools" />  
+        </navPoint>
+        <navPoint id="navPoint252" playOrder="199">
+          <navLabel>
+            <text>Memory Profiling</text>
+          </navLabel>
+          <content src="performance.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint253" playOrder="200">
+          <navLabel>
+            <text>Time Profiling</text>
+          </navLabel>
+          <content src="performance.xhtml#time-profiling" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint254" playOrder="201">
+        <navLabel>
+          <text>Conclusion</text>
+        </navLabel>
+        <content src="performance.xhtml#conclusion" />  
+      </navPoint>
+      <navPoint id="navPoint255" playOrder="202">
+        <navLabel>
+          <text>See Also</text>
+        </navLabel>
+        <content src="performance.xhtml#see-also" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint256" playOrder="203">
+      <navLabel>
+        <text>Testing Overview</text>
+      </navLabel>
+      <content src="testing/overview.xhtml" />  
+      <navPoint id="navPoint257" playOrder="203">
+        <navLabel>
+          <text>Testing Overview</text>
+        </navLabel>
+        <content src="testing/overview.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint258" playOrder="204">
+        <navLabel>
+          <text>Test Suite Summary</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#test-suite-summary" />  
+      </navPoint>
+      <navPoint id="navPoint259" playOrder="205">
+        <navLabel>
+          <text>Test Categories</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#test-categories" />  
+        <navPoint id="navPoint260" playOrder="205">
+          <navLabel>
+            <text>Test Categories</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#test-categories" />  
+        </navPoint>
+        <navPoint id="navPoint261" playOrder="206">
+          <navLabel>
+            <text>Unit Tests (28 tests)</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#unit-tests-28-tests" />  
+        </navPoint>
+        <navPoint id="navPoint262" playOrder="207">
+          <navLabel>
+            <text>Integration Tests (24 tests)</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#integration-tests-24-tests" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint263" playOrder="208">
+        <navLabel>
+          <text>Running Tests</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#running-tests" />  
+        <navPoint id="navPoint264" playOrder="208">
+          <navLabel>
+            <text>Running Tests</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#running-tests" />  
+        </navPoint>
+        <navPoint id="navPoint265" playOrder="209">
+          <navLabel>
+            <text>Using Docker</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#using-docker" />  
+        </navPoint>
+        <navPoint id="navPoint266" playOrder="210">
+          <navLabel>
+            <text>Manual Installation</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#manual-installation" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint267" playOrder="211">
+        <navLabel>
+          <text>Test Configuration</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#test-configuration" />  
+        <navPoint id="navPoint268" playOrder="211">
+          <navLabel>
+            <text>Test Configuration</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#test-configuration" />  
+        </navPoint>
+        <navPoint id="navPoint269" playOrder="212">
+          <navLabel>
+            <text>pytest.ini</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#pytest-ini" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint270" playOrder="213">
+        <navLabel>
+          <text>Test Fixtures</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#test-fixtures" />  
+        <navPoint id="navPoint271" playOrder="213">
+          <navLabel>
+            <text>Test Fixtures</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#test-fixtures" />  
+        </navPoint>
+        <navPoint id="navPoint272" playOrder="214">
+          <navLabel>
+            <text>sample_data_small</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#sample-data-small" />  
+        </navPoint>
+        <navPoint id="navPoint273" playOrder="215">
+          <navLabel>
+            <text>sample_data_medium</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#sample-data-medium" />  
+        </navPoint>
+        <navPoint id="navPoint274" playOrder="216">
+          <navLabel>
+            <text>temp_dataset_file</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#temp-dataset-file" />  
+        </navPoint>
+        <navPoint id="navPoint275" playOrder="217">
+          <navLabel>
+            <text>test_client</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#test-client" />  
+        </navPoint>
+        <navPoint id="navPoint276" playOrder="218">
+          <navLabel>
+            <text>reset_global_state</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#reset-global-state" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint277" playOrder="219">
+        <navLabel>
+          <text>Coverage Report</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#coverage-report" />  
+        <navPoint id="navPoint278" playOrder="219">
+          <navLabel>
+            <text>Coverage Report</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#coverage-report" />  
+        </navPoint>
+        <navPoint id="navPoint279" playOrder="220">
+          <navLabel>
+            <text>Current Coverage by Module</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#current-coverage-by-module" />  
+        </navPoint>
+        <navPoint id="navPoint280" playOrder="221">
+          <navLabel>
+            <text>Viewing Coverage Reports</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#viewing-coverage-reports" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint281" playOrder="222">
+        <navLabel>
+          <text>Example Test Cases</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#example-test-cases" />  
+        <navPoint id="navPoint282" playOrder="222">
+          <navLabel>
+            <text>Example Test Cases</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#example-test-cases" />  
+        </navPoint>
+        <navPoint id="navPoint283" playOrder="223">
+          <navLabel>
+            <text>Unit Test Example</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#unit-test-example" />  
+        </navPoint>
+        <navPoint id="navPoint284" playOrder="224">
+          <navLabel>
+            <text>Integration Test Example</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#integration-test-example" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint285" playOrder="225">
+        <navLabel>
+          <text>Continuous Integration</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#continuous-integration" />  
+        <navPoint id="navPoint286" playOrder="225">
+          <navLabel>
+            <text>Continuous Integration</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#continuous-integration" />  
+        </navPoint>
+        <navPoint id="navPoint287" playOrder="226">
+          <navLabel>
+            <text>GitHub Actions Example</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#github-actions-example" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint288" playOrder="227">
+        <navLabel>
+          <text>Writing New Tests</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#writing-new-tests" />  
+        <navPoint id="navPoint289" playOrder="227">
+          <navLabel>
+            <text>Writing New Tests</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#writing-new-tests" />  
+        </navPoint>
+        <navPoint id="navPoint290" playOrder="228">
+          <navLabel>
+            <text>Guidelines</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#guidelines" />  
+        </navPoint>
+        <navPoint id="navPoint291" playOrder="229">
+          <navLabel>
+            <text>Example New Test</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#example-new-test" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint292" playOrder="230">
+        <navLabel>
+          <text>Performance Tests</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#performance-tests" />  
+        <navPoint id="navPoint293" playOrder="230">
+          <navLabel>
+            <text>Performance Tests</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#performance-tests" />  
+        </navPoint>
+        <navPoint id="navPoint294" playOrder="231">
+          <navLabel>
+            <text>Training Speed Test</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#training-speed-test" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint295" playOrder="232">
+        <navLabel>
+          <text>Troubleshooting Tests</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#troubleshooting-tests" />  
+        <navPoint id="navPoint296" playOrder="232">
+          <navLabel>
+            <text>Troubleshooting Tests</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#troubleshooting-tests" />  
+        </navPoint>
+        <navPoint id="navPoint297" playOrder="233">
+          <navLabel>
+            <text>Common Issues</text>
+          </navLabel>
+          <content src="testing/overview.xhtml#common-issues" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint298" playOrder="234">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="testing/overview.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint299" playOrder="235">
+      <navLabel>
+        <text>Local Deployment Guide</text>
+      </navLabel>
+      <content src="deployment/local.xhtml" />  
+      <navPoint id="navPoint300" playOrder="235">
+        <navLabel>
+          <text>Local Deployment Guide</text>
+        </navLabel>
+        <content src="deployment/local.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint301" playOrder="236">
+        <navLabel>
+          <text>Quick Deploy Script</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#quick-deploy-script" />  
+      </navPoint>
+      <navPoint id="navPoint302" playOrder="237">
+        <navLabel>
+          <text>Manual Deployment Steps</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#manual-deployment-steps" />  
+        <navPoint id="navPoint303" playOrder="237">
+          <navLabel>
+            <text>Manual Deployment Steps</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#manual-deployment-steps" />  
+        </navPoint>
+        <navPoint id="navPoint304" playOrder="238">
+          <navLabel>
+            <text>Step 1: Prerequisites Check</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#step-1-prerequisites-check" />  
+        </navPoint>
+        <navPoint id="navPoint305" playOrder="239">
+          <navLabel>
+            <text>Step 2: Backend Setup</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#step-2-backend-setup" />  
+        </navPoint>
+        <navPoint id="navPoint306" playOrder="240">
+          <navLabel>
+            <text>Step 3: Frontend Setup</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#step-3-frontend-setup" />  
+        </navPoint>
+        <navPoint id="navPoint307" playOrder="241">
+          <navLabel>
+            <text>Step 4: Start Services</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#step-4-start-services" />  
+        </navPoint>
+        <navPoint id="navPoint308" playOrder="242">
+          <navLabel>
+            <text>Step 5: Verify Deployment</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#step-5-verify-deployment" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint309" playOrder="243">
+        <navLabel>
+          <text>Access the Application</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#access-the-application" />  
+      </navPoint>
+      <navPoint id="navPoint310" playOrder="244">
+        <navLabel>
+          <text>Using the Application</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#using-the-application" />  
+        <navPoint id="navPoint311" playOrder="244">
+          <navLabel>
+            <text>Using the Application</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#using-the-application" />  
+        </navPoint>
+        <navPoint id="navPoint312" playOrder="245">
+          <navLabel>
+            <text>Upload Sample Dataset</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#upload-sample-dataset" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint313" playOrder="246">
+        <navLabel>
+          <text>Environment Configuration</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#environment-configuration" />  
+      </navPoint>
+      <navPoint id="navPoint314" playOrder="247">
+        <navLabel>
+          <text>Managing Services</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#managing-services" />  
+        <navPoint id="navPoint315" playOrder="247">
+          <navLabel>
+            <text>Managing Services</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#managing-services" />  
+        </navPoint>
+        <navPoint id="navPoint316" playOrder="248">
+          <navLabel>
+            <text>Stop Services</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#stop-services" />  
+        </navPoint>
+        <navPoint id="navPoint317" playOrder="249">
+          <navLabel>
+            <text>Restart Services</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#restart-services" />  
+        </navPoint>
+        <navPoint id="navPoint318" playOrder="250">
+          <navLabel>
+            <text>Check Running Services</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#check-running-services" />  
+        </navPoint>
+        <navPoint id="navPoint319" playOrder="251">
+          <navLabel>
+            <text>Kill Services</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#kill-services" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint320" playOrder="252">
+        <navLabel>
+          <text>Troubleshooting</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#troubleshooting" />  
+        <navPoint id="navPoint321" playOrder="252">
+          <navLabel>
+            <text>Troubleshooting</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#troubleshooting" />  
+        </navPoint>
+        <navPoint id="navPoint322" playOrder="253">
+          <navLabel>
+            <text>Port Already in Use</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#port-already-in-use" />  
+        </navPoint>
+        <navPoint id="navPoint323" playOrder="254">
+          <navLabel>
+            <text>Module Not Found Errors</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#module-not-found-errors" />  
+        </navPoint>
+        <navPoint id="navPoint324" playOrder="255">
+          <navLabel>
+            <text>Permission Errors</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#permission-errors" />  
+        </navPoint>
+        <navPoint id="navPoint325" playOrder="256">
+          <navLabel>
+            <text>Database/State Issues</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#database-state-issues" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint326" playOrder="257">
+        <navLabel>
+          <text>Performance Optimization</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#performance-optimization" />  
+        <navPoint id="navPoint327" playOrder="257">
+          <navLabel>
+            <text>Performance Optimization</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#performance-optimization" />  
+        </navPoint>
+        <navPoint id="navPoint328" playOrder="258">
+          <navLabel>
+            <text>Backend Optimization</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#backend-optimization" />  
+        </navPoint>
+        <navPoint id="navPoint329" playOrder="259">
+          <navLabel>
+            <text>Frontend Optimization</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#frontend-optimization" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint330" playOrder="260">
+        <navLabel>
+          <text>Data Persistence</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#data-persistence" />  
+      </navPoint>
+      <navPoint id="navPoint331" playOrder="261">
+        <navLabel>
+          <text>Development Mode Features</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#development-mode-features" />  
+        <navPoint id="navPoint332" playOrder="261">
+          <navLabel>
+            <text>Development Mode Features</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#development-mode-features" />  
+        </navPoint>
+        <navPoint id="navPoint333" playOrder="262">
+          <navLabel>
+            <text>Hot Reload</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#hot-reload" />  
+        </navPoint>
+        <navPoint id="navPoint334" playOrder="263">
+          <navLabel>
+            <text>Debug Mode</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#debug-mode" />  
+        </navPoint>
+        <navPoint id="navPoint335" playOrder="264">
+          <navLabel>
+            <text>API Testing</text>
+          </navLabel>
+          <content src="deployment/local.xhtml#api-testing" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint336" playOrder="265">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="deployment/local.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint337" playOrder="266">
+      <navLabel>
+        <text>System Architecture</text>
+      </navLabel>
+      <content src="architecture.xhtml" />  
+      <navPoint id="navPoint338" playOrder="266">
+        <navLabel>
+          <text>System Architecture</text>
+        </navLabel>
+        <content src="architecture.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint339" playOrder="267">
+        <navLabel>
+          <text>Overview</text>
+        </navLabel>
+        <content src="architecture.xhtml#overview" />  
+      </navPoint>
+      <navPoint id="navPoint340" playOrder="268">
+        <navLabel>
+          <text>Technology Stack</text>
+        </navLabel>
+        <content src="architecture.xhtml#technology-stack" />  
+        <navPoint id="navPoint341" playOrder="268">
+          <navLabel>
+            <text>Technology Stack</text>
+          </navLabel>
+          <content src="architecture.xhtml#technology-stack" />  
+        </navPoint>
+        <navPoint id="navPoint342" playOrder="269">
+          <navLabel>
+            <text>Frontend</text>
+          </navLabel>
+          <content src="architecture.xhtml#frontend" />  
+        </navPoint>
+        <navPoint id="navPoint343" playOrder="270">
+          <navLabel>
+            <text>Backend</text>
+          </navLabel>
+          <content src="architecture.xhtml#backend" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint344" playOrder="271">
+        <navLabel>
+          <text>Data Flow</text>
+        </navLabel>
+        <content src="architecture.xhtml#data-flow" />  
+        <navPoint id="navPoint345" playOrder="271">
+          <navLabel>
+            <text>Data Flow</text>
+          </navLabel>
+          <content src="architecture.xhtml#data-flow" />  
+        </navPoint>
+        <navPoint id="navPoint346" playOrder="272">
+          <navLabel>
+            <text>Training Workflow</text>
+          </navLabel>
+          <content src="architecture.xhtml#training-workflow" />  
+        </navPoint>
+        <navPoint id="navPoint347" playOrder="273">
+          <navLabel>
+            <text>Prediction Workflow</text>
+          </navLabel>
+          <content src="architecture.xhtml#prediction-workflow" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint348" playOrder="274">
+        <navLabel>
+          <text>State Management</text>
+        </navLabel>
+        <content src="architecture.xhtml#state-management" />  
+        <navPoint id="navPoint349" playOrder="274">
+          <navLabel>
+            <text>State Management</text>
+          </navLabel>
+          <content src="architecture.xhtml#state-management" />  
+        </navPoint>
+        <navPoint id="navPoint350" playOrder="275">
+          <navLabel>
+            <text>Backend State</text>
+          </navLabel>
+          <content src="architecture.xhtml#backend-state" />  
+        </navPoint>
+        <navPoint id="navPoint351" playOrder="276">
+          <navLabel>
+            <text>Frontend State</text>
+          </navLabel>
+          <content src="architecture.xhtml#frontend-state" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint352" playOrder="277">
+        <navLabel>
+          <text>API Design</text>
+        </navLabel>
+        <content src="architecture.xhtml#api-design" />  
+        <navPoint id="navPoint353" playOrder="277">
+          <navLabel>
+            <text>API Design</text>
+          </navLabel>
+          <content src="architecture.xhtml#api-design" />  
+        </navPoint>
+        <navPoint id="navPoint354" playOrder="278">
+          <navLabel>
+            <text>RESTful Principles</text>
+          </navLabel>
+          <content src="architecture.xhtml#restful-principles" />  
+        </navPoint>
+        <navPoint id="navPoint355" playOrder="279">
+          <navLabel>
+            <text>Endpoints</text>
+          </navLabel>
+          <content src="architecture.xhtml#endpoints" />  
+        </navPoint>
+        <navPoint id="navPoint356" playOrder="280">
+          <navLabel>
+            <text>Request/Response Format</text>
+          </navLabel>
+          <content src="architecture.xhtml#request-response-format" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint357" playOrder="281">
+        <navLabel>
+          <text>Data Processing Pipeline</text>
+        </navLabel>
+        <content src="architecture.xhtml#data-processing-pipeline" />  
+        <navPoint id="navPoint358" playOrder="281">
+          <navLabel>
+            <text>Data Processing Pipeline</text>
+          </navLabel>
+          <content src="architecture.xhtml#data-processing-pipeline" />  
+        </navPoint>
+        <navPoint id="navPoint359" playOrder="282">
+          <navLabel>
+            <text>Data Validation</text>
+          </navLabel>
+          <content src="architecture.xhtml#data-validation" />  
+        </navPoint>
+        <navPoint id="navPoint360" playOrder="283">
+          <navLabel>
+            <text>Data Preprocessing</text>
+          </navLabel>
+          <content src="architecture.xhtml#data-preprocessing" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint361" playOrder="284">
+        <navLabel>
+          <text>Security Considerations</text>
+        </navLabel>
+        <content src="architecture.xhtml#security-considerations" />  
+        <navPoint id="navPoint362" playOrder="284">
+          <navLabel>
+            <text>Security Considerations</text>
+          </navLabel>
+          <content src="architecture.xhtml#security-considerations" />  
+        </navPoint>
+        <navPoint id="navPoint363" playOrder="285">
+          <navLabel>
+            <text>Current Implementation</text>
+          </navLabel>
+          <content src="architecture.xhtml#current-implementation" />  
+        </navPoint>
+        <navPoint id="navPoint364" playOrder="286">
+          <navLabel>
+            <text>Security Measures</text>
+          </navLabel>
+          <content src="architecture.xhtml#security-measures" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint365" playOrder="287">
+        <navLabel>
+          <text>Scalability</text>
+        </navLabel>
+        <content src="architecture.xhtml#scalability" />  
+        <navPoint id="navPoint366" playOrder="287">
+          <navLabel>
+            <text>Scalability</text>
+          </navLabel>
+          <content src="architecture.xhtml#scalability" />  
+        </navPoint>
+        <navPoint id="navPoint367" playOrder="288">
+          <navLabel>
+            <text>Current Limitations</text>
+          </navLabel>
+          <content src="architecture.xhtml#current-limitations" />  
+        </navPoint>
+        <navPoint id="navPoint368" playOrder="289">
+          <navLabel>
+            <text>Potential Improvements</text>
+          </navLabel>
+          <content src="architecture.xhtml#potential-improvements" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint369" playOrder="290">
+        <navLabel>
+          <text>Deployment Options</text>
+        </navLabel>
+        <content src="architecture.xhtml#deployment-options" />  
+        <navPoint id="navPoint370" playOrder="290">
+          <navLabel>
+            <text>Deployment Options</text>
+          </navLabel>
+          <content src="architecture.xhtml#deployment-options" />  
+        </navPoint>
+        <navPoint id="navPoint371" playOrder="291">
+          <navLabel>
+            <text>Development</text>
+          </navLabel>
+          <content src="architecture.xhtml#development" />  
+        </navPoint>
+        <navPoint id="navPoint372" playOrder="292">
+          <navLabel>
+            <text>Production</text>
+          </navLabel>
+          <content src="architecture.xhtml#production" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint373" playOrder="293">
+        <navLabel>
+          <text>Monitoring &amp; Logging</text>
+        </navLabel>
+        <content src="architecture.xhtml#monitoring-logging" />  
+        <navPoint id="navPoint374" playOrder="293">
+          <navLabel>
+            <text>Monitoring &amp; Logging</text>
+          </navLabel>
+          <content src="architecture.xhtml#monitoring-logging" />  
+        </navPoint>
+        <navPoint id="navPoint375" playOrder="294">
+          <navLabel>
+            <text>Current Logging</text>
+          </navLabel>
+          <content src="architecture.xhtml#current-logging" />  
+        </navPoint>
+        <navPoint id="navPoint376" playOrder="295">
+          <navLabel>
+            <text>Production Logging</text>
+          </navLabel>
+          <content src="architecture.xhtml#production-logging" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint377" playOrder="296">
+        <navLabel>
+          <text>Testing Strategy</text>
+        </navLabel>
+        <content src="architecture.xhtml#testing-strategy" />  
+      </navPoint>
+      <navPoint id="navPoint378" playOrder="297">
+        <navLabel>
+          <text>Next Steps</text>
+        </navLabel>
+        <content src="architecture.xhtml#next-steps" />  
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

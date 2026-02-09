@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Neural Network Module</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="neural-network-module">
+<h1>Neural Network Module</h1>
+<p>Complete API reference for the <code class="docutils literal notranslate"><span class="pre">fivedreg</span></code> neural network package, automatically generated from source code docstrings.</p>
+<section id="module-fivedreg.base_fivedreg">
+<span id="module-overview"></span><h2>Module Overview</h2>
+<p>Fast Neural Network for 5D Interpolation
+Optimized for CPU training in under 1 minute on datasets up to 10,000 samples</p>
+<p>Key features:
+- Small, efficient default architecture (default: [64, 32, 16]) but as instructed in the coursework, a user can change them using provided sliders)
+- Fully configurable (layers, neurons, learning rate, iterations)
+- Optimized for fast CPU training (under 1 minute on datasets up to 10,000 samples)
+- Early stopping to prevent wasted computation</p>
+</section>
+<section id="fastneuralnetwork-class">
+<h2>FastNeuralNetwork Class</h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">FastNeuralNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a><span class="link-target"> [https://docs.python.org/3/library/functions.html#object]</span></p>
+<p>Fast, fully configurable neural network for 5D interpolation.</p>
+<p>Optimized for CPU training in under 1 minute on datasets up to 10,000 samples.</p>
+<section id="parameters">
+<h3>Parameters:</h3>
+<dl class="simple">
+<dt>hidden_layers<span class="classifier">tuple or list</span></dt><dd><p>Number of neurons in each hidden layer (default: (64, 32, 16))</p>
+</dd>
+<dt>learning_rate<span class="classifier">float</span></dt><dd><p>Learning rate for Adam optimizer (default: 0.001)</p>
+</dd>
+<dt>max_iterations<span class="classifier">int</span></dt><dd><p>Maximum number of training iterations (default: 500)</p>
+</dd>
+<dt>early_stopping<span class="classifier">bool</span></dt><dd><p>Use early stopping to save time (default: True)</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>Print training progress (default: True)</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h3>Example:</h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>  <span class="c1"># Default, but as instructed in the coursework, a user can change them using provided sliders)</span>
+<span class="gp">... </span>    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Initialize the fast neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hidden_layers</strong> – Tuple of neurons per layer (e.g., (64, 32, 16))</p></li>
+<li><p><strong>learning_rate</strong> – Learning rate for optimization (default: 0.001)</p></li>
+<li><p><strong>max_iterations</strong> – Maximum training iterations (default: 500)</p></li>
+<li><p><strong>early_stopping</strong> – Enable early stopping (default: True)</p></li>
+<li><p><strong>verbose</strong> – Print training progress (default: True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Train the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> – Training features (n_samples, 5)</p></li>
+<li><p><strong>y_train</strong> – Training targets (n_samples,)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Make predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> – Features to predict (n_samples, 5)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predictions (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Test'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Evaluate the model with regression metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Features</p></li>
+<li><p><strong>y</strong> – True targets</p></li>
+<li><p><strong>dataset_name</strong> – Name for printing (default: “Test”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with MAE, MSE, RMSE, and R² score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Get model configuration.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="top-level-functions">
+<h2>Top-Level Functions</h2>
+<section id="benchmark-training-speed">
+<h3>benchmark_training_speed</h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.benchmark_training_speed">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">benchmark_training_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Benchmark training speed on the dataset with configurable hyperparameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_path</strong> – Path to the dataset file</p></li>
+<li><p><strong>hidden_layers</strong> – Tuple of neurons per layer (default: (64, 32, 16)) fully configure as instructed in the coursework by the professeur.</p></li>
+<li><p><strong>learning_rate</strong> – Learning rate for optimization (default: 0.001)</p></li>
+<li><p><strong>max_iterations</strong> – Maximum training iterations (default: 500)</p></li>
+<li><p><strong>early_stopping</strong> – Enable early stopping (default: True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="start-predict">
+<h3>start_predict</h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.start_predict">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">start_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Make predictions using the trained model.</p>
+</dd></dl>
+
+</section>
+<section id="demonstrate-configurability">
+<h3>demonstrate_configurability</h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.demonstrate_configurability">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">demonstrate_configurability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Demonstrate full configurability of the model.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-fivedreg.data_hand.module">
+<span id="data-handling-module"></span><h2>Data Handling Module</h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.data_hand.module.load_dataset">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.data_hand.module.</span></span><span class="sig-name descname"><span class="pre">load_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>This module helps in loading and preprocessing 5D datasets. It reads data from a pickle file,
+removes NaN values, splits the data into training, validation, and test sets, and standardizes the features and target variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>Tuple of (X_train, y_train, X_val, y_val, X_test, y_test, scaler_X, scaler_y)</p>
+<p>We can notice that it returns everything needed for training and evaluating a regression model.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="usage-examples">
+<h2>Usage Examples</h2>
+<section id="basic-training">
+<h3>Basic Training</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastNeuralNetwork</span>
+
+<span class="c1"># Create model with default configuration</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span>
+<span class="p">)</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-configuration">
+<h3>Custom Configuration</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create model with custom architecture</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Train and evaluate</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-benchmark-function">
+<h3>Using Benchmark Function</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">benchmark_training_speed</span>
+
+<span class="c1"># Train with custom hyperparameters</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">benchmark_training_speed</span><span class="p">(</span>
+    <span class="n">dataset_path</span><span class="o">=</span><span class="s1">&#39;data.pkl&#39;</span><span class="p">,</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training completed!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="making-predictions">
+<h3>Making Predictions</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_predict</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Load prediction data</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Make predictions (requires model to be trained first via benchmark_training_speed)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">start_predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="model-evaluation">
+<h3>Model Evaluation</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate on test set</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Test Set&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access individual metrics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-model-parameters">
+<h3>Getting Model Parameters</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get model configuration</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Architecture: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;hidden_layers&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning Rate: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training Time: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;training_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterations Completed: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;iterations&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also</h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="backend.xhtml"><span class="doc">Backend API Reference</span></a> - Backend API reference</p></li>
+<li><p><a class="reference internal" href="frontend.xhtml"><span class="doc">Frontend Components</span></a> - Frontend components</p></li>
+<li><p><a class="reference internal" href="../usage.xhtml"><span class="doc">Usage Guide</span></a> - Usage guide</p></li>
+<li><p><a class="reference internal" href="../performance.xhtml"><span class="doc">Performance and Profiling</span></a> - Performance benchmarks</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

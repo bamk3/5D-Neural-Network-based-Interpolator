@@ -1,0 +1,559 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fivedreg Package Documentation &mdash; fivedreg Package 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            fivedreg Package
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">fivedreg Package Documentation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#quick-example">Quick Example</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#package-contents">Package Contents</a></li>
+<li><a class="reference internal" href="#module-reference">Module Reference</a><ul>
+<li><a class="reference internal" href="#module-fivedreg.base_fivedreg">Core Neural Network Module</a><ul>
+<li><a class="reference internal" href="#fastneuralnetwork-class">FastNeuralNetwork Class</a><ul>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork</span></code></a><ul>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.__init__"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.fit"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.fit()</span></code></a></li>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.predict"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.predict()</span></code></a></li>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.evaluate"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.evaluate()</span></code></a></li>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.get_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#top-level-functions">Top-Level Functions</a><ul>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.benchmark_training_speed"><code class="docutils literal notranslate"><span class="pre">benchmark_training_speed()</span></code></a></li>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.start_predict"><code class="docutils literal notranslate"><span class="pre">start_predict()</span></code></a></li>
+<li><a class="reference internal" href="#fivedreg.base_fivedreg.demonstrate_configurability"><code class="docutils literal notranslate"><span class="pre">demonstrate_configurability()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-fivedreg.data_hand.module">Data Handling Module</a><ul>
+<li><a class="reference internal" href="#fivedreg.data_hand.module.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li><a class="reference internal" href="#basic-training">Basic Training</a></li>
+<li><a class="reference internal" href="#custom-configuration">Custom Configuration</a></li>
+<li><a class="reference internal" href="#using-benchmark-function">Using Benchmark Function</a></li>
+<li><a class="reference internal" href="#model-evaluation">Model Evaluation</a></li>
+<li><a class="reference internal" href="#getting-model-parameters">Getting Model Parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dataset-format">Dataset Format</a></li>
+<li><a class="reference internal" href="#performance-notes">Performance Notes</a></li>
+<li><a class="reference internal" href="#architecture-details">Architecture Details</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and Tables</a></li>
+<li><a class="reference internal" href="#project-information">Project Information</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">fivedreg Package</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">fivedreg Package Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fivedreg-package-documentation">
+<h1>fivedreg Package Documentation<a class="headerlink" href="#fivedreg-package-documentation" title="Link to this heading"></a></h1>
+<p>Welcome to the <strong>fivedreg</strong> package documentation. This package provides a fast, CPU-optimized neural network for 5D function interpolation.</p>
+<a class="reference external image-reference" href="https://www.python.org/downloads/"><img alt="Python Version" src="https://img.shields.io/badge/python-3.9+-blue.svg" />
+</a>
+<img alt="Version" src="https://img.shields.io/badge/version-0.1.0-brightgreen.svg" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p><strong>fivedreg</strong> is a lightweight neural network package designed for fast 5D interpolation on CPU. It features:</p>
+<ul class="simple">
+<li><p><strong>Fast Training</strong>: Optimized for CPU training in under 1 minute on datasets up to 10,000 samples</p></li>
+<li><p><strong>Configurable Architecture</strong>: Fully customizable hidden layers, learning rate, and iterations</p></li>
+<li><p><strong>Automatic Preprocessing</strong>: Built-in data validation, NaN removal, and standardization</p></li>
+<li><p><strong>Early Stopping</strong>: Prevents overfitting and saves computation time</p></li>
+<li><p><strong>scikit-learn Backend</strong>: Built on MLPRegressor for reliability and performance</p></li>
+</ul>
+</section>
+<section id="quick-example">
+<h2>Quick Example<a class="headerlink" href="#quick-example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">benchmark_training_speed</span>
+
+<span class="c1"># Train a model on your dataset</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">benchmark_training_speed</span><span class="p">(</span>
+    <span class="n">dataset_path</span><span class="o">=</span><span class="s1">&#39;data.pkl&#39;</span><span class="p">,</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span>
+<span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+
+<span class="c1"># Check performance</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The package is installed automatically when you set up the backend:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Or install dependencies directly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>scikit-learn
+</pre></div>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="module-reference">
+<h2>Module Reference<a class="headerlink" href="#module-reference" title="Link to this heading"></a></h2>
+<section id="module-fivedreg.base_fivedreg">
+<span id="core-neural-network-module"></span><h3>Core Neural Network Module<a class="headerlink" href="#module-fivedreg.base_fivedreg" title="Link to this heading"></a></h3>
+<p>Fast Neural Network for 5D Interpolation
+Optimized for CPU training in under 1 minute on datasets up to 10,000 samples</p>
+<p>Key features:
+- Small, efficient default architecture (default: [64, 32, 16]) but as instructed in the coursework, a user can change them using provided sliders)
+- Fully configurable (layers, neurons, learning rate, iterations)
+- Optimized for fast CPU training (under 1 minute on datasets up to 10,000 samples)
+- Early stopping to prevent wasted computation</p>
+<section id="fastneuralnetwork-class">
+<h4>FastNeuralNetwork Class<a class="headerlink" href="#fastneuralnetwork-class" title="Link to this heading"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">FastNeuralNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Fast, fully configurable neural network for 5D interpolation.</p>
+<p>Optimized for CPU training in under 1 minute on datasets up to 10,000 samples.</p>
+<section id="parameters">
+<h5>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h5>
+<dl class="simple">
+<dt>hidden_layers<span class="classifier">tuple or list</span></dt><dd><p>Number of neurons in each hidden layer (default: (64, 32, 16))</p>
+</dd>
+<dt>learning_rate<span class="classifier">float</span></dt><dd><p>Learning rate for Adam optimizer (default: 0.001)</p>
+</dd>
+<dt>max_iterations<span class="classifier">int</span></dt><dd><p>Maximum number of training iterations (default: 500)</p>
+</dd>
+<dt>early_stopping<span class="classifier">bool</span></dt><dd><p>Use early stopping to save time (default: True)</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>Print training progress (default: True)</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h5>Example:<a class="headerlink" href="#example" title="Link to this heading"></a></h5>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>  <span class="c1"># Default, but as instructed in the coursework, a user can change them using provided sliders)</span>
+<span class="gp">... </span>    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the fast neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hidden_layers</strong> – Tuple of neurons per layer (e.g., (64, 32, 16))</p></li>
+<li><p><strong>learning_rate</strong> – Learning rate for optimization (default: 0.001)</p></li>
+<li><p><strong>max_iterations</strong> – Maximum training iterations (default: 500)</p></li>
+<li><p><strong>early_stopping</strong> – Enable early stopping (default: True)</p></li>
+<li><p><strong>verbose</strong> – Print training progress (default: True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> – Training features (n_samples, 5)</p></li>
+<li><p><strong>y_train</strong> – Training targets (n_samples,)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> – Features to predict (n_samples, 5)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predictions (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Test'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the model with regression metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Features</p></li>
+<li><p><strong>y</strong> – True targets</p></li>
+<li><p><strong>dataset_name</strong> – Name for printing (default: “Test”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with MAE, MSE, RMSE, and R² score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.get_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.get_params" title="Link to this definition"></a></dt>
+<dd><p>Get model configuration.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="top-level-functions">
+<h4>Top-Level Functions<a class="headerlink" href="#top-level-functions" title="Link to this heading"></a></h4>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.benchmark_training_speed">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">benchmark_training_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#benchmark_training_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.benchmark_training_speed" title="Link to this definition"></a></dt>
+<dd><p>Benchmark training speed on the dataset with configurable hyperparameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_path</strong> – Path to the dataset file</p></li>
+<li><p><strong>hidden_layers</strong> – Tuple of neurons per layer (default: (64, 32, 16)) fully configure as instructed in the coursework by the professeur.</p></li>
+<li><p><strong>learning_rate</strong> – Learning rate for optimization (default: 0.001)</p></li>
+<li><p><strong>max_iterations</strong> – Maximum training iterations (default: 500)</p></li>
+<li><p><strong>early_stopping</strong> – Enable early stopping (default: True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.start_predict">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">start_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#start_predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.start_predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.demonstrate_configurability">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">demonstrate_configurability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/base_fivedreg.html#demonstrate_configurability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.demonstrate_configurability" title="Link to this definition"></a></dt>
+<dd><p>Demonstrate full configurability of the model.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-fivedreg.data_hand.module">
+<span id="data-handling-module"></span><h3>Data Handling Module<a class="headerlink" href="#module-fivedreg.data_hand.module" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.data_hand.module.load_dataset">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.data_hand.module.</span></span><span class="sig-name descname"><span class="pre">load_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fivedreg/data_hand/module.html#load_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.data_hand.module.load_dataset" title="Link to this definition"></a></dt>
+<dd><p>This module helps in loading and preprocessing 5D datasets. It reads data from a pickle file,
+removes NaN values, splits the data into training, validation, and test sets, and standardizes the features and target variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>Tuple of (X_train, y_train, X_val, y_val, X_test, y_test, scaler_X, scaler_y)</p>
+<p>We can notice that it returns everything needed for training and evaluating a regression model.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h2>
+<section id="basic-training">
+<h3>Basic Training<a class="headerlink" href="#basic-training" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastNeuralNetwork</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Create sample data</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Initialize model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-configuration">
+<h3>Custom Configuration<a class="headerlink" href="#custom-configuration" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Larger architecture for complex functions</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluate performance</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Test Set&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-benchmark-function">
+<h3>Using Benchmark Function<a class="headerlink" href="#using-benchmark-function" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">benchmark_training_speed</span>
+
+<span class="c1"># Train with custom hyperparameters</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">benchmark_training_speed</span><span class="p">(</span>
+    <span class="n">dataset_path</span><span class="o">=</span><span class="s1">&#39;my_data.pkl&#39;</span><span class="p">,</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training completed!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training time: </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;training_time&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="model-evaluation">
+<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comprehensive evaluation</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Test Set&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access individual metrics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-model-parameters">
+<h3>Getting Model Parameters<a class="headerlink" href="#getting-model-parameters" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get model configuration</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Architecture: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;hidden_layers&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning Rate: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training Time: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;training_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterations Completed: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;iterations&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dataset-format">
+<h2>Dataset Format<a class="headerlink" href="#dataset-format" title="Link to this heading"></a></h2>
+<p>The package expects datasets in pickle (.pkl) format with the following structure:</p>
+<p><strong>Training Data</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="n">of</span> <span class="n">shape</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>  <span class="c1"># 5D features</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="n">of</span> <span class="n">shape</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,)</span>     <span class="c1"># 1D targets</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Prediction Data</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="n">of</span> <span class="n">shape</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 5D features only</span>
+</pre></div>
+</div>
+<p>The data handler automatically:</p>
+<ul class="simple">
+<li><p>Validates input dimensions</p></li>
+<li><p>Removes NaN values</p></li>
+<li><p>Splits data into train (60%), validation (20%), test (20%)</p></li>
+<li><p>Applies standardization using StandardScaler</p></li>
+</ul>
+</section>
+<section id="performance-notes">
+<h2>Performance Notes<a class="headerlink" href="#performance-notes" title="Link to this heading"></a></h2>
+<p><strong>Training Speed</strong></p>
+<ul class="simple">
+<li><p>1K samples: ~5-10 seconds</p></li>
+<li><p>5K samples: ~15-20 seconds</p></li>
+<li><p>10K samples: ~30-50 seconds</p></li>
+</ul>
+<p><strong>Accuracy</strong></p>
+<ul class="simple">
+<li><p>Typical R² scores: &gt; 0.985</p></li>
+<li><p>Depends on function complexity and architecture</p></li>
+</ul>
+<p><strong>Optimization Tips</strong></p>
+<ul class="simple">
+<li><p>Start with default architecture (64, 32, 16)</p></li>
+<li><p>Increase layers for complex functions</p></li>
+<li><p>Enable early_stopping to save time</p></li>
+<li><p>Use learning_rate between 0.0001 and 0.01</p></li>
+</ul>
+</section>
+<section id="architecture-details">
+<h2>Architecture Details<a class="headerlink" href="#architecture-details" title="Link to this heading"></a></h2>
+<p>The neural network uses:</p>
+<ul class="simple">
+<li><p><strong>Activation</strong>: ReLU (Rectified Linear Unit)</p></li>
+<li><p><strong>Solver</strong>: Adam optimizer</p></li>
+<li><p><strong>Loss</strong>: Mean Squared Error</p></li>
+<li><p><strong>Preprocessing</strong>: StandardScaler for features and targets</p></li>
+<li><p><strong>Backend</strong>: scikit-learn’s MLPRegressor</p></li>
+</ul>
+<p>Default Configuration:</p>
+<ul class="simple">
+<li><p>Hidden layers: (64, 32, 16)</p></li>
+<li><p>Learning rate: 0.001</p></li>
+<li><p>Max iterations: 500</p></li>
+<li><p>Early stopping: Enabled</p></li>
+</ul>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and Tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+<section id="project-information">
+<h1>Project Information<a class="headerlink" href="#project-information" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Makimona Kiakisolako (bamk3)</p>
+</dd>
+<dt class="field-even">Institution<span class="colon">:</span></dt>
+<dd class="field-even"><p>University of Cambridge</p>
+</dd>
+<dt class="field-odd">Course<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DIS Course 2025</p>
+</dd>
+<dt class="field-even">License<span class="colon">:</span></dt>
+<dd class="field-even"><p>MIT</p>
+</dd>
+<dt class="field-odd">Version<span class="colon">:</span></dt>
+<dd class="field-odd"><p>0.1.0</p>
+</dd>
+<dt class="field-even">Contact<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:bamk3&#37;&#52;&#48;cam&#46;ac&#46;uk">bamk3<span>&#64;</span>cam<span>&#46;</span>ac<span>&#46;</span>uk</a></p>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Makimona Kiakisolako (bamk3).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+# Docker Compose configuration for 5D Interpolator
+# Orchestrates both backend and frontend services
+
+services:
+  # =============================================================================
+  # Backend Service (FastAPI)
+  # =============================================================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: ${BUILD_TARGET:-development}
+    container_name: interpolator-backend
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      # Python environment
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+      # Application settings
+      - APP_ENV=${APP_ENV:-development}
+      - DEBUG=${DEBUG:-true}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+
+      # CORS settings
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000}
+
+      # Server settings
+      - WORKERS=${WORKERS:-4}
+      - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE:-10485760}
+    volumes:
+      # Mount source code for development hot-reload
+      - ./backend:/app:${VOLUME_MODE:-rw}
+
+      # Persistent storage for uploaded datasets
+      - backend-uploads:/app/uploaded_datasets
+
+      # Persistent storage for data
+      - backend-data:/app/data
+
+      # Exclude Python cache from host
+      - /app/__pycache__
+      - /app/.pytest_cache
+    networks:
+      - interpolator-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    depends_on: []
+
+  # =============================================================================
+  # Frontend Service (Next.js)
+  # =============================================================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: ${BUILD_TARGET:-development}
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    container_name: interpolator-frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      # Node environment
+      - NODE_ENV=${NODE_ENV:-development}
+      - NEXT_TELEMETRY_DISABLED=1
+
+      # API configuration
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://backend:8000}
+
+      # Application settings
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    volumes:
+      # Mount source code for development hot-reload
+      - ./frontend:/app:${VOLUME_MODE:-rw}
+
+      # Exclude node_modules from host (use container's)
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - interpolator-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  interpolator-network:
+    driver: bridge
+    name: interpolator-network
+
+# =============================================================================
+# Volumes
+# =============================================================================
+volumes:
+  backend-uploads:
+    name: interpolator-backend-uploads
+    driver: local
+  backend-data:
+    name: interpolator-backend-data
+    driver: local

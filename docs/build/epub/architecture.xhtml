@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>System Architecture</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="system-architecture">
+<h1>System Architecture</h1>
+<p>Comprehensive overview of the 5D Interpolator system architecture.</p>
+<section id="overview">
+<h2>Overview</h2>
+<p>The system follows a modern client-server architecture with clear separation of concerns:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────┐
+│                    Client Layer                     │
+│  ┌───────────────────────────────────────────────┐  │
+│  │         Next.js Frontend (Port 3000)          │  │
+│  │  - React 19 with TypeScript                   │  │
+│  │  - Tailwind CSS v4                           │  │
+│  │  - Upload/Train/Predict Pages                │  │
+│  └───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
+                         │
+                         ├─ HTTP REST API
+                         │
+┌─────────────────────────────────────────────────────┐
+│                    Server Layer                     │
+│  ┌───────────────────────────────────────────────┐  │
+│  │        FastAPI Backend (Port 8000)            │  │
+│  │  - RESTful API Endpoints                      │  │
+│  │  - File Upload Handling                       │  │
+│  │  - State Management                           │  │
+│  └───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
+                         │
+                         ├─ Python Interface
+                         │
+┌─────────────────────────────────────────────────────┐
+│                  Processing Layer                   │
+│  ┌───────────────────────────────────────────────┐  │
+│  │       fivedreg Neural Network Package         │  │
+│  │  - FastNeuralNetwork Class                    │  │
+│  │  - Data Preprocessing                         │  │
+│  │  - Model Training &amp; Prediction                │  │
+│  └───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
+                         │
+                         ├─ NumPy/sklearn
+                         │
+┌─────────────────────────────────────────────────────┐
+│                  ML Framework Layer                 │
+│  ┌───────────────────────────────────────────────┐  │
+│  │            scikit-learn MLPRegressor          │  │
+│  │  - Neural Network Implementation              │  │
+│  │  - Optimization Algorithms                    │  │
+│  │  - Metrics Calculation                        │  │
+│  └───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="technology-stack">
+<h2>Technology Stack</h2>
+<section id="frontend">
+<h3>Frontend</h3>
+<p><strong>Framework &amp; Runtime:</strong></p>
+<ul class="simple">
+<li><p>Next.js 16.0.3 (React framework)</p></li>
+<li><p>React 19.2.0 (UI library)</p></li>
+<li><p>Node.js 20+ (runtime)</p></li>
+</ul>
+<p><strong>Language &amp; Tooling:</strong></p>
+<ul class="simple">
+<li><p>TypeScript 5 (type safety)</p></li>
+<li><p>ESLint (linting)</p></li>
+<li><p>Turbopack (build tool)</p></li>
+</ul>
+<p><strong>Styling:</strong></p>
+<ul class="simple">
+<li><p>Tailwind CSS v4 (utility-first CSS)</p></li>
+<li><p>PostCSS (CSS processing)</p></li>
+<li><p>Geist fonts (typography)</p></li>
+</ul>
+<p><strong>Development:</strong></p>
+<ul class="simple">
+<li><p>Hot module replacement</p></li>
+<li><p>Fast refresh</p></li>
+<li><p>TypeScript checking</p></li>
+</ul>
+</section>
+<section id="backend">
+<h3>Backend</h3>
+<p><strong>Framework:</strong></p>
+<ul class="simple">
+<li><p>FastAPI 0.115.6 (web framework)</p></li>
+<li><p>Uvicorn (ASGI server)</p></li>
+<li><p>Python 3.12+</p></li>
+</ul>
+<p><strong>Core Libraries:</strong></p>
+<ul class="simple">
+<li><p>NumPy 1.26.4 (numerical computing)</p></li>
+<li><p>scikit-learn 1.5.1 (machine learning)</p></li>
+<li><p>Pydantic 2.10.5 (validation)</p></li>
+</ul>
+<p><strong>Testing:</strong></p>
+<ul class="simple">
+<li><p>pytest 8.3.4 (test framework)</p></li>
+<li><p>pytest-cov (coverage reporting)</p></li>
+<li><p>pytest-asyncio (async testing)</p></li>
+</ul>
+<p><strong>Deployment:</strong></p>
+<ul class="simple">
+<li><p>Docker (containerization)</p></li>
+<li><p>Docker Compose (orchestration)</p></li>
+</ul>
+</section>
+</section>
+<section id="data-flow">
+<h2>Data Flow</h2>
+<section id="training-workflow">
+<h3>Training Workflow</h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. User selects .pkl file
+   ↓
+2. Frontend: POST /upload-fit-dataset/
+   ↓
+3. Backend: Save to uploaded_datasets/
+   ↓
+4. Backend: Validate format
+   ↓
+5. Backend: Return dataset preview
+   ↓
+6. Frontend: Display preview
+   ↓
+7. User configures hyperparameters
+   ↓
+8. Frontend: POST /start-training/
+   ↓
+9. Backend: Load dataset
+   ↓
+10. Backend: Call benchmark_training_speed()
+   ↓
+11. fivedreg: Preprocess data
+   ↓
+12. fivedreg: Train FastNeuralNetwork
+   ↓
+13. fivedreg: Calculate metrics
+   ↓
+14. Backend: Store model in memory
+   ↓
+15. Backend: Return metrics
+   ↓
+16. Frontend: Display results
+</pre></div>
+</div>
+</section>
+<section id="prediction-workflow">
+<h3>Prediction Workflow</h3>
+<p><strong>Batch Prediction:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. User selects .pkl file
+   ↓
+2. Frontend: POST /upload-predict-dataset/
+   ↓
+3. Backend: Save file
+   ↓
+4. Backend: Validate format
+   ↓
+5. Frontend: POST /start-predict/
+   ↓
+6. Backend: Load dataset
+   ↓
+7. Backend: Use stored model
+   ↓
+8. fivedreg: Generate predictions
+   ↓
+9. Backend: Return predictions
+   ↓
+10. Frontend: Display results
+</pre></div>
+</div>
+<p><strong>Single Prediction:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. User enters 5 feature values
+   ↓
+2. Frontend: POST /predict-single/
+   ↓
+3. Backend: Validate input
+   ↓
+4. Backend: Use stored model
+   ↓
+5. fivedreg: Predict single value
+   ↓
+6. Backend: Return prediction
+   ↓
+7. Frontend: Display result
+</pre></div>
+</div>
+</section>
+</section>
+<section id="state-management">
+<h2>State Management</h2>
+<section id="backend-state">
+<h3>Backend State</h3>
+<p>The backend maintains global state:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Global variables in main.py</span>
+<span class="n">processing_result</span> <span class="o">=</span> <span class="kc">None</span>      <span class="c1"># Path to training dataset</span>
+<span class="n">train_result</span> <span class="o">=</span> <span class="kc">None</span>           <span class="c1"># (model, metrics) tuple</span>
+<span class="n">predict_input</span> <span class="o">=</span> <span class="kc">None</span>          <span class="c1"># Path to prediction dataset</span>
+<span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>                  <span class="c1"># Trained FastNeuralNetwork</span>
+</pre></div>
+</div>
+<p><strong>State Lifecycle:</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">processing_result</span></code> set on training upload</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_result</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span></code> set on training completion</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict_input</span></code> set on prediction upload</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> used for all predictions</p></li>
+<li><p>State cleared on server restart</p></li>
+</ol>
+<p><strong>Implications:</strong></p>
+<ul class="simple">
+<li><p>Server must stay running between operations</p></li>
+<li><p>No concurrent users (single session)</p></li>
+<li><p>State lost on crash/restart</p></li>
+<li><p>Suitable for development/coursework</p></li>
+</ul>
+</section>
+<section id="frontend-state">
+<h3>Frontend State</h3>
+<p>Each page manages its own state using React hooks:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Upload page</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">setFile</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">File</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">uploadResult</span><span class="p">,</span><span class="w"> </span><span class="nx">setUploadResult</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+
+<span class="c1">// Train page</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">trainingDataUploaded</span><span class="p">,</span><span class="w"> </span><span class="nx">setTrainingDataUploaded</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">modelTrained</span><span class="p">,</span><span class="w"> </span><span class="nx">setModelTrained</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">trainResult</span><span class="p">,</span><span class="w"> </span><span class="nx">setTrainResult</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">hyperparameters</span><span class="p">,</span><span class="w"> </span><span class="nx">setHyperparameters</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">({...})</span>
+
+<span class="c1">// Predict page</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">predictionMode</span><span class="p">,</span><span class="w"> </span><span class="nx">setPredictionMode</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="s1">&#39;batch&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;single&#39;</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">predictionResult</span><span class="p">,</span><span class="w"> </span><span class="nx">setPredictionResult</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">singlePrediction</span><span class="p">,</span><span class="w"> </span><span class="nx">setSinglePrediction</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="kt">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>State Synchronization:</strong></p>
+<ul class="simple">
+<li><p>Polls <code class="docutils literal notranslate"><span class="pre">/status</span></code> endpoint on mount</p></li>
+<li><p>Updates local state based on server state</p></li>
+<li><p>Enables/disables UI based on state</p></li>
+</ul>
+</section>
+</section>
+<section id="api-design">
+<h2>API Design</h2>
+<section id="restful-principles">
+<h3>RESTful Principles</h3>
+<p>The API follows REST conventions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span></code> for retrieving state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code> for creating/triggering operations</p></li>
+<li><p>JSON request/response bodies</p></li>
+<li><p>HTTP status codes for errors</p></li>
+<li><p>CORS enabled for development</p></li>
+</ul>
+</section>
+<section id="endpoints">
+<h3>Endpoints</h3>
+<p><strong>Health &amp; Status:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GET  /           → Welcome message
+GET  /health     → Health check
+GET  /status     → System state
+</pre></div>
+</div>
+<p><strong>Upload:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>POST /upload-fit-dataset/      → Upload training data
+POST /upload-predict-dataset/  → Upload prediction data
+</pre></div>
+</div>
+<p><strong>Training:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>POST /start-training/  → Train model with hyperparameters
+</pre></div>
+</div>
+<p><strong>Prediction:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>POST /start-predict/   → Batch prediction
+POST /predict-single/  → Single prediction
+</pre></div>
+</div>
+</section>
+<section id="request-response-format">
+<h3>Request/Response Format</h3>
+<p><strong>Training Request:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;hyperparameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_3&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_iterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;early_stopping&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Training Response:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;r2_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9872</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mse&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0123</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mae&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0891</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rmse&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1109</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;training_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">23.45</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;hyperparameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_layer_3&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_iterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;early_stopping&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Prediction Response:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;predictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.234</span><span class="p">,</span><span class="w"> </span><span class="mf">5.678</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-processing-pipeline">
+<h2>Data Processing Pipeline</h2>
+<section id="data-validation">
+<h3>Data Validation</h3>
+<p><strong>Step 1: File Format Validation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check file extension</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.pkl&#39;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;File must be .pkl format&quot;</span><span class="p">)</span>
+
+<span class="c1"># Try to load pickle</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid pickle file&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 2: Structure Validation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training data</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must be dictionary&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s1">&#39;X&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;y&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must contain &#39;X&#39; and &#39;y&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Prediction data</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must be NumPy array&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 3: Shape Validation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check dimensions</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;X must have 5 features&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;y must be 1D&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;X and y must have same samples&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 4: Value Validation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check for invalid values</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]))</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;X contains NaN or inf&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;y contains NaN or inf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="data-preprocessing">
+<h3>Data Preprocessing</h3>
+<p><strong>Step 1: Clean Data</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove NaN rows</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Step 2: Split Data</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 60% train, 20% validation, 20% test</span>
+<span class="n">X_temp</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_temp</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_temp</span><span class="p">,</span> <span class="n">y_temp</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 3: Standardize</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_val</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="security-considerations">
+<h2>Security Considerations</h2>
+<section id="current-implementation">
+<h3>Current Implementation</h3>
+<p><strong>Suitable for:</strong></p>
+<ul class="simple">
+<li><p>Local development</p></li>
+<li><p>Coursework/academic use</p></li>
+<li><p>Single-user scenarios</p></li>
+</ul>
+<p><strong>Not suitable for:</strong></p>
+<ul class="simple">
+<li><p>Production deployment</p></li>
+<li><p>Multi-user systems</p></li>
+<li><p>Public internet exposure</p></li>
+</ul>
+</section>
+<section id="security-measures">
+<h3>Security Measures</h3>
+<p><strong>Input Validation:</strong></p>
+<ul class="simple">
+<li><p>File size limits</p></li>
+<li><p>Format validation</p></li>
+<li><p>Value range checking</p></li>
+<li><p>Type validation with Pydantic</p></li>
+</ul>
+<p><strong>CORS Configuration:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+    <span class="n">CORSMiddleware</span><span class="p">,</span>
+    <span class="n">allow_origins</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;http://localhost:3000&quot;</span><span class="p">],</span>
+    <span class="n">allow_credentials</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">allow_methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+    <span class="n">allow_headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>For Production:</strong></p>
+<p>Would need:</p>
+<ul class="simple">
+<li><p>Authentication &amp; authorization</p></li>
+<li><p>Rate limiting</p></li>
+<li><p>File scanning</p></li>
+<li><p>HTTPS/TLS</p></li>
+<li><p>Database for state</p></li>
+<li><p>Session management</p></li>
+<li><p>Input sanitization</p></li>
+<li><p>Error message sanitization</p></li>
+</ul>
+</section>
+</section>
+<section id="scalability">
+<h2>Scalability</h2>
+<section id="current-limitations">
+<h3>Current Limitations</h3>
+<ul class="simple">
+<li><p>Single server instance</p></li>
+<li><p>In-memory state</p></li>
+<li><p>No horizontal scaling</p></li>
+<li><p>No load balancing</p></li>
+<li><p>Limited to CPU training</p></li>
+</ul>
+</section>
+<section id="potential-improvements">
+<h3>Potential Improvements</h3>
+<p><strong>For Higher Scale:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Database Integration:</strong></p>
+<ul class="simple">
+<li><p>Store models in database</p></li>
+<li><p>Persist training state</p></li>
+<li><p>Support multiple users</p></li>
+</ul>
+</li>
+<li><p><strong>Queue System:</strong></p>
+<ul class="simple">
+<li><p>Background job processing</p></li>
+<li><p>Async training tasks</p></li>
+<li><p>Progress tracking</p></li>
+</ul>
+</li>
+<li><p><strong>Caching:</strong></p>
+<ul class="simple">
+<li><p>Redis for session state</p></li>
+<li><p>Model caching</p></li>
+<li><p>Result caching</p></li>
+</ul>
+</li>
+<li><p><strong>Microservices:</strong></p>
+<ul class="simple">
+<li><p>Separate training service</p></li>
+<li><p>Separate prediction service</p></li>
+<li><p>API gateway</p></li>
+</ul>
+</li>
+<li><p><strong>GPU Support:</strong></p>
+<ul class="simple">
+<li><p>PyTorch/TensorFlow</p></li>
+<li><p>CUDA acceleration</p></li>
+<li><p>Larger networks</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="deployment-options">
+<h2>Deployment Options</h2>
+<section id="development">
+<h3>Development</h3>
+<p><strong>Local:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/deploy-local.sh
+</pre></div>
+</div>
+<p><strong>Docker:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up
+</pre></div>
+</div>
+</section>
+<section id="production">
+<h3>Production</h3>
+<p><strong>Cloud Platforms:</strong></p>
+<ul class="simple">
+<li><p>AWS (ECS, Lambda, SageMaker)</p></li>
+<li><p>Google Cloud (Cloud Run, AI Platform)</p></li>
+<li><p>Azure (App Service, ML)</p></li>
+</ul>
+<p><strong>Containerization:</strong></p>
+<ul class="simple">
+<li><p>Docker images</p></li>
+<li><p>Kubernetes orchestration</p></li>
+<li><p>Auto-scaling</p></li>
+</ul>
+</section>
+</section>
+<section id="monitoring-logging">
+<h2>Monitoring &amp; Logging</h2>
+<section id="current-logging">
+<h3>Current Logging</h3>
+<p><strong>Backend:</strong></p>
+<ul class="simple">
+<li><p>Uvicorn access logs</p></li>
+<li><p>Python print statements</p></li>
+<li><p>Error stack traces</p></li>
+</ul>
+<p><strong>Frontend:</strong></p>
+<ul class="simple">
+<li><p>Console.log debugging</p></li>
+<li><p>Error boundaries</p></li>
+</ul>
+</section>
+<section id="production-logging">
+<h3>Production Logging</h3>
+<p>Would need:</p>
+<ul class="simple">
+<li><p>Structured logging (JSON)</p></li>
+<li><p>Log aggregation (ELK stack)</p></li>
+<li><p>Error tracking (Sentry)</p></li>
+<li><p>Performance monitoring (APM)</p></li>
+<li><p>User analytics</p></li>
+</ul>
+</section>
+</section>
+<section id="testing-strategy">
+<h2>Testing Strategy</h2>
+<p><strong>Unit Tests:</strong></p>
+<ul class="simple">
+<li><p>Backend endpoints (pytest)</p></li>
+<li><p>Neural network module</p></li>
+<li><p>Data handlers</p></li>
+<li><p>Validation logic</p></li>
+</ul>
+<p><strong>Integration Tests:</strong></p>
+<ul class="simple">
+<li><p>End-to-end workflows</p></li>
+<li><p>API contract testing</p></li>
+<li><p>Database interactions</p></li>
+</ul>
+<p><strong>Coverage:</strong></p>
+<ul class="simple">
+<li><p>74.54% overall</p></li>
+<li><p>52 total tests</p></li>
+</ul>
+<p>See <a class="reference internal" href="testing/overview.xhtml"><span class="doc">Testing Overview</span></a> for details.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps</h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="deployment/local.xhtml"><span class="doc">Local Deployment Guide</span></a> - Local deployment guide</p></li>
+<li><p><span class="xref std std-doc">deployment/docker</span> - Docker deployment</p></li>
+<li><p><a class="reference internal" href="api/backend.xhtml"><span class="doc">Backend API Reference</span></a> - Backend API reference</p></li>
+<li><p><a class="reference internal" href="testing/overview.xhtml"><span class="doc">Testing Overview</span></a> - Testing documentation</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

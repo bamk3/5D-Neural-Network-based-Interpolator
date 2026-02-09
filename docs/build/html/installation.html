@@ -1,0 +1,947 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation Guide &mdash; 5D Neural Network Interpolator 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4789a99c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/custom.js?v=42fa0521"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start Guide" href="quickstart.html" />
+    <link rel="prev" title="5D Neural Network Interpolator Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            5D Neural Network Interpolator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-requirements">Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-docker-installation-recommended">Method 1: Docker Installation (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-manual-installation">Method 2: Manual Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-configuration">Environment Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-issues">Docker Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permission-issues-linux">Permission Issues (Linux)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-node-issues">Python/Node Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-documentation">Building Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quick-build">Quick Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-build">Manual Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rebuilding-documentation">Rebuilding Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation-requirements">Documentation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-documentation">Downloading Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#starting-the-application">Starting the Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#using-docker-recommended">Using Docker (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#soft-manual-start-using-local-build-shell-script">Soft Manual Start (Using local-build shell script)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#manual-start">Manual Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#access-the-application">Access the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#build-the-documentation">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#step-by-step-workflow">Step-by-Step Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-1-upload-training-dataset">Step 1: Upload Training Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-2-configure-hyperparameters">Step 2: Configure Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-3-train-the-model">Step 3: Train the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-4-make-predictions">Step 4: Make Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#experiment-with-hyperparameters">Experiment with Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#quick-iteration-cycle">Quick Iteration Cycle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#dataset-preparation">Dataset Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#model-training">Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#performance-tips">Performance Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#troubleshooting-quick-start-issues">Troubleshooting Quick Start Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#application-workflow">Application Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#step-1-upload-training-dataset">Step 1: Upload Training Dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#dataset-requirements">Dataset Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#example-dataset-creation">Example Dataset Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#upload-process">Upload Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#step-2-train-model">Step 2: Train Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#hyperparameter-configuration">Hyperparameter Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#recommended-configurations">Recommended Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#training-process">Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#understanding-training-results">Understanding Training Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#step-3-make-predictions">Step 3: Make Predictions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#batch-prediction">Batch Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#single-prediction">Single Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#experimenting-with-hyperparameters">Experimenting with Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#api-usage">API Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#dataset-preparation">Dataset Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#model-training">Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#prediction">Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#training-issues">Training Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#prediction-issues">Prediction Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Dataset Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#training-dataset-format">Training Dataset Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#example-creation">Example Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#validation">Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#prediction-dataset-format">Prediction Dataset Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#id2">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#id3">Example Creation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#data-preprocessing">Data Preprocessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#automatic-standardization">Automatic Standardization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#data-splitting">Data Splitting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#dataset-size">Dataset Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#data-quality">Data Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#feature-engineering">Feature Engineering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#common-use-cases">Common Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#regression-problems">Regression Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#scientific-data">Scientific Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#common-errors">Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#dataset-templates">Dataset Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#simple-template">Simple Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasets.html#complex-template">Complex Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datasets.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/backend.html">Backend API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#base-url">Base URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#interactive-documentation">Interactive Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#health-status-endpoints">Health &amp; Status Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get">GET /</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get-health">GET /health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get-status">GET /status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#dataset-upload-endpoints">Dataset Upload Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-upload-fit-dataset">POST /upload-fit-dataset/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-upload-predict-dataset">POST /upload-predict-dataset/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#model-training-endpoints">Model Training Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get-hyperparameters-defaults">GET /hyperparameters/defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-start-training">POST /start-training/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#prediction-endpoints">Prediction Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-start-predict">POST /start-predict/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-predict-single">POST /predict-single/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#python-client-examples">Python Client Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#using-requests-library">Using requests library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#authentication">Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/frontend.html">Frontend Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#technology-stack">Technology Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#project-structure">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#root-layout">Root Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#home-page">Home Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#upload-page">Upload Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#state-management">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#upload-process">Upload Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#train-page">Train Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#id1">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#hyperparameter-controls">Hyperparameter Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#training-process">Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#results-display">Results Display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#button-logic">Button Logic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#predict-page">Predict Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#id2">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#batch-prediction">Batch Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#single-prediction">Single Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#styling">Styling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#global-styles">Global Styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#common-patterns">Common Patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#responsive-design">Responsive Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#dark-mode">Dark Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/neural_network.html">Neural Network Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#module-fivedreg.base_fivedreg">Module Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#fastneuralnetwork-class">FastNeuralNetwork Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.__init__"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.fit"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.predict"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.evaluate"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.get_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#top-level-functions">Top-Level Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#benchmark-training-speed">benchmark_training_speed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.benchmark_training_speed"><code class="docutils literal notranslate"><span class="pre">benchmark_training_speed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#start-predict">start_predict</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.start_predict"><code class="docutils literal notranslate"><span class="pre">start_predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#demonstrate-configurability">demonstrate_configurability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.demonstrate_configurability"><code class="docutils literal notranslate"><span class="pre">demonstrate_configurability()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#module-fivedreg.data_hand.module">Data Handling Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#fivedreg.data_hand.module.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#basic-training">Basic Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#custom-configuration">Custom Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#using-benchmark-function">Using Benchmark Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#making-predictions">Making Predictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#model-evaluation">Model Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#getting-model-parameters">Getting Model Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance and Profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#executive-summary">Executive Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#test-configuration">Test Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#benchmark-results">Benchmark Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#training-time-analysis">Training Time Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#scaling-behavior">Scaling Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#memory-profiling">Memory Profiling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#training-memory-usage">Training Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#prediction-memory-usage">Prediction Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#memory-breakdown">Memory Breakdown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#accuracy-metrics">Accuracy Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#r2-score-analysis">R² Score Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#error-metrics">Error Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#accuracy-vs-dataset-size">Accuracy vs. Dataset Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#computational-characteristics">Computational Characteristics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#training-speed-breakdown">Training Speed Breakdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#early-stopping-impact">Early Stopping Impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#cpu-utilization">CPU Utilization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#model-size-and-storage">Model Size and Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#serialized-model-size">Serialized Model Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#storage-requirements">Storage Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#scalability-analysis">Scalability Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#projected-performance">Projected Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#bottleneck-analysis">Bottleneck Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#comparison-with-alternatives">Comparison with Alternatives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#vs-traditional-methods">vs. Traditional Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#dataset-size-recommendations">Dataset Size Recommendations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#hyperparameter-tuning">Hyperparameter Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#memory-optimization">Memory Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#running-benchmarks">Running Benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#automated-benchmarking">Automated Benchmarking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#custom-benchmarks">Custom Benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#interpreting-results">Interpreting Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#profiling-tools">Profiling Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#id1">Memory Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#time-profiling">Time Profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testing/overview.html">Testing Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-suite-summary">Test Suite Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-categories">Test Categories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#unit-tests-28-tests">Unit Tests (28 tests)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#integration-tests-24-tests">Integration Tests (24 tests)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#running-tests">Running Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#using-docker">Using Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#manual-installation">Manual Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-configuration">Test Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#pytest-ini">pytest.ini</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-fixtures">Test Fixtures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#sample-data-small">sample_data_small</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#sample-data-medium">sample_data_medium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#temp-dataset-file">temp_dataset_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#test-client">test_client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#reset-global-state">reset_global_state</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#coverage-report">Coverage Report</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#current-coverage-by-module">Current Coverage by Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#viewing-coverage-reports">Viewing Coverage Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#example-test-cases">Example Test Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#unit-test-example">Unit Test Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#integration-test-example">Integration Test Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#continuous-integration">Continuous Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#github-actions-example">GitHub Actions Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#writing-new-tests">Writing New Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#example-new-test">Example New Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#performance-tests">Performance Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#training-speed-test">Training Speed Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#troubleshooting-tests">Troubleshooting Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#common-issues">Common Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment/local.html">Local Deployment Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#quick-deploy-script">Quick Deploy Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#manual-deployment-steps">Manual Deployment Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-1-prerequisites-check">Step 1: Prerequisites Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-2-backend-setup">Step 2: Backend Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-3-frontend-setup">Step 3: Frontend Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-4-start-services">Step 4: Start Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-5-verify-deployment">Step 5: Verify Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#access-the-application">Access the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#using-the-application">Using the Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#upload-sample-dataset">Upload Sample Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#environment-configuration">Environment Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#managing-services">Managing Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#stop-services">Stop Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#restart-services">Restart Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#check-running-services">Check Running Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#kill-services">Kill Services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#port-already-in-use">Port Already in Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#module-not-found-errors">Module Not Found Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#permission-errors">Permission Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#database-state-issues">Database/State Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#backend-optimization">Backend Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#frontend-optimization">Frontend Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#data-persistence">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#development-mode-features">Development Mode Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#hot-reload">Hot Reload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#debug-mode">Debug Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#api-testing">API Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">System Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#technology-stack">Technology Stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#backend">Backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#data-flow">Data Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#training-workflow">Training Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#prediction-workflow">Prediction Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#state-management">State Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#backend-state">Backend State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#frontend-state">Frontend State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#api-design">API Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#restful-principles">RESTful Principles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#request-response-format">Request/Response Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#data-processing-pipeline">Data Processing Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#data-validation">Data Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#data-preprocessing">Data Preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#current-implementation">Current Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#security-measures">Security Measures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#scalability">Scalability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#current-limitations">Current Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#potential-improvements">Potential Improvements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#deployment-options">Deployment Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#development">Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#production">Production</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#monitoring-logging">Monitoring &amp; Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#current-logging">Current Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#production-logging">Production Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#testing-strategy">Testing Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">5D Neural Network Interpolator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Link to this heading"></a></h1>
+<p>This guide covers all methods for installing and running the 5D Neural Network Interpolator.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<section id="system-requirements">
+<h3>System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Operating System</strong>: macOS, Linux, or Windows (with WSL2)</p></li>
+<li><p><strong>RAM</strong>: Minimum 4GB (8GB recommended)</p></li>
+<li><p><strong>Disk Space</strong>: Minimum 2GB free space</p></li>
+<li><p><strong>Internet Connection</strong>: Required for initial setup</p></li>
+</ul>
+</section>
+<section id="software-requirements">
+<h3>Software Requirements<a class="headerlink" href="#software-requirements" title="Link to this heading"></a></h3>
+<p><strong>For Docker Installation (Recommended):</strong></p>
+<ul class="simple">
+<li><p>Docker 20.10+ or Docker Desktop</p></li>
+<li><p>Docker Compose v2.0+</p></li>
+</ul>
+<p><strong>For Manual Installation:</strong></p>
+<ul class="simple">
+<li><p>Python 3.12+</p></li>
+<li><p>Node.js 20+</p></li>
+<li><p>npm 10.8+</p></li>
+<li><p>pip 23+</p></li>
+</ul>
+</section>
+</section>
+<section id="installation-methods">
+<h2>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading"></a></h2>
+<section id="method-1-docker-installation-recommended">
+<h3>Method 1: Docker Installation (Recommended)<a class="headerlink" href="#method-1-docker-installation-recommended" title="Link to this heading"></a></h3>
+<p>This is the fastest and most reliable method.</p>
+<p><strong>Step 1: Verify Docker is Running</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Docker is installed and running</span>
+docker<span class="w"> </span>--version
+docker<span class="w"> </span>compose<span class="w"> </span>version
+
+<span class="c1"># On Linux, ensure Docker service is running</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</pre></div>
+</div>
+<p><strong>Step 2: Clone the Repository</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;
+<span class="nb">cd</span><span class="w"> </span>interpolator
+</pre></div>
+</div>
+<p><strong>Step 3: Run Setup Script</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete setup (clean + rebuild + start)</span>
+./scripts/docker-start.sh
+</pre></div>
+</div>
+<p>This script will:</p>
+<ol class="arabic simple">
+<li><p>Check if Docker is running</p></li>
+<li><p>Clean up any existing containers</p></li>
+<li><p>Create environment configuration</p></li>
+<li><p>Build Docker images (~3-5 minutes)</p></li>
+<li><p>Start all services</p></li>
+<li><p>Display access URLs</p></li>
+</ol>
+<p><strong>Step 4: Verify Installation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check service status</span>
+docker<span class="w"> </span>compose<span class="w"> </span>ps
+
+<span class="c1"># Test backend health</span>
+curl<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Test frontend (should return HTML)</span>
+curl<span class="w"> </span>http://localhost:3000
+</pre></div>
+</div>
+<p><strong>Access URLs:</strong></p>
+<ul class="simple">
+<li><p>Frontend: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p></li>
+<li><p>Backend API: <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p></li>
+<li><p>API Documentation: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+</ul>
+</section>
+<section id="method-2-manual-installation">
+<h3>Method 2: Manual Installation<a class="headerlink" href="#method-2-manual-installation" title="Link to this heading"></a></h3>
+<p><strong>Step 1: Install Backend Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+
+<span class="c1"># Create virtual environment (recommended)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: venv\Scripts\activate</span>
+
+<span class="c1"># Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p><strong>Step 2: Install Frontend Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>install
+</pre></div>
+</div>
+<p><strong>Step 3: Start Backend Server</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># If using virtual environment</span>
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+<p><strong>Step 4: Start Frontend Server</strong> (in new terminal)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+<p><strong>Access URLs:</strong></p>
+<ul class="simple">
+<li><p>Frontend: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p></li>
+<li><p>Backend API: <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p></li>
+<li><p>API Documentation: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+</ul>
+</section>
+</section>
+<section id="environment-configuration">
+<h2>Environment Configuration<a class="headerlink" href="#environment-configuration" title="Link to this heading"></a></h2>
+<section id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<p>The application uses environment variables for configuration. Three preset files are provided:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.development</span></code> - For local development</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.production</span></code> - For production deployment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.example</span></code> - Template with all available variables</p></li>
+</ul>
+<p><strong>Key Variables:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend</span>
+<span class="nv">BACKEND_PORT</span><span class="o">=</span><span class="m">8000</span>
+<span class="nv">CORS_ORIGINS</span><span class="o">=</span>http://localhost:3000
+
+<span class="c1"># Frontend</span>
+<span class="nv">FRONTEND_PORT</span><span class="o">=</span><span class="m">3000</span>
+<span class="nv">NEXT_PUBLIC_API_URL</span><span class="o">=</span>http://localhost:8000
+
+<span class="c1"># Docker</span>
+<span class="nv">BUILD_TARGET</span><span class="o">=</span>development<span class="w">  </span><span class="c1"># or &#39;production&#39;</span>
+</pre></div>
+</div>
+<p><strong>Setup:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy development configuration</span>
+cp<span class="w"> </span>.env.development<span class="w"> </span>.env
+
+<span class="c1"># Or for production</span>
+cp<span class="w"> </span>.env.production<span class="w"> </span>.env
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="docker-issues">
+<h3>Docker Issues<a class="headerlink" href="#docker-issues" title="Link to this heading"></a></h3>
+<p><strong>“Docker is not running” error:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># macOS</span>
+open<span class="w"> </span>-a<span class="w"> </span>Docker
+
+<span class="c1"># Linux</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+
+<span class="c1"># Check status</span>
+docker<span class="w"> </span>info
+</pre></div>
+</div>
+<p><strong>“Port already in use” error:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find process using port 3000</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:3000
+
+<span class="c1"># Kill the process</span>
+<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+</pre></div>
+</div>
+<p><strong>“docker-compose: command not found”:</strong></p>
+<p>You have Docker Compose v2 (plugin version). Use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w">  </span><span class="c1"># (with space, not hyphen)</span>
+</pre></div>
+</div>
+</section>
+<section id="permission-issues-linux">
+<h3>Permission Issues (Linux)<a class="headerlink" href="#permission-issues-linux" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add user to docker group</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+
+<span class="c1"># Apply changes</span>
+newgrp<span class="w"> </span>docker
+
+<span class="c1"># Verify</span>
+docker<span class="w"> </span>ps
+</pre></div>
+</div>
+</section>
+<section id="python-node-issues">
+<h3>Python/Node Issues<a class="headerlink" href="#python-node-issues" title="Link to this heading"></a></h3>
+<p><strong>Wrong Python version:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check version</span>
+python3<span class="w"> </span>--version
+
+<span class="c1"># Install Python 3.12 via package manager</span>
+<span class="c1"># macOS:</span>
+brew<span class="w"> </span>install<span class="w"> </span>python@3.12
+
+<span class="c1"># Ubuntu/Debian:</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12
+</pre></div>
+</div>
+<p><strong>npm install fails:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear npm cache</span>
+npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+
+<span class="c1"># Delete node_modules and retry</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verifying-installation">
+<h2>Verifying Installation<a class="headerlink" href="#verifying-installation" title="Link to this heading"></a></h2>
+<p>Run the complete test suite to verify everything works:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Docker</span>
+./scripts/docker-dev.sh<span class="w"> </span>test-backend
+
+<span class="c1"># Manual installation</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+pytest
+</pre></div>
+</div>
+<p>Expected output: <code class="docutils literal notranslate"><span class="pre">52</span> <span class="pre">passed</span></code> with <code class="docutils literal notranslate"><span class="pre">74%</span> <span class="pre">coverage</span></code></p>
+</section>
+<section id="building-documentation">
+<h2>Building Documentation<a class="headerlink" href="#building-documentation" title="Link to this heading"></a></h2>
+<p>This documentation can be built locally for offline access:</p>
+<section id="quick-build">
+<h3>Quick Build<a class="headerlink" href="#quick-build" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/build-docs.sh
+</pre></div>
+</div>
+<p>This automated script will:</p>
+<ol class="arabic simple">
+<li><p>Check Python installation (3.12+ required)</p></li>
+<li><p>Create virtual environment for Sphinx</p></li>
+<li><p>Install Sphinx and dependencies</p></li>
+<li><p>Build HTML documentation</p></li>
+<li><p>Open in your default browser</p></li>
+</ol>
+<p>The documentation will be available at:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docs/build/html/index.html
+</pre></div>
+</div>
+</section>
+<section id="manual-build">
+<h3>Manual Build<a class="headerlink" href="#manual-build" title="Link to this heading"></a></h3>
+<p>For manual control over the build process:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+
+<span class="c1"># Create virtual environment (first time only)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># Install dependencies (first time only)</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Build documentation</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+
+<span class="c1"># Open in browser</span>
+open<span class="w"> </span>build/html/index.html<span class="w">  </span><span class="c1"># macOS</span>
+xdg-open<span class="w"> </span>build/html/index.html<span class="w">  </span><span class="c1"># Linux</span>
+</pre></div>
+</div>
+</section>
+<section id="rebuilding-documentation">
+<h3>Rebuilding Documentation<a class="headerlink" href="#rebuilding-documentation" title="Link to this heading"></a></h3>
+<p>To rebuild after making changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># Clean previous build</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>build/html
+
+<span class="c1"># Rebuild</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+</pre></div>
+</div>
+</section>
+<section id="documentation-requirements">
+<h3>Documentation Requirements<a class="headerlink" href="#documentation-requirements" title="Link to this heading"></a></h3>
+<p>The documentation build requires:</p>
+<ul class="simple">
+<li><p>Python 3.12+</p></li>
+<li><p>Sphinx 8.2.3+</p></li>
+<li><p>sphinx-rtd-theme</p></li>
+<li><p>sphinxcontrib packages</p></li>
+</ul>
+<p>All dependencies are listed in <code class="docutils literal notranslate"><span class="pre">docs/requirements.txt</span></code></p>
+</section>
+<section id="downloading-documentation">
+<h3>Downloading Documentation<a class="headerlink" href="#downloading-documentation" title="Link to this heading"></a></h3>
+<p><strong>Generate Downloadable Documentation:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/build-docs-pdf.sh
+</pre></div>
+</div>
+<p>This generates multiple downloadable formats:</p>
+<ul class="simple">
+<li><p><strong>PDF</strong>: <code class="docutils literal notranslate"><span class="pre">docs/build/downloads/5D-Interpolator-Documentation.pdf</span></code> (~419 KB)</p></li>
+<li><p><strong>HTML Archive (tar.gz)</strong>: <code class="docutils literal notranslate"><span class="pre">docs/build/downloads/5D-Interpolator-Documentation-HTML.tar.gz</span></code> (~8.2 MB)</p></li>
+<li><p><strong>HTML Archive (zip)</strong>: <code class="docutils literal notranslate"><span class="pre">docs/build/downloads/5D-Interpolator-Documentation-HTML.zip</span></code> (~8.2 MB)</p></li>
+</ul>
+<p><strong>PDF Generation Requirements:</strong></p>
+<p>For LaTeX-based PDF (recommended):</p>
+<ul>
+<li><p><strong>macOS</strong>: Install MacTeX</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>mactex
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ubuntu/Debian</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>texlive-latex-extra<span class="w"> </span>texlive-fonts-recommended
+</pre></div>
+</div>
+</li>
+<li><p><strong>Fallback</strong>: If LaTeX not available, script automatically uses rst2pdf</p></li>
+</ul>
+<p><strong>Using Downloaded Documentation:</strong></p>
+<ul>
+<li><p><strong>PDF</strong>: Open directly in any PDF reader</p></li>
+<li><p><strong>HTML Archives</strong>: Extract and open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a web browser</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract tar.gz</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span>5D-Interpolator-Documentation-HTML.tar.gz
+open<span class="w"> </span>html/index.html
+
+<span class="c1"># Or extract zip</span>
+unzip<span class="w"> </span>5D-Interpolator-Documentation-HTML.zip
+open<span class="w"> </span>index.html
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="quickstart.html"><span class="doc">Quick Start Guide</span></a> - Get started with your first model</p></li>
+<li><p><a class="reference internal" href="usage.html"><span class="doc">Usage Guide</span></a> - Learn about features and workflows</p></li>
+<li><p><a class="reference internal" href="datasets.html"><span class="doc">Dataset Specifications</span></a> - Understand dataset requirements</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="5D Neural Network Interpolator Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Makimona Kiakisolako (bamk3).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

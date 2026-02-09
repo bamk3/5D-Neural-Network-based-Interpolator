@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Installation Guide</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="installation-guide">
+<h1>Installation Guide</h1>
+<p>This guide covers all methods for installing and running the 5D Neural Network Interpolator.</p>
+<section id="prerequisites">
+<h2>Prerequisites</h2>
+<section id="system-requirements">
+<h3>System Requirements</h3>
+<ul class="simple">
+<li><p><strong>Operating System</strong>: macOS, Linux, or Windows (with WSL2)</p></li>
+<li><p><strong>RAM</strong>: Minimum 4GB (8GB recommended)</p></li>
+<li><p><strong>Disk Space</strong>: Minimum 2GB free space</p></li>
+<li><p><strong>Internet Connection</strong>: Required for initial setup</p></li>
+</ul>
+</section>
+<section id="software-requirements">
+<h3>Software Requirements</h3>
+<p><strong>For Docker Installation (Recommended):</strong></p>
+<ul class="simple">
+<li><p>Docker 20.10+ or Docker Desktop</p></li>
+<li><p>Docker Compose v2.0+</p></li>
+</ul>
+<p><strong>For Manual Installation:</strong></p>
+<ul class="simple">
+<li><p>Python 3.12+</p></li>
+<li><p>Node.js 20+</p></li>
+<li><p>npm 10.8+</p></li>
+<li><p>pip 23+</p></li>
+</ul>
+</section>
+</section>
+<section id="installation-methods">
+<h2>Installation Methods</h2>
+<section id="method-1-docker-installation-recommended">
+<h3>Method 1: Docker Installation (Recommended)</h3>
+<p>This is the fastest and most reliable method.</p>
+<p><strong>Step 1: Verify Docker is Running</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Docker is installed and running</span>
+docker<span class="w"> </span>--version
+docker<span class="w"> </span>compose<span class="w"> </span>version
+
+<span class="c1"># On Linux, ensure Docker service is running</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</pre></div>
+</div>
+<p><strong>Step 2: Clone the Repository</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;
+<span class="nb">cd</span><span class="w"> </span>interpolator
+</pre></div>
+</div>
+<p><strong>Step 3: Run Setup Script</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete setup (clean + rebuild + start)</span>
+./scripts/docker-start.sh
+</pre></div>
+</div>
+<p>This script will:</p>
+<ol class="arabic simple">
+<li><p>Check if Docker is running</p></li>
+<li><p>Clean up any existing containers</p></li>
+<li><p>Create environment configuration</p></li>
+<li><p>Build Docker images (~3-5 minutes)</p></li>
+<li><p>Start all services</p></li>
+<li><p>Display access URLs</p></li>
+</ol>
+<p><strong>Step 4: Verify Installation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check service status</span>
+docker<span class="w"> </span>compose<span class="w"> </span>ps
+
+<span class="c1"># Test backend health</span>
+curl<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Test frontend (should return HTML)</span>
+curl<span class="w"> </span>http://localhost:3000
+</pre></div>
+</div>
+<p><strong>Access URLs:</strong></p>
+<ul class="simple">
+<li><p>Frontend: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p></li>
+<li><p>Backend API: <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p></li>
+<li><p>API Documentation: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+</ul>
+</section>
+<section id="method-2-manual-installation">
+<h3>Method 2: Manual Installation</h3>
+<p><strong>Step 1: Install Backend Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+
+<span class="c1"># Create virtual environment (recommended)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: venv\Scripts\activate</span>
+
+<span class="c1"># Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p><strong>Step 2: Install Frontend Dependencies</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>install
+</pre></div>
+</div>
+<p><strong>Step 3: Start Backend Server</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># If using virtual environment</span>
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+<p><strong>Step 4: Start Frontend Server</strong> (in new terminal)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+<p><strong>Access URLs:</strong></p>
+<ul class="simple">
+<li><p>Frontend: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p></li>
+<li><p>Backend API: <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p></li>
+<li><p>API Documentation: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+</ul>
+</section>
+</section>
+<section id="environment-configuration">
+<h2>Environment Configuration</h2>
+<section id="environment-variables">
+<h3>Environment Variables</h3>
+<p>The application uses environment variables for configuration. Three preset files are provided:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.development</span></code> - For local development</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.production</span></code> - For production deployment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.example</span></code> - Template with all available variables</p></li>
+</ul>
+<p><strong>Key Variables:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backend</span>
+<span class="nv">BACKEND_PORT</span><span class="o">=</span><span class="m">8000</span>
+<span class="nv">CORS_ORIGINS</span><span class="o">=</span>http://localhost:3000
+
+<span class="c1"># Frontend</span>
+<span class="nv">FRONTEND_PORT</span><span class="o">=</span><span class="m">3000</span>
+<span class="nv">NEXT_PUBLIC_API_URL</span><span class="o">=</span>http://localhost:8000
+
+<span class="c1"># Docker</span>
+<span class="nv">BUILD_TARGET</span><span class="o">=</span>development<span class="w">  </span><span class="c1"># or &#39;production&#39;</span>
+</pre></div>
+</div>
+<p><strong>Setup:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy development configuration</span>
+cp<span class="w"> </span>.env.development<span class="w"> </span>.env
+
+<span class="c1"># Or for production</span>
+cp<span class="w"> </span>.env.production<span class="w"> </span>.env
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting</h2>
+<section id="docker-issues">
+<h3>Docker Issues</h3>
+<p><strong>“Docker is not running” error:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># macOS</span>
+open<span class="w"> </span>-a<span class="w"> </span>Docker
+
+<span class="c1"># Linux</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+
+<span class="c1"># Check status</span>
+docker<span class="w"> </span>info
+</pre></div>
+</div>
+<p><strong>“Port already in use” error:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find process using port 3000</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:3000
+
+<span class="c1"># Kill the process</span>
+<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+</pre></div>
+</div>
+<p><strong>“docker-compose: command not found”:</strong></p>
+<p>You have Docker Compose v2 (plugin version). Use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w">  </span><span class="c1"># (with space, not hyphen)</span>
+</pre></div>
+</div>
+</section>
+<section id="permission-issues-linux">
+<h3>Permission Issues (Linux)</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add user to docker group</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+
+<span class="c1"># Apply changes</span>
+newgrp<span class="w"> </span>docker
+
+<span class="c1"># Verify</span>
+docker<span class="w"> </span>ps
+</pre></div>
+</div>
+</section>
+<section id="python-node-issues">
+<h3>Python/Node Issues</h3>
+<p><strong>Wrong Python version:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check version</span>
+python3<span class="w"> </span>--version
+
+<span class="c1"># Install Python 3.12 via package manager</span>
+<span class="c1"># macOS:</span>
+brew<span class="w"> </span>install<span class="w"> </span>python@3.12
+
+<span class="c1"># Ubuntu/Debian:</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12
+</pre></div>
+</div>
+<p><strong>npm install fails:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear npm cache</span>
+npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+
+<span class="c1"># Delete node_modules and retry</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verifying-installation">
+<h2>Verifying Installation</h2>
+<p>Run the complete test suite to verify everything works:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Docker</span>
+./scripts/docker-dev.sh<span class="w"> </span>test-backend
+
+<span class="c1"># Manual installation</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+pytest
+</pre></div>
+</div>
+<p>Expected output: <code class="docutils literal notranslate"><span class="pre">52</span> <span class="pre">passed</span></code> with <code class="docutils literal notranslate"><span class="pre">74%</span> <span class="pre">coverage</span></code></p>
+</section>
+<section id="building-documentation">
+<h2>Building Documentation</h2>
+<p>This documentation can be built locally for offline access:</p>
+<section id="quick-build">
+<h3>Quick Build</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/build-docs.sh
+</pre></div>
+</div>
+<p>This automated script will:</p>
+<ol class="arabic simple">
+<li><p>Check Python installation (3.12+ required)</p></li>
+<li><p>Create virtual environment for Sphinx</p></li>
+<li><p>Install Sphinx and dependencies</p></li>
+<li><p>Build HTML documentation</p></li>
+<li><p>Open in your default browser</p></li>
+</ol>
+<p>The documentation will be available at:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docs/build/html/index.html
+</pre></div>
+</div>
+</section>
+<section id="manual-build">
+<h3>Manual Build</h3>
+<p>For manual control over the build process:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+
+<span class="c1"># Create virtual environment (first time only)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># Install dependencies (first time only)</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Build documentation</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+
+<span class="c1"># Open in browser</span>
+open<span class="w"> </span>build/html/index.html<span class="w">  </span><span class="c1"># macOS</span>
+xdg-open<span class="w"> </span>build/html/index.html<span class="w">  </span><span class="c1"># Linux</span>
+</pre></div>
+</div>
+</section>
+<section id="rebuilding-documentation">
+<h3>Rebuilding Documentation</h3>
+<p>To rebuild after making changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># Clean previous build</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>build/html
+
+<span class="c1"># Rebuild</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+</pre></div>
+</div>
+</section>
+<section id="documentation-requirements">
+<h3>Documentation Requirements</h3>
+<p>The documentation build requires:</p>
+<ul class="simple">
+<li><p>Python 3.12+</p></li>
+<li><p>Sphinx 8.2.3+</p></li>
+<li><p>sphinx-rtd-theme</p></li>
+<li><p>sphinxcontrib packages</p></li>
+</ul>
+<p>All dependencies are listed in <code class="docutils literal notranslate"><span class="pre">docs/requirements.txt</span></code></p>
+</section>
+<section id="downloading-documentation">
+<h3>Downloading Documentation</h3>
+<p><strong>Generate Downloadable Documentation:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/build-docs-pdf.sh
+</pre></div>
+</div>
+<p>This generates multiple downloadable formats:</p>
+<ul class="simple">
+<li><p><strong>PDF</strong>: <code class="docutils literal notranslate"><span class="pre">docs/build/downloads/5D-Interpolator-Documentation.pdf</span></code> (~419 KB)</p></li>
+<li><p><strong>HTML Archive (tar.gz)</strong>: <code class="docutils literal notranslate"><span class="pre">docs/build/downloads/5D-Interpolator-Documentation-HTML.tar.gz</span></code> (~8.2 MB)</p></li>
+<li><p><strong>HTML Archive (zip)</strong>: <code class="docutils literal notranslate"><span class="pre">docs/build/downloads/5D-Interpolator-Documentation-HTML.zip</span></code> (~8.2 MB)</p></li>
+</ul>
+<p><strong>PDF Generation Requirements:</strong></p>
+<p>For LaTeX-based PDF (recommended):</p>
+<ul>
+<li><p><strong>macOS</strong>: Install MacTeX</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>mactex
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ubuntu/Debian</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>texlive-latex-extra<span class="w"> </span>texlive-fonts-recommended
+</pre></div>
+</div>
+</li>
+<li><p><strong>Fallback</strong>: If LaTeX not available, script automatically uses rst2pdf</p></li>
+</ul>
+<p><strong>Using Downloaded Documentation:</strong></p>
+<ul>
+<li><p><strong>PDF</strong>: Open directly in any PDF reader</p></li>
+<li><p><strong>HTML Archives</strong>: Extract and open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a web browser</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract tar.gz</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span>5D-Interpolator-Documentation-HTML.tar.gz
+open<span class="w"> </span>html/index.html
+
+<span class="c1"># Or extract zip</span>
+unzip<span class="w"> </span>5D-Interpolator-Documentation-HTML.zip
+open<span class="w"> </span>index.html
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps</h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="quickstart.xhtml"><span class="doc">Quick Start Guide</span></a> - Get started with your first model</p></li>
+<li><p><a class="reference internal" href="usage.xhtml"><span class="doc">Usage Guide</span></a> - Learn about features and workflows</p></li>
+<li><p><a class="reference internal" href="datasets.xhtml"><span class="doc">Dataset Specifications</span></a> - Understand dataset requirements</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,885 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neural Network Module &mdash; 5D Neural Network Interpolator 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4789a99c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/custom.js?v=42fa0521"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance and Profiling" href="../performance.html" />
+    <link rel="prev" title="Frontend Components" href="frontend.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            5D Neural Network Interpolator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#software-requirements">Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#method-1-docker-installation-recommended">Method 1: Docker Installation (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#method-2-manual-installation">Method 2: Manual Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#environment-configuration">Environment Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#docker-issues">Docker Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#permission-issues-linux">Permission Issues (Linux)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#python-node-issues">Python/Node Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#building-documentation">Building Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#quick-build">Quick Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#manual-build">Manual Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#rebuilding-documentation">Rebuilding Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#documentation-requirements">Documentation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#downloading-documentation">Downloading Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#starting-the-application">Starting the Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#using-docker-recommended">Using Docker (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#soft-manual-start-using-local-build-shell-script">Soft Manual Start (Using local-build shell script)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#manual-start">Manual Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#access-the-application">Access the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#build-the-documentation">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#step-by-step-workflow">Step-by-Step Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#step-1-upload-training-dataset">Step 1: Upload Training Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#step-2-configure-hyperparameters">Step 2: Configure Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#step-3-train-the-model">Step 3: Train the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#step-4-make-predictions">Step 4: Make Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#experiment-with-hyperparameters">Experiment with Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#quick-iteration-cycle">Quick Iteration Cycle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#dataset-preparation">Dataset Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#model-training">Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#performance-tips">Performance Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#troubleshooting-quick-start-issues">Troubleshooting Quick Start Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#application-workflow">Application Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#step-1-upload-training-dataset">Step 1: Upload Training Dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#dataset-requirements">Dataset Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#example-dataset-creation">Example Dataset Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#upload-process">Upload Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#step-2-train-model">Step 2: Train Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#hyperparameter-configuration">Hyperparameter Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#recommended-configurations">Recommended Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#training-process">Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#understanding-training-results">Understanding Training Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#step-3-make-predictions">Step 3: Make Predictions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#batch-prediction">Batch Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#single-prediction">Single Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#experimenting-with-hyperparameters">Experimenting with Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#api-usage">API Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#dataset-preparation">Dataset Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#model-training">Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#prediction">Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#training-issues">Training Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#prediction-issues">Prediction Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Dataset Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#training-dataset-format">Training Dataset Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#example-creation">Example Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#validation">Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#prediction-dataset-format">Prediction Dataset Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#id2">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#id3">Example Creation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#data-preprocessing">Data Preprocessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#automatic-standardization">Automatic Standardization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#data-splitting">Data Splitting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#dataset-size">Dataset Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#data-quality">Data Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#feature-engineering">Feature Engineering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#common-use-cases">Common Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#regression-problems">Regression Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#scientific-data">Scientific Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#common-errors">Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#dataset-templates">Dataset Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#simple-template">Simple Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets.html#complex-template">Complex Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#base-url">Base URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#interactive-documentation">Interactive Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#health-status-endpoints">Health &amp; Status Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#get">GET /</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#get-health">GET /health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#get-status">GET /status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#dataset-upload-endpoints">Dataset Upload Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#post-upload-fit-dataset">POST /upload-fit-dataset/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#post-upload-predict-dataset">POST /upload-predict-dataset/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#model-training-endpoints">Model Training Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#get-hyperparameters-defaults">GET /hyperparameters/defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#post-start-training">POST /start-training/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#prediction-endpoints">Prediction Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#post-start-predict">POST /start-predict/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#post-predict-single">POST /predict-single/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#python-client-examples">Python Client Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backend.html#using-requests-library">Using requests library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.html#authentication">Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="frontend.html">Frontend Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#technology-stack">Technology Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#project-structure">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#root-layout">Root Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#home-page">Home Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#upload-page">Upload Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#state-management">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#upload-process">Upload Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#train-page">Train Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#id1">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#hyperparameter-controls">Hyperparameter Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#training-process">Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#results-display">Results Display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#button-logic">Button Logic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#predict-page">Predict Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#id2">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#batch-prediction">Batch Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#single-prediction">Single Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#styling">Styling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#global-styles">Global Styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frontend.html#common-patterns">Common Patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#responsive-design">Responsive Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#dark-mode">Dark Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frontend.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Neural Network Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-fivedreg.base_fivedreg">Module Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fastneuralnetwork-class">FastNeuralNetwork Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.__init__"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.fit"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.predict"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.evaluate"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.FastNeuralNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.get_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#top-level-functions">Top-Level Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#benchmark-training-speed">benchmark_training_speed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.benchmark_training_speed"><code class="docutils literal notranslate"><span class="pre">benchmark_training_speed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#start-predict">start_predict</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.start_predict"><code class="docutils literal notranslate"><span class="pre">start_predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#demonstrate-configurability">demonstrate_configurability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fivedreg.base_fivedreg.demonstrate_configurability"><code class="docutils literal notranslate"><span class="pre">demonstrate_configurability()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-fivedreg.data_hand.module">Data Handling Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fivedreg.data_hand.module.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-training">Basic Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-configuration">Custom Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-benchmark-function">Using Benchmark Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-predictions">Making Predictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-evaluation">Model Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-model-parameters">Getting Model Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../performance.html">Performance and Profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#executive-summary">Executive Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#test-configuration">Test Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#benchmark-results">Benchmark Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#training-time-analysis">Training Time Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#scaling-behavior">Scaling Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#memory-profiling">Memory Profiling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#training-memory-usage">Training Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#prediction-memory-usage">Prediction Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#memory-breakdown">Memory Breakdown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#accuracy-metrics">Accuracy Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#r2-score-analysis">R² Score Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#error-metrics">Error Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#accuracy-vs-dataset-size">Accuracy vs. Dataset Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#computational-characteristics">Computational Characteristics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#training-speed-breakdown">Training Speed Breakdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#early-stopping-impact">Early Stopping Impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#cpu-utilization">CPU Utilization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#model-size-and-storage">Model Size and Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#serialized-model-size">Serialized Model Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#storage-requirements">Storage Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#scalability-analysis">Scalability Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#projected-performance">Projected Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#bottleneck-analysis">Bottleneck Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#comparison-with-alternatives">Comparison with Alternatives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#vs-traditional-methods">vs. Traditional Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#dataset-size-recommendations">Dataset Size Recommendations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#hyperparameter-tuning">Hyperparameter Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#memory-optimization">Memory Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#running-benchmarks">Running Benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#automated-benchmarking">Automated Benchmarking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#custom-benchmarks">Custom Benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#interpreting-results">Interpreting Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#profiling-tools">Profiling Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#id1">Memory Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#time-profiling">Time Profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/overview.html">Testing Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#test-suite-summary">Test Suite Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#test-categories">Test Categories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#unit-tests-28-tests">Unit Tests (28 tests)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#integration-tests-24-tests">Integration Tests (24 tests)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#running-tests">Running Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#using-docker">Using Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#manual-installation">Manual Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#test-configuration">Test Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#pytest-ini">pytest.ini</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#test-fixtures">Test Fixtures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#sample-data-small">sample_data_small</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#sample-data-medium">sample_data_medium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#temp-dataset-file">temp_dataset_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#test-client">test_client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#reset-global-state">reset_global_state</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#coverage-report">Coverage Report</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#current-coverage-by-module">Current Coverage by Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#viewing-coverage-reports">Viewing Coverage Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#example-test-cases">Example Test Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#unit-test-example">Unit Test Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#integration-test-example">Integration Test Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#continuous-integration">Continuous Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#github-actions-example">GitHub Actions Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#writing-new-tests">Writing New Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#example-new-test">Example New Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#performance-tests">Performance Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#training-speed-test">Training Speed Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#troubleshooting-tests">Troubleshooting Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/overview.html#common-issues">Common Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/local.html">Local Deployment Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#quick-deploy-script">Quick Deploy Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#manual-deployment-steps">Manual Deployment Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#step-1-prerequisites-check">Step 1: Prerequisites Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#step-2-backend-setup">Step 2: Backend Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#step-3-frontend-setup">Step 3: Frontend Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#step-4-start-services">Step 4: Start Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#step-5-verify-deployment">Step 5: Verify Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#access-the-application">Access the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#using-the-application">Using the Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#upload-sample-dataset">Upload Sample Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#environment-configuration">Environment Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#managing-services">Managing Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#stop-services">Stop Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#restart-services">Restart Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#check-running-services">Check Running Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#kill-services">Kill Services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#port-already-in-use">Port Already in Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#module-not-found-errors">Module Not Found Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#permission-errors">Permission Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#database-state-issues">Database/State Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#backend-optimization">Backend Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#frontend-optimization">Frontend Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#data-persistence">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#development-mode-features">Development Mode Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#hot-reload">Hot Reload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#debug-mode">Debug Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/local.html#api-testing">API Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/local.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">System Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#technology-stack">Technology Stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#backend">Backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#data-flow">Data Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#training-workflow">Training Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#prediction-workflow">Prediction Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#state-management">State Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#backend-state">Backend State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#frontend-state">Frontend State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#api-design">API Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#restful-principles">RESTful Principles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#request-response-format">Request/Response Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#data-processing-pipeline">Data Processing Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#data-validation">Data Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#data-preprocessing">Data Preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#current-implementation">Current Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#security-measures">Security Measures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#scalability">Scalability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#current-limitations">Current Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#potential-improvements">Potential Improvements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#deployment-options">Deployment Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#development">Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#production">Production</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#monitoring-logging">Monitoring &amp; Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#current-logging">Current Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#production-logging">Production Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#testing-strategy">Testing Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">5D Neural Network Interpolator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Neural Network Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/neural_network.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="neural-network-module">
+<h1>Neural Network Module<a class="headerlink" href="#neural-network-module" title="Link to this heading"></a></h1>
+<p>Complete API reference for the <code class="docutils literal notranslate"><span class="pre">fivedreg</span></code> neural network package, automatically generated from source code docstrings.</p>
+<section id="module-fivedreg.base_fivedreg">
+<span id="module-overview"></span><h2>Module Overview<a class="headerlink" href="#module-fivedreg.base_fivedreg" title="Link to this heading"></a></h2>
+<p>Fast Neural Network for 5D Interpolation
+Optimized for CPU training in under 1 minute on datasets up to 10,000 samples</p>
+<p>Key features:
+- Small, efficient default architecture (default: [64, 32, 16]) but as instructed in the coursework, a user can change them using provided sliders)
+- Fully configurable (layers, neurons, learning rate, iterations)
+- Optimized for fast CPU training (under 1 minute on datasets up to 10,000 samples)
+- Early stopping to prevent wasted computation</p>
+</section>
+<section id="fastneuralnetwork-class">
+<h2>FastNeuralNetwork Class<a class="headerlink" href="#fastneuralnetwork-class" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">FastNeuralNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Fast, fully configurable neural network for 5D interpolation.</p>
+<p>Optimized for CPU training in under 1 minute on datasets up to 10,000 samples.</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>hidden_layers<span class="classifier">tuple or list</span></dt><dd><p>Number of neurons in each hidden layer (default: (64, 32, 16))</p>
+</dd>
+<dt>learning_rate<span class="classifier">float</span></dt><dd><p>Learning rate for Adam optimizer (default: 0.001)</p>
+</dd>
+<dt>max_iterations<span class="classifier">int</span></dt><dd><p>Maximum number of training iterations (default: 500)</p>
+</dd>
+<dt>early_stopping<span class="classifier">bool</span></dt><dd><p>Use early stopping to save time (default: True)</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>Print training progress (default: True)</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>  <span class="c1"># Default, but as instructed in the coursework, a user can change them using provided sliders)</span>
+<span class="gp">... </span>    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the fast neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hidden_layers</strong> – Tuple of neurons per layer (e.g., (64, 32, 16))</p></li>
+<li><p><strong>learning_rate</strong> – Learning rate for optimization (default: 0.001)</p></li>
+<li><p><strong>max_iterations</strong> – Maximum training iterations (default: 500)</p></li>
+<li><p><strong>early_stopping</strong> – Enable early stopping (default: True)</p></li>
+<li><p><strong>verbose</strong> – Print training progress (default: True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> – Training features (n_samples, 5)</p></li>
+<li><p><strong>y_train</strong> – Training targets (n_samples,)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> – Features to predict (n_samples, 5)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predictions (n_samples,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Test'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the model with regression metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Features</p></li>
+<li><p><strong>y</strong> – True targets</p></li>
+<li><p><strong>dataset_name</strong> – Name for printing (default: “Test”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with MAE, MSE, RMSE, and R² score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.FastNeuralNetwork.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#FastNeuralNetwork.get_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.FastNeuralNetwork.get_params" title="Link to this definition"></a></dt>
+<dd><p>Get model configuration.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="top-level-functions">
+<h2>Top-Level Functions<a class="headerlink" href="#top-level-functions" title="Link to this heading"></a></h2>
+<section id="benchmark-training-speed">
+<h3>benchmark_training_speed<a class="headerlink" href="#benchmark-training-speed" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.benchmark_training_speed">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">benchmark_training_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(64,</span> <span class="pre">32,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#benchmark_training_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.benchmark_training_speed" title="Link to this definition"></a></dt>
+<dd><p>Benchmark training speed on the dataset with configurable hyperparameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_path</strong> – Path to the dataset file</p></li>
+<li><p><strong>hidden_layers</strong> – Tuple of neurons per layer (default: (64, 32, 16)) fully configure as instructed in the coursework by the professeur.</p></li>
+<li><p><strong>learning_rate</strong> – Learning rate for optimization (default: 0.001)</p></li>
+<li><p><strong>max_iterations</strong> – Maximum training iterations (default: 500)</p></li>
+<li><p><strong>early_stopping</strong> – Enable early stopping (default: True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="start-predict">
+<h3>start_predict<a class="headerlink" href="#start-predict" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.start_predict">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">start_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#start_predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.start_predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+</dd></dl>
+
+</section>
+<section id="demonstrate-configurability">
+<h3>demonstrate_configurability<a class="headerlink" href="#demonstrate-configurability" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.base_fivedreg.demonstrate_configurability">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.base_fivedreg.</span></span><span class="sig-name descname"><span class="pre">demonstrate_configurability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/base_fivedreg.html#demonstrate_configurability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.base_fivedreg.demonstrate_configurability" title="Link to this definition"></a></dt>
+<dd><p>Demonstrate full configurability of the model.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-fivedreg.data_hand.module">
+<span id="data-handling-module"></span><h2>Data Handling Module<a class="headerlink" href="#module-fivedreg.data_hand.module" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fivedreg.data_hand.module.load_dataset">
+<span class="sig-prename descclassname"><span class="pre">fivedreg.data_hand.module.</span></span><span class="sig-name descname"><span class="pre">load_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fivedreg/data_hand/module.html#load_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fivedreg.data_hand.module.load_dataset" title="Link to this definition"></a></dt>
+<dd><p>This module helps in loading and preprocessing 5D datasets. It reads data from a pickle file,
+removes NaN values, splits the data into training, validation, and test sets, and standardizes the features and target variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>Tuple of (X_train, y_train, X_val, y_val, X_test, y_test, scaler_X, scaler_y)</p>
+<p>We can notice that it returns everything needed for training and evaluating a regression model.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h2>
+<section id="basic-training">
+<h3>Basic Training<a class="headerlink" href="#basic-training" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastNeuralNetwork</span>
+
+<span class="c1"># Create model with default configuration</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span>
+<span class="p">)</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-configuration">
+<h3>Custom Configuration<a class="headerlink" href="#custom-configuration" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create model with custom architecture</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FastNeuralNetwork</span><span class="p">(</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Train and evaluate</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-benchmark-function">
+<h3>Using Benchmark Function<a class="headerlink" href="#using-benchmark-function" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">benchmark_training_speed</span>
+
+<span class="c1"># Train with custom hyperparameters</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">benchmark_training_speed</span><span class="p">(</span>
+    <span class="n">dataset_path</span><span class="o">=</span><span class="s1">&#39;data.pkl&#39;</span><span class="p">,</span>
+    <span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training completed!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="making-predictions">
+<h3>Making Predictions<a class="headerlink" href="#making-predictions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fivedreg.base_fivedreg</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_predict</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Load prediction data</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Make predictions (requires model to be trained first via benchmark_training_speed)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">start_predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="model-evaluation">
+<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate on test set</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Test Set&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access individual metrics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² Score: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-model-parameters">
+<h3>Getting Model Parameters<a class="headerlink" href="#getting-model-parameters" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get model configuration</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Architecture: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;hidden_layers&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning Rate: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training Time: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;training_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterations Completed: </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;iterations&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="backend.html"><span class="doc">Backend API Reference</span></a> - Backend API reference</p></li>
+<li><p><a class="reference internal" href="frontend.html"><span class="doc">Frontend Components</span></a> - Frontend components</p></li>
+<li><p><a class="reference internal" href="../usage.html"><span class="doc">Usage Guide</span></a> - Usage guide</p></li>
+<li><p><a class="reference internal" href="../performance.html"><span class="doc">Performance and Profiling</span></a> - Performance benchmarks</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="frontend.html" class="btn btn-neutral float-left" title="Frontend Components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../performance.html" class="btn btn-neutral float-right" title="Performance and Profiling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Makimona Kiakisolako (bamk3).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

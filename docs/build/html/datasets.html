@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dataset Specifications &mdash; 5D Neural Network Interpolator 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4789a99c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/custom.js?v=42fa0521"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Backend API Reference" href="api/backend.html" />
+    <link rel="prev" title="Usage Guide" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            5D Neural Network Interpolator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#software-requirements">Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#method-1-docker-installation-recommended">Method 1: Docker Installation (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#method-2-manual-installation">Method 2: Manual Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#environment-configuration">Environment Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#docker-issues">Docker Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#permission-issues-linux">Permission Issues (Linux)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#python-node-issues">Python/Node Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#building-documentation">Building Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#quick-build">Quick Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#manual-build">Manual Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#rebuilding-documentation">Rebuilding Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#documentation-requirements">Documentation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#downloading-documentation">Downloading Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#starting-the-application">Starting the Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#using-docker-recommended">Using Docker (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#soft-manual-start-using-local-build-shell-script">Soft Manual Start (Using local-build shell script)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#manual-start">Manual Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#access-the-application">Access the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#build-the-documentation">Build the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#step-by-step-workflow">Step-by-Step Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-1-upload-training-dataset">Step 1: Upload Training Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-2-configure-hyperparameters">Step 2: Configure Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-3-train-the-model">Step 3: Train the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#step-4-make-predictions">Step 4: Make Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#experiment-with-hyperparameters">Experiment with Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#quick-iteration-cycle">Quick Iteration Cycle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#dataset-preparation">Dataset Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#model-training">Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#performance-tips">Performance Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#troubleshooting-quick-start-issues">Troubleshooting Quick Start Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#application-workflow">Application Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#step-1-upload-training-dataset">Step 1: Upload Training Dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#dataset-requirements">Dataset Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#example-dataset-creation">Example Dataset Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#upload-process">Upload Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#step-2-train-model">Step 2: Train Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#hyperparameter-configuration">Hyperparameter Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#recommended-configurations">Recommended Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#training-process">Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#understanding-training-results">Understanding Training Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#step-3-make-predictions">Step 3: Make Predictions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#batch-prediction">Batch Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#single-prediction">Single Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#advanced-usage">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#experimenting-with-hyperparameters">Experimenting with Hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#api-usage">API Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#dataset-preparation">Dataset Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#model-training">Model Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#prediction">Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#training-issues">Training Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#prediction-issues">Prediction Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dataset Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#training-dataset-format">Training Dataset Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-creation">Example Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validation">Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prediction-dataset-format">Prediction Dataset Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Example Creation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-preprocessing">Data Preprocessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-standardization">Automatic Standardization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-splitting">Data Splitting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataset-size">Dataset Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-quality">Data Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feature-engineering">Feature Engineering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-use-cases">Common Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#regression-problems">Regression Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scientific-data">Scientific Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-errors">Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-templates">Dataset Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-template">Simple Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complex-template">Complex Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/backend.html">Backend API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#base-url">Base URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#interactive-documentation">Interactive Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#health-status-endpoints">Health &amp; Status Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get">GET /</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get-health">GET /health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get-status">GET /status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#dataset-upload-endpoints">Dataset Upload Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-upload-fit-dataset">POST /upload-fit-dataset/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-upload-predict-dataset">POST /upload-predict-dataset/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#model-training-endpoints">Model Training Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#get-hyperparameters-defaults">GET /hyperparameters/defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-start-training">POST /start-training/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#prediction-endpoints">Prediction Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-start-predict">POST /start-predict/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#post-predict-single">POST /predict-single/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#python-client-examples">Python Client Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/backend.html#using-requests-library">Using requests library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/backend.html#authentication">Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/frontend.html">Frontend Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#technology-stack">Technology Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#project-structure">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#root-layout">Root Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#home-page">Home Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#upload-page">Upload Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#state-management">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#upload-process">Upload Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#train-page">Train Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#id1">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#hyperparameter-controls">Hyperparameter Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#training-process">Training Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#results-display">Results Display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#button-logic">Button Logic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#predict-page">Predict Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#id2">State Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#batch-prediction">Batch Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#single-prediction">Single Prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#styling">Styling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#global-styles">Global Styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/frontend.html#common-patterns">Common Patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#responsive-design">Responsive Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#dark-mode">Dark Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/frontend.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/neural_network.html">Neural Network Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#module-fivedreg.base_fivedreg">Module Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#fastneuralnetwork-class">FastNeuralNetwork Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.__init__"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.fit"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.predict"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.evaluate"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.FastNeuralNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">FastNeuralNetwork.get_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#top-level-functions">Top-Level Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#benchmark-training-speed">benchmark_training_speed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.benchmark_training_speed"><code class="docutils literal notranslate"><span class="pre">benchmark_training_speed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#start-predict">start_predict</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.start_predict"><code class="docutils literal notranslate"><span class="pre">start_predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#demonstrate-configurability">demonstrate_configurability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/neural_network.html#fivedreg.base_fivedreg.demonstrate_configurability"><code class="docutils literal notranslate"><span class="pre">demonstrate_configurability()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#module-fivedreg.data_hand.module">Data Handling Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#fivedreg.data_hand.module.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#basic-training">Basic Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#custom-configuration">Custom Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#using-benchmark-function">Using Benchmark Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#making-predictions">Making Predictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#model-evaluation">Model Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neural_network.html#getting-model-parameters">Getting Model Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neural_network.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance and Profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#executive-summary">Executive Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#test-configuration">Test Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#benchmark-results">Benchmark Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#training-time-analysis">Training Time Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#scaling-behavior">Scaling Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#memory-profiling">Memory Profiling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#training-memory-usage">Training Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#prediction-memory-usage">Prediction Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#memory-breakdown">Memory Breakdown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#accuracy-metrics">Accuracy Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#r2-score-analysis">R² Score Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#error-metrics">Error Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#accuracy-vs-dataset-size">Accuracy vs. Dataset Size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#computational-characteristics">Computational Characteristics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#training-speed-breakdown">Training Speed Breakdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#early-stopping-impact">Early Stopping Impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#cpu-utilization">CPU Utilization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#model-size-and-storage">Model Size and Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#serialized-model-size">Serialized Model Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#storage-requirements">Storage Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#scalability-analysis">Scalability Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#projected-performance">Projected Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#bottleneck-analysis">Bottleneck Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#comparison-with-alternatives">Comparison with Alternatives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#vs-traditional-methods">vs. Traditional Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#dataset-size-recommendations">Dataset Size Recommendations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#hyperparameter-tuning">Hyperparameter Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#memory-optimization">Memory Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#running-benchmarks">Running Benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#automated-benchmarking">Automated Benchmarking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#custom-benchmarks">Custom Benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#interpreting-results">Interpreting Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#profiling-tools">Profiling Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#id1">Memory Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#time-profiling">Time Profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testing/overview.html">Testing Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-suite-summary">Test Suite Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-categories">Test Categories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#unit-tests-28-tests">Unit Tests (28 tests)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#integration-tests-24-tests">Integration Tests (24 tests)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#running-tests">Running Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#using-docker">Using Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#manual-installation">Manual Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-configuration">Test Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#pytest-ini">pytest.ini</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#test-fixtures">Test Fixtures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#sample-data-small">sample_data_small</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#sample-data-medium">sample_data_medium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#temp-dataset-file">temp_dataset_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#test-client">test_client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#reset-global-state">reset_global_state</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#coverage-report">Coverage Report</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#current-coverage-by-module">Current Coverage by Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#viewing-coverage-reports">Viewing Coverage Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#example-test-cases">Example Test Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#unit-test-example">Unit Test Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#integration-test-example">Integration Test Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#continuous-integration">Continuous Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#github-actions-example">GitHub Actions Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#writing-new-tests">Writing New Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#example-new-test">Example New Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#performance-tests">Performance Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#training-speed-test">Training Speed Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#troubleshooting-tests">Troubleshooting Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing/overview.html#common-issues">Common Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing/overview.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deployment/local.html">Local Deployment Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#quick-deploy-script">Quick Deploy Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#manual-deployment-steps">Manual Deployment Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-1-prerequisites-check">Step 1: Prerequisites Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-2-backend-setup">Step 2: Backend Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-3-frontend-setup">Step 3: Frontend Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-4-start-services">Step 4: Start Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#step-5-verify-deployment">Step 5: Verify Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#access-the-application">Access the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#using-the-application">Using the Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#upload-sample-dataset">Upload Sample Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#environment-configuration">Environment Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#managing-services">Managing Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#stop-services">Stop Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#restart-services">Restart Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#check-running-services">Check Running Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#kill-services">Kill Services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#port-already-in-use">Port Already in Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#module-not-found-errors">Module Not Found Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#permission-errors">Permission Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#database-state-issues">Database/State Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#backend-optimization">Backend Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#frontend-optimization">Frontend Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#data-persistence">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#development-mode-features">Development Mode Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#hot-reload">Hot Reload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#debug-mode">Debug Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment/local.html#api-testing">API Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/local.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">System Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#technology-stack">Technology Stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#backend">Backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#data-flow">Data Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#training-workflow">Training Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#prediction-workflow">Prediction Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#state-management">State Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#backend-state">Backend State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#frontend-state">Frontend State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#api-design">API Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#restful-principles">RESTful Principles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#request-response-format">Request/Response Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#data-processing-pipeline">Data Processing Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#data-validation">Data Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#data-preprocessing">Data Preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#current-implementation">Current Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#security-measures">Security Measures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#scalability">Scalability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#current-limitations">Current Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#potential-improvements">Potential Improvements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#deployment-options">Deployment Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#development">Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#production">Production</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#monitoring-logging">Monitoring &amp; Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#current-logging">Current Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#production-logging">Production Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#testing-strategy">Testing Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">5D Neural Network Interpolator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Dataset Specifications</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/datasets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dataset-specifications">
+<h1>Dataset Specifications<a class="headerlink" href="#dataset-specifications" title="Link to this heading"></a></h1>
+<p>Complete specification for dataset formats used by the 5D Interpolator.</p>
+<section id="training-dataset-format">
+<h2>Training Dataset Format<a class="headerlink" href="#training-dataset-format" title="Link to this heading"></a></h2>
+<section id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Link to this heading"></a></h3>
+<p>Training datasets must be Python pickle files containing a dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>  <span class="c1"># Feature matrix</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>   <span class="c1"># Target vector</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
+<p><strong>File Format:</strong></p>
+<ul class="simple">
+<li><p>Extension: <code class="docutils literal notranslate"><span class="pre">.pkl</span></code></p></li>
+<li><p>Type: Python pickle file</p></li>
+<li><p>Encoding: Binary</p></li>
+</ul>
+<p><strong>X (Features):</strong></p>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p></li>
+<li><p>Shape: <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">5)</span></code></p></li>
+<li><p>Dtype: <code class="docutils literal notranslate"><span class="pre">float32</span></code> or <code class="docutils literal notranslate"><span class="pre">float64</span></code></p></li>
+<li><p>Values: Any real numbers (will be standardized)</p></li>
+<li><p>Constraints:</p>
+<ul>
+<li><p>Must have exactly 5 features</p></li>
+<li><p>No NaN or inf values</p></li>
+<li><p>At least 100 samples recommended</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>y (Targets):</strong></p>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p></li>
+<li><p>Shape: <code class="docutils literal notranslate"><span class="pre">(n_samples,)</span></code> - 1D array</p></li>
+<li><p>Dtype: <code class="docutils literal notranslate"><span class="pre">float32</span></code> or <code class="docutils literal notranslate"><span class="pre">float64</span></code></p></li>
+<li><p>Values: Any real numbers</p></li>
+<li><p>Constraints:</p>
+<ul>
+<li><p>Must match number of samples in X</p></li>
+<li><p>No NaN or inf values</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="example-creation">
+<h3>Example Creation<a class="headerlink" href="#example-creation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Generate features (1000 samples, 5 features)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Generate targets</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create dataset dictionary</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+
+<span class="c1"># Save as pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;training_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Link to this heading"></a></h3>
+<p>The system automatically validates:</p>
+<p>✓ File is readable pickle
+✓ Contains ‘X’ and ‘y’ keys
+✓ X has shape (n, 5)
+✓ y has shape (n,)
+✓ X and y have same number of samples
+✓ No NaN or inf values</p>
+</section>
+</section>
+<section id="prediction-dataset-format">
+<h2>Prediction Dataset Format<a class="headerlink" href="#prediction-dataset-format" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Structure<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Prediction datasets must be Python pickle files containing a NumPy array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>  <span class="c1"># Shape: (n_samples, 5)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Requirements<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p><strong>File Format:</strong></p>
+<ul class="simple">
+<li><p>Extension: <code class="docutils literal notranslate"><span class="pre">.pkl</span></code></p></li>
+<li><p>Type: Python pickle file</p></li>
+<li><p>Encoding: Binary</p></li>
+</ul>
+<p><strong>Data:</strong></p>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p></li>
+<li><p>Shape: <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">5)</span></code></p></li>
+<li><p>Dtype: <code class="docutils literal notranslate"><span class="pre">float32</span></code> or <code class="docutils literal notranslate"><span class="pre">float64</span></code></p></li>
+<li><p>Values: Any real numbers</p></li>
+<li><p>Constraints:</p>
+<ul>
+<li><p>Must have exactly 5 features</p></li>
+<li><p>No NaN or inf values</p></li>
+<li><p>Any number of samples</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h3>Example Creation<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Generate prediction inputs (100 samples, 5 features)</span>
+<span class="n">X_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Save as pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;prediction_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">X_pred</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-preprocessing">
+<h2>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading"></a></h2>
+<section id="automatic-standardization">
+<h3>Automatic Standardization<a class="headerlink" href="#automatic-standardization" title="Link to this heading"></a></h3>
+<p>The system automatically standardizes all features using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This means:</p>
+<ul class="simple">
+<li><p>Each feature is centered (mean = 0)</p></li>
+<li><p>Each feature is scaled (std = 1)</p></li>
+<li><p>Same transformation applied to predictions</p></li>
+<li><p>No manual normalization needed</p></li>
+</ul>
+</section>
+<section id="data-splitting">
+<h3>Data Splitting<a class="headerlink" href="#data-splitting" title="Link to this heading"></a></h3>
+<p>Training data is automatically split:</p>
+<ul class="simple">
+<li><p><strong>60%</strong> Training set</p></li>
+<li><p><strong>20%</strong> Validation set</p></li>
+<li><p><strong>20%</strong> Test set</p></li>
+</ul>
+<p>Split is random with fixed seed (42) for reproducibility.</p>
+</section>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<section id="dataset-size">
+<h3>Dataset Size<a class="headerlink" href="#dataset-size" title="Link to this heading"></a></h3>
+<p><strong>Recommended Sizes:</strong></p>
+<ul class="simple">
+<li><p>Minimum: 100 samples</p></li>
+<li><p>Optimal: 1,000-10,000 samples</p></li>
+<li><p>Maximum: No hard limit (training time increases)</p></li>
+</ul>
+<p><strong>Training Time by Size:</strong></p>
+<ul class="simple">
+<li><p>100 samples: ~5 seconds</p></li>
+<li><p>1,000 samples: ~15 seconds</p></li>
+<li><p>10,000 samples: ~45 seconds</p></li>
+<li><p>100,000 samples: ~5 minutes</p></li>
+</ul>
+</section>
+<section id="data-quality">
+<h3>Data Quality<a class="headerlink" href="#data-quality" title="Link to this heading"></a></h3>
+<p><strong>Check for:</strong></p>
+<ul class="simple">
+<li><p>Missing values (NaN)</p></li>
+<li><p>Infinite values (inf)</p></li>
+<li><p>Outliers (&gt;3 std from mean)</p></li>
+<li><p>Data type consistency</p></li>
+<li><p>Correct dimensions</p></li>
+</ul>
+<p><strong>Example Validation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate dataset before saving&quot;&quot;&quot;</span>
+
+    <span class="c1"># Check shapes</span>
+    <span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;X must be 2D&quot;</span>
+    <span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;X must have 5 features&quot;</span>
+    <span class="k">assert</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;y must be 1D&quot;</span>
+    <span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;X and y must have same samples&quot;</span>
+
+    <span class="c1"># Check for invalid values</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span> <span class="s2">&quot;X contains NaN&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span> <span class="s2">&quot;X contains inf&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="s2">&quot;y contains NaN&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="s2">&quot;y contains inf&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ Dataset valid: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> samples, 5 features&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use it</span>
+<span class="n">validate_dataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="feature-engineering">
+<h3>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Link to this heading"></a></h3>
+<p>Consider:</p>
+<ul class="simple">
+<li><p>Feature scaling (optional, auto-standardized)</p></li>
+<li><p>Polynomial features for non-linear relationships</p></li>
+<li><p>Interaction terms</p></li>
+<li><p>Domain-specific transformations</p></li>
+</ul>
+</section>
+</section>
+<section id="common-use-cases">
+<h2>Common Use Cases<a class="headerlink" href="#common-use-cases" title="Link to this heading"></a></h2>
+<section id="regression-problems">
+<h3>Regression Problems<a class="headerlink" href="#regression-problems" title="Link to this heading"></a></h3>
+<p><strong>Example: Function Approximation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Approximate function: f(x1,...,x5) = x1^2 + x2*x3 - x4 + sin(x5)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="scientific-data">
+<h3>Scientific Data<a class="headerlink" href="#scientific-data" title="Link to this heading"></a></h3>
+<p><strong>Example: Experimental Data</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Features: temperature, pressure, concentration, time, catalyst</span>
+<span class="c1"># Target: reaction yield</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># Sample 1</span>
+        <span class="p">[</span><span class="mi">350</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># Sample 2</span>
+        <span class="c1"># ... more samples</span>
+    <span class="p">]),</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>  <span class="c1"># Yields</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="common-errors">
+<h3>Common Errors<a class="headerlink" href="#common-errors" title="Link to this heading"></a></h3>
+<p><strong>“Invalid format: X must have shape (n, 5)”</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrong: X is (n, 3)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># ✗</span>
+
+<span class="c1"># Correct: X is (n, 5)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># ✓</span>
+</pre></div>
+</div>
+<p><strong>“Invalid format: Dictionary must contain ‘X’ and ‘y’ keys”</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrong: Missing &#39;y&#39; key</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">}</span>  <span class="c1"># ✗</span>
+
+<span class="c1"># Correct: Both keys present</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>  <span class="c1"># ✓</span>
+</pre></div>
+</div>
+<p><strong>“Invalid format: X and y must have same number of samples”</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrong: Mismatched sizes</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>  <span class="c1"># ✗</span>
+
+<span class="c1"># Correct: Same size</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># ✓</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dataset-templates">
+<h2>Dataset Templates<a class="headerlink" href="#dataset-templates" title="Link to this heading"></a></h2>
+<section id="simple-template">
+<h3>Simple Template<a class="headerlink" href="#simple-template" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Simple dataset template</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Generate data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Simple sum</span>
+
+<span class="c1"># Save</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;simple_dataset.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="complex-template">
+<h3>Complex Template<a class="headerlink" href="#complex-template" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Complex dataset template with validation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_dataset</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create validated dataset&quot;&quot;&quot;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="c1"># Generate features</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Complex target function</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+         <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span>
+         <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">+</span>
+         <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])))</span>
+
+    <span class="c1"># Add noise</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">noise_level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+    <span class="c1"># Validate</span>
+    <span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,)</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+
+<span class="c1"># Create and save</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;complex_dataset.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="quickstart.html"><span class="doc">Quick Start Guide</span></a> - Upload and use datasets</p></li>
+<li><p><a class="reference internal" href="usage.html"><span class="doc">Usage Guide</span></a> - Detailed usage guide</p></li>
+<li><p><a class="reference internal" href="api/backend.html"><span class="doc">Backend API Reference</span></a> - API for dataset upload</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/backend.html" class="btn btn-neutral float-right" title="Backend API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Makimona Kiakisolako (bamk3).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

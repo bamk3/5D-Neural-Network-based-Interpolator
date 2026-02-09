@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quick Start Guide</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="quick-start-guide">
+<h1>Quick Start Guide</h1>
+<p>Get started with the 5D Neural Network Interpolator in just a few minutes.</p>
+<section id="overview">
+<h2>Overview</h2>
+<p>This guide walks you through:</p>
+<ol class="arabic simple">
+<li><p>Starting the application</p></li>
+<li><p>Uploading a training dataset</p></li>
+<li><p>Training a model with custom hyperparameters</p></li>
+<li><p>Making predictions</p></li>
+</ol>
+</section>
+<section id="starting-the-application">
+<h2>Starting the Application</h2>
+<section id="using-docker-recommended">
+<h3>Using Docker (recommended)</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start all services</span>
+./scripts/docker-start.sh
+
+<span class="c1"># Or for quick start (if already set up)</span>
+./scripts/docker-dev.sh
+
+<span class="c1"># To stop services</span>
+./scripts/docker-stop.sh
+</pre></div>
+</div>
+</section>
+<section id="soft-manual-start-using-local-build-shell-script">
+<h3>Soft Manual Start (Using local-build shell script)</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start the backend and frontend using local-build script</span>
+./scripts/local-build.sh
+
+<span class="c1"># To stop services</span>
+./scripts/local-stop.sh
+</pre></div>
+</div>
+</section>
+<section id="manual-start">
+<h3>Manual Start</h3>
+<p><strong>Terminal 1 - Backend:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend
+uvicorn<span class="w"> </span>main:app<span class="w"> </span>--reload
+</pre></div>
+</div>
+<p><strong>Terminal 2 - Frontend:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="access-the-application">
+<h3>Access the Application</h3>
+<p>Open your browser and navigate to:</p>
+<ul class="simple">
+<li><p><strong>Frontend</strong>: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p></li>
+<li><p><strong>API Docs</strong>: <a class="reference external" href="http://localhost:8000/docs">http://localhost:8000/docs</a></p></li>
+</ul>
+</section>
+<section id="build-the-documentation">
+<h3>Build the documentation</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/build-docs.sh
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-by-step-workflow">
+<h2>Step-by-Step Workflow</h2>
+<section id="step-1-upload-training-dataset">
+<h3>Step 1: Upload Training Dataset</h3>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference external" href="http://localhost:3000/upload">http://localhost:3000/upload</a></p></li>
+<li><p>Select <strong>“Training”</strong> dataset type</p></li>
+<li><p>Click <strong>“Click to upload”</strong> or drag and drop your <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> file</p></li>
+<li><p>Wait for validation and preview</p></li>
+<li><p>Click <strong>“Proceed to Training →”</strong></p></li>
+</ol>
+<p><strong>Dataset Requirements:</strong></p>
+<ul class="simple">
+<li><p>Format: Python pickle (<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>)</p></li>
+<li><p>Structure: Dictionary with keys <code class="docutils literal notranslate"><span class="pre">'X'</span></code> and <code class="docutils literal notranslate"><span class="pre">'y'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: NumPy array of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">5)</span></code> - 5D feature vectors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: NumPy array of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,)</span></code> - 1D target values</p></li>
+</ul>
+<p><strong>Example Dataset Creation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Generate sample data</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Save as pickle</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;training_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-configure-hyperparameters">
+<h3>Step 2: Configure Hyperparameters</h3>
+<p>On the training page, you’ll see interactive sliders for:</p>
+<p><strong>Neural Network Architecture:</strong></p>
+<ul class="simple">
+<li><p><strong>Hidden Layer 1</strong>: 8-256 neurons (default: 64)</p></li>
+<li><p><strong>Hidden Layer 2</strong>: 8-128 neurons (default: 32)</p></li>
+<li><p><strong>Hidden Layer 3</strong>: 4-64 neurons (default: 16)</p></li>
+</ul>
+<p><strong>Training Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>Learning Rate</strong>: 0.0001-0.01 (default: 0.001)</p></li>
+<li><p><strong>Max Iterations</strong>: 100-2000 (default: 500)</p></li>
+<li><p><strong>Early Stopping</strong>: On/Off (default: On)</p></li>
+</ul>
+<p><strong>Tips:</strong></p>
+<ul class="simple">
+<li><p>Larger networks (more neurons) = more capacity but slower training</p></li>
+<li><p>Higher learning rates = faster convergence but may be unstable</p></li>
+<li><p>Early stopping prevents overfitting and saves time</p></li>
+</ul>
+</section>
+<section id="step-3-train-the-model">
+<h3>Step 3: Train the Model</h3>
+<ol class="arabic simple">
+<li><p>Adjust hyperparameters using the sliders</p></li>
+<li><p>Click <strong>“Start Training”</strong></p></li>
+<li><p>Wait for training to complete (&lt;1 minute for typical datasets)</p></li>
+<li><p>Review the results:</p>
+<ul class="simple">
+<li><p><strong>R² Score</strong>: Model fit quality (&gt;0.95 is excellent)</p></li>
+<li><p><strong>MSE/MAE/RMSE</strong>: Error metrics</p></li>
+<li><p><strong>Hyperparameters Used</strong>: Confirmation of settings</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Training Results Example:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Training Complete
+─────────────────
+R² Score: 0.9876
+MSE:      0.0123
+MAE:      0.0987
+RMSE:     0.1109
+
+Hyperparameters Used:
+Architecture: [64, 32, 16]
+Learning Rate: 0.001
+Max Iterations: 500
+Early Stopping: Yes
+</pre></div>
+</div>
+</section>
+<section id="step-4-make-predictions">
+<h3>Step 4: Make Predictions</h3>
+<p><strong>Option A: Batch Prediction</strong></p>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference external" href="http://localhost:3000/upload">http://localhost:3000/upload</a></p></li>
+<li><p>Select <strong>“Prediction”</strong> dataset type</p></li>
+<li><p>Upload a <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> file containing only <code class="docutils literal notranslate"><span class="pre">X</span></code> data (shape: <code class="docutils literal notranslate"><span class="pre">n,</span> <span class="pre">5</span></code>)</p></li>
+<li><p>Go to <a class="reference external" href="http://localhost:3000/predict">http://localhost:3000/predict</a></p></li>
+<li><p>Select <strong>“Batch Prediction”</strong> mode</p></li>
+<li><p>Click <strong>“Generate Batch Predictions”</strong></p></li>
+</ol>
+<p><strong>Example Prediction Dataset:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Generate prediction inputs</span>
+<span class="n">X_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Save as pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;prediction_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">X_pred</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Option B: Single Prediction</strong></p>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="http://localhost:3000/predict">http://localhost:3000/predict</a></p></li>
+<li><p>Select <strong>“Single Prediction”</strong> mode</p></li>
+<li><p>Enter values for all 5 features</p></li>
+<li><p>Click <strong>“Predict”</strong></p></li>
+<li><p>View the result</p></li>
+</ol>
+<p><strong>Example Single Prediction:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Input Features:
+F1: 1.2345
+F2: -0.5678
+F3: 0.9876
+F4: -1.2345
+F5: 0.5432
+
+Prediction Result:
+3.456789
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-workflows">
+<h2>Common Workflows</h2>
+<section id="experiment-with-hyperparameters">
+<h3>Experiment with Hyperparameters</h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Upload dataset
+2. Train with default settings
+3. Note R² score
+4. Upload SAME dataset again (resets training state)
+5. Adjust hyperparameters
+6. Train again
+7. Compare results
+</pre></div>
+</div>
+</section>
+<section id="quick-iteration-cycle">
+<h3>Quick Iteration Cycle</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Docker - complete reset</span>
+./scripts/docker-start.sh
+
+<span class="c1"># Or just restart services</span>
+./scripts/docker-dev.sh<span class="w"> </span>restart
+</pre></div>
+</div>
+</section>
+</section>
+<section id="best-practices">
+<h2>Best Practices</h2>
+<section id="dataset-preparation">
+<h3>Dataset Preparation</h3>
+<ul class="simple">
+<li><p><strong>Size</strong>: 1,000-10,000 samples recommended</p></li>
+<li><p><strong>Quality</strong>: Remove NaN/inf values before upload</p></li>
+<li><p><strong>Normalization</strong>: Not required (automatic standardization)</p></li>
+<li><p><strong>Validation</strong>: Check data shape and types before upload</p></li>
+</ul>
+</section>
+<section id="model-training">
+<h3>Model Training</h3>
+<ul class="simple">
+<li><p>Start with default hyperparameters</p></li>
+<li><p>Adjust based on R² score:</p>
+<ul>
+<li><p>R² &lt; 0.8: Increase network size or iterations</p></li>
+<li><p>R² &gt; 0.99: May be overfitting, reduce complexity</p></li>
+<li><p>Training too slow: Reduce iterations or network size</p></li>
+</ul>
+</li>
+<li><p>Early stopping is recommended for most cases</p></li>
+</ul>
+</section>
+<section id="performance-tips">
+<h3>Performance Tips</h3>
+<ul class="simple">
+<li><p>Use Docker for consistent performance</p></li>
+<li><p>Train on datasets &lt; 10,000 samples for &lt;1min training</p></li>
+<li><p>Batch predictions are faster than many single predictions</p></li>
+<li><p>Keep browser tab active during training</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting-quick-start-issues">
+<h2>Troubleshooting Quick Start Issues</h2>
+<p><strong>“Upload Dataset First” button stuck:</strong></p>
+<ul class="simple">
+<li><p>Refresh the page</p></li>
+<li><p>Check backend is running: <a class="reference external" href="http://localhost:8000/health">http://localhost:8000/health</a></p></li>
+<li><p>Re-upload the dataset</p></li>
+</ul>
+<p><strong>Training fails:</strong></p>
+<ul class="simple">
+<li><p>Verify dataset format (must be dictionary with ‘X’ and ‘y’)</p></li>
+<li><p>Check dataset shape (X must be n×5, y must be 1D)</p></li>
+<li><p>Try with smaller dataset first</p></li>
+</ul>
+<p><strong>Predictions fail:</strong></p>
+<ul class="simple">
+<li><p>Ensure model is trained first</p></li>
+<li><p>For batch: upload prediction dataset</p></li>
+<li><p>For single: fill all 5 feature fields</p></li>
+</ul>
+</section>
+<section id="next-steps">
+<h2>Next Steps</h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="usage.xhtml"><span class="doc">Usage Guide</span></a> - Detailed feature documentation</p></li>
+<li><p><a class="reference internal" href="datasets.xhtml"><span class="doc">Dataset Specifications</span></a> - Dataset format specifications</p></li>
+<li><p><a class="reference internal" href="api/backend.xhtml"><span class="doc">Backend API Reference</span></a> - API reference for programmatic access</p></li>
+<li><p><a class="reference internal" href="testing/overview.xhtml"><span class="doc">Testing Overview</span></a> - Running tests</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

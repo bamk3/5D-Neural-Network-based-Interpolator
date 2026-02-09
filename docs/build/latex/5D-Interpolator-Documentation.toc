@@ -1,0 +1,307 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Overview}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Key Features}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Application Features}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Development Features}{5}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Quick Start}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Documentation Contents}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Installation Guide}{9}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Prerequisites}{9}{subsection.4.1.1}%
+\contentsline {subsubsection}{System Requirements}{9}{subsubsection*.5}%
+\contentsline {subsubsection}{Software Requirements}{9}{subsubsection*.6}%
+\contentsline {subsection}{\numberline {4.1.2}Installation Methods}{9}{subsection.4.1.2}%
+\contentsline {subsubsection}{Method 1: Docker Installation (Recommended)}{9}{subsubsection*.7}%
+\contentsline {subsubsection}{Method 2: Manual Installation}{10}{subsubsection*.8}%
+\contentsline {subsection}{\numberline {4.1.3}Environment Configuration}{11}{subsection.4.1.3}%
+\contentsline {subsubsection}{Environment Variables}{11}{subsubsection*.9}%
+\contentsline {subsection}{\numberline {4.1.4}Troubleshooting}{12}{subsection.4.1.4}%
+\contentsline {subsubsection}{Docker Issues}{12}{subsubsection*.10}%
+\contentsline {subsubsection}{Permission Issues (Linux)}{12}{subsubsection*.11}%
+\contentsline {subsubsection}{Python/Node Issues}{12}{subsubsection*.12}%
+\contentsline {subsection}{\numberline {4.1.5}Verifying Installation}{13}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Building Documentation}{13}{subsection.4.1.6}%
+\contentsline {subsubsection}{Quick Build}{13}{subsubsection*.13}%
+\contentsline {subsubsection}{Manual Build}{14}{subsubsection*.14}%
+\contentsline {subsubsection}{Rebuilding Documentation}{14}{subsubsection*.15}%
+\contentsline {subsubsection}{Documentation Requirements}{14}{subsubsection*.16}%
+\contentsline {subsubsection}{Downloading Documentation}{14}{subsubsection*.17}%
+\contentsline {subsection}{\numberline {4.1.7}Next Steps}{15}{subsection.4.1.7}%
+\contentsline {section}{\numberline {4.2}Quick Start Guide}{15}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Overview}{15}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Starting the Application}{15}{subsection.4.2.2}%
+\contentsline {subsubsection}{Using Docker (recommended)}{15}{subsubsection*.18}%
+\contentsline {subsubsection}{Soft Manual Start (Using local\sphinxhyphen {}build shell script)}{16}{subsubsection*.19}%
+\contentsline {subsubsection}{Manual Start}{16}{subsubsection*.20}%
+\contentsline {subsubsection}{Access the Application}{16}{subsubsection*.21}%
+\contentsline {subsubsection}{Build the documentation}{16}{subsubsection*.22}%
+\contentsline {subsection}{\numberline {4.2.3}Step\sphinxhyphen {}by\sphinxhyphen {}Step Workflow}{16}{subsection.4.2.3}%
+\contentsline {subsubsection}{Step 1: Upload Training Dataset}{16}{subsubsection*.23}%
+\contentsline {subsubsection}{Step 2: Configure Hyperparameters}{17}{subsubsection*.24}%
+\contentsline {subsubsection}{Step 3: Train the Model}{17}{subsubsection*.25}%
+\contentsline {subsubsection}{Step 4: Make Predictions}{18}{subsubsection*.26}%
+\contentsline {subsection}{\numberline {4.2.4}Common Workflows}{19}{subsection.4.2.4}%
+\contentsline {subsubsection}{Experiment with Hyperparameters}{19}{subsubsection*.27}%
+\contentsline {subsubsection}{Quick Iteration Cycle}{19}{subsubsection*.28}%
+\contentsline {subsection}{\numberline {4.2.5}Best Practices}{19}{subsection.4.2.5}%
+\contentsline {subsubsection}{Dataset Preparation}{19}{subsubsection*.29}%
+\contentsline {subsubsection}{Model Training}{19}{subsubsection*.30}%
+\contentsline {subsubsection}{Performance Tips}{20}{subsubsection*.31}%
+\contentsline {subsection}{\numberline {4.2.6}Troubleshooting Quick Start Issues}{20}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Next Steps}{20}{subsection.4.2.7}%
+\contentsline {section}{\numberline {4.3}Usage Guide}{20}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Application Workflow}{20}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Step 1: Upload Training Dataset}{20}{subsection.4.3.2}%
+\contentsline {subsubsection}{Dataset Requirements}{21}{subsubsection*.32}%
+\contentsline {subsubsection}{Example Dataset Creation}{21}{subsubsection*.33}%
+\contentsline {subsubsection}{Upload Process}{21}{subsubsection*.34}%
+\contentsline {subsection}{\numberline {4.3.3}Step 2: Train Model}{21}{subsection.4.3.3}%
+\contentsline {subsubsection}{Hyperparameter Configuration}{22}{subsubsection*.35}%
+\contentsline {subsubsection}{Recommended Configurations}{22}{subsubsection*.36}%
+\contentsline {subsubsection}{Training Process}{23}{subsubsection*.37}%
+\contentsline {subsubsection}{Understanding Training Results}{23}{subsubsection*.38}%
+\contentsline {subsection}{\numberline {4.3.4}Step 3: Make Predictions}{24}{subsection.4.3.4}%
+\contentsline {subsubsection}{Batch Prediction}{24}{subsubsection*.39}%
+\contentsline {subsubsection}{Single Prediction}{24}{subsubsection*.40}%
+\contentsline {subsection}{\numberline {4.3.5}Advanced Usage}{25}{subsection.4.3.5}%
+\contentsline {subsubsection}{Experimenting with Hyperparameters}{25}{subsubsection*.41}%
+\contentsline {subsubsection}{API Usage}{25}{subsubsection*.42}%
+\contentsline {subsection}{\numberline {4.3.6}Tips and Best Practices}{26}{subsection.4.3.6}%
+\contentsline {subsubsection}{Dataset Preparation}{26}{subsubsection*.43}%
+\contentsline {subsubsection}{Model Training}{26}{subsubsection*.44}%
+\contentsline {subsubsection}{Prediction}{26}{subsubsection*.45}%
+\contentsline {subsection}{\numberline {4.3.7}Troubleshooting}{26}{subsection.4.3.7}%
+\contentsline {subsubsection}{Training Issues}{26}{subsubsection*.46}%
+\contentsline {subsubsection}{Prediction Issues}{27}{subsubsection*.47}%
+\contentsline {subsection}{\numberline {4.3.8}Keyboard Shortcuts}{27}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.9}Next Steps}{27}{subsection.4.3.9}%
+\contentsline {section}{\numberline {4.4}Dataset Specifications}{27}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Training Dataset Format}{27}{subsection.4.4.1}%
+\contentsline {subsubsection}{Structure}{27}{subsubsection*.48}%
+\contentsline {subsubsection}{Requirements}{28}{subsubsection*.49}%
+\contentsline {subsubsection}{Example Creation}{28}{subsubsection*.50}%
+\contentsline {subsubsection}{Validation}{29}{subsubsection*.51}%
+\contentsline {subsection}{\numberline {4.4.2}Prediction Dataset Format}{29}{subsection.4.4.2}%
+\contentsline {subsubsection}{Structure}{29}{subsubsection*.52}%
+\contentsline {subsubsection}{Requirements}{29}{subsubsection*.53}%
+\contentsline {subsubsection}{Example Creation}{29}{subsubsection*.54}%
+\contentsline {subsection}{\numberline {4.4.3}Data Preprocessing}{29}{subsection.4.4.3}%
+\contentsline {subsubsection}{Automatic Standardization}{29}{subsubsection*.55}%
+\contentsline {subsubsection}{Data Splitting}{30}{subsubsection*.56}%
+\contentsline {subsection}{\numberline {4.4.4}Best Practices}{30}{subsection.4.4.4}%
+\contentsline {subsubsection}{Dataset Size}{30}{subsubsection*.57}%
+\contentsline {subsubsection}{Data Quality}{30}{subsubsection*.58}%
+\contentsline {subsubsection}{Feature Engineering}{31}{subsubsection*.59}%
+\contentsline {subsection}{\numberline {4.4.5}Common Use Cases}{31}{subsection.4.4.5}%
+\contentsline {subsubsection}{Regression Problems}{31}{subsubsection*.60}%
+\contentsline {subsubsection}{Scientific Data}{31}{subsubsection*.61}%
+\contentsline {subsection}{\numberline {4.4.6}Troubleshooting}{32}{subsection.4.4.6}%
+\contentsline {subsubsection}{Common Errors}{32}{subsubsection*.62}%
+\contentsline {subsection}{\numberline {4.4.7}Dataset Templates}{32}{subsection.4.4.7}%
+\contentsline {subsubsection}{Simple Template}{32}{subsubsection*.63}%
+\contentsline {subsubsection}{Complex Template}{33}{subsubsection*.64}%
+\contentsline {subsection}{\numberline {4.4.8}Next Steps}{33}{subsection.4.4.8}%
+\contentsline {section}{\numberline {4.5}Backend API Reference}{34}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Base URL}{34}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Interactive Documentation}{34}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Health \& Status Endpoints}{34}{subsection.4.5.3}%
+\contentsline {subsubsection}{GET /}{34}{subsubsection*.65}%
+\contentsline {subsubsection}{GET /health}{34}{subsubsection*.66}%
+\contentsline {subsubsection}{GET /status}{34}{subsubsection*.67}%
+\contentsline {subsection}{\numberline {4.5.4}Dataset Upload Endpoints}{35}{subsection.4.5.4}%
+\contentsline {subsubsection}{POST /upload\sphinxhyphen {}fit\sphinxhyphen {}dataset/}{35}{subsubsection*.68}%
+\contentsline {subsubsection}{POST /upload\sphinxhyphen {}predict\sphinxhyphen {}dataset/}{36}{subsubsection*.69}%
+\contentsline {subsection}{\numberline {4.5.5}Model Training Endpoints}{36}{subsection.4.5.5}%
+\contentsline {subsubsection}{GET /hyperparameters/defaults}{36}{subsubsection*.70}%
+\contentsline {subsubsection}{POST /start\sphinxhyphen {}training/}{37}{subsubsection*.71}%
+\contentsline {subsection}{\numberline {4.5.6}Prediction Endpoints}{38}{subsection.4.5.6}%
+\contentsline {subsubsection}{POST /start\sphinxhyphen {}predict/}{38}{subsubsection*.72}%
+\contentsline {subsubsection}{POST /predict\sphinxhyphen {}single/}{39}{subsubsection*.73}%
+\contentsline {subsection}{\numberline {4.5.7}Python Client Examples}{39}{subsection.4.5.7}%
+\contentsline {subsubsection}{Using requests library}{39}{subsubsection*.74}%
+\contentsline {subsection}{\numberline {4.5.8}Error Handling}{40}{subsection.4.5.8}%
+\contentsline {subsection}{\numberline {4.5.9}Rate Limiting}{40}{subsection.4.5.9}%
+\contentsline {subsection}{\numberline {4.5.10}Authentication}{40}{subsection.4.5.10}%
+\contentsline {section}{\numberline {4.6}Frontend Components}{41}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Technology Stack}{41}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Project Structure}{41}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Root Layout}{41}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.6.4}Home Page}{42}{subsection.4.6.4}%
+\contentsline {subsection}{\numberline {4.6.5}Upload Page}{42}{subsection.4.6.5}%
+\contentsline {subsubsection}{State Management}{42}{subsubsection*.75}%
+\contentsline {subsubsection}{Upload Process}{43}{subsubsection*.76}%
+\contentsline {subsection}{\numberline {4.6.6}Train Page}{43}{subsection.4.6.6}%
+\contentsline {subsubsection}{State Management}{43}{subsubsection*.77}%
+\contentsline {subsubsection}{Hyperparameter Controls}{44}{subsubsection*.78}%
+\contentsline {subsubsection}{Training Process}{45}{subsubsection*.79}%
+\contentsline {subsubsection}{Results Display}{45}{subsubsection*.80}%
+\contentsline {subsubsection}{Button Logic}{45}{subsubsection*.81}%
+\contentsline {subsection}{\numberline {4.6.7}Predict Page}{45}{subsection.4.6.7}%
+\contentsline {subsubsection}{State Management}{46}{subsubsection*.82}%
+\contentsline {subsubsection}{Batch Prediction}{46}{subsubsection*.83}%
+\contentsline {subsubsection}{Single Prediction}{46}{subsubsection*.84}%
+\contentsline {subsection}{\numberline {4.6.8}Styling}{47}{subsection.4.6.8}%
+\contentsline {subsubsection}{Global Styles}{47}{subsubsection*.85}%
+\contentsline {subsubsection}{Common Patterns}{47}{subsubsection*.86}%
+\contentsline {subsection}{\numberline {4.6.9}Error Handling}{48}{subsection.4.6.9}%
+\contentsline {subsection}{\numberline {4.6.10}Responsive Design}{49}{subsection.4.6.10}%
+\contentsline {subsection}{\numberline {4.6.11}Dark Mode}{49}{subsection.4.6.11}%
+\contentsline {subsection}{\numberline {4.6.12}Best Practices}{49}{subsection.4.6.12}%
+\contentsline {subsection}{\numberline {4.6.13}Development}{49}{subsection.4.6.13}%
+\contentsline {subsection}{\numberline {4.6.14}Next Steps}{50}{subsection.4.6.14}%
+\contentsline {section}{\numberline {4.7}Neural Network Module}{50}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Module Overview}{50}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}FastNeuralNetwork Class}{50}{subsection.4.7.2}%
+\contentsline {subsubsection}{Parameters:}{50}{subsubsection*.89}%
+\contentsline {subsubsection}{Example:}{51}{subsubsection*.90}%
+\contentsline {subsection}{\numberline {4.7.3}Top\sphinxhyphen {}Level Functions}{52}{subsection.4.7.3}%
+\contentsline {subsubsection}{benchmark\_training\_speed}{52}{subsubsection*.96}%
+\contentsline {subsubsection}{start\_predict}{52}{subsubsection*.98}%
+\contentsline {subsubsection}{demonstrate\_configurability}{52}{subsubsection*.100}%
+\contentsline {subsection}{\numberline {4.7.4}Data Handling Module}{52}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Usage Examples}{52}{subsection.4.7.5}%
+\contentsline {subsubsection}{Basic Training}{52}{subsubsection*.103}%
+\contentsline {subsubsection}{Custom Configuration}{53}{subsubsection*.104}%
+\contentsline {subsubsection}{Using Benchmark Function}{53}{subsubsection*.105}%
+\contentsline {subsubsection}{Making Predictions}{53}{subsubsection*.106}%
+\contentsline {subsubsection}{Model Evaluation}{54}{subsubsection*.107}%
+\contentsline {subsubsection}{Getting Model Parameters}{54}{subsubsection*.108}%
+\contentsline {subsection}{\numberline {4.7.6}See Also}{54}{subsection.4.7.6}%
+\contentsline {section}{\numberline {4.8}Performance and Profiling}{54}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Executive Summary}{54}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Test Configuration}{55}{subsection.4.8.2}%
+\contentsline {subsection}{\numberline {4.8.3}Benchmark Results}{55}{subsection.4.8.3}%
+\contentsline {subsubsection}{Training Time Analysis}{55}{subsubsection*.109}%
+\contentsline {subsubsection}{Scaling Behavior}{55}{subsubsection*.110}%
+\contentsline {subsection}{\numberline {4.8.4}Memory Profiling}{56}{subsection.4.8.4}%
+\contentsline {subsubsection}{Training Memory Usage}{56}{subsubsection*.111}%
+\contentsline {subsubsection}{Prediction Memory Usage}{56}{subsubsection*.112}%
+\contentsline {subsubsection}{Memory Breakdown}{56}{subsubsection*.113}%
+\contentsline {subsection}{\numberline {4.8.5}Accuracy Metrics}{57}{subsection.4.8.5}%
+\contentsline {subsubsection}{R\(\sp {\text {2}}\) Score Analysis}{57}{subsubsection*.114}%
+\contentsline {subsubsection}{Error Metrics}{57}{subsubsection*.115}%
+\contentsline {subsubsection}{Accuracy vs. Dataset Size}{57}{subsubsection*.116}%
+\contentsline {subsection}{\numberline {4.8.6}Computational Characteristics}{58}{subsection.4.8.6}%
+\contentsline {subsubsection}{Training Speed Breakdown}{58}{subsubsection*.117}%
+\contentsline {subsubsection}{Early Stopping Impact}{58}{subsubsection*.118}%
+\contentsline {subsubsection}{CPU Utilization}{59}{subsubsection*.119}%
+\contentsline {subsection}{\numberline {4.8.7}Model Size and Storage}{59}{subsection.4.8.7}%
+\contentsline {subsubsection}{Serialized Model Size}{59}{subsubsection*.120}%
+\contentsline {subsubsection}{Storage Requirements}{59}{subsubsection*.121}%
+\contentsline {subsection}{\numberline {4.8.8}Scalability Analysis}{59}{subsection.4.8.8}%
+\contentsline {subsubsection}{Projected Performance}{59}{subsubsection*.122}%
+\contentsline {subsubsection}{Bottleneck Analysis}{60}{subsubsection*.123}%
+\contentsline {subsection}{\numberline {4.8.9}Comparison with Alternatives}{60}{subsection.4.8.9}%
+\contentsline {subsubsection}{vs. Traditional Methods}{60}{subsubsection*.124}%
+\contentsline {subsection}{\numberline {4.8.10}Best Practices}{60}{subsection.4.8.10}%
+\contentsline {subsubsection}{Dataset Size Recommendations}{60}{subsubsection*.125}%
+\contentsline {subsubsection}{Hyperparameter Tuning}{61}{subsubsection*.126}%
+\contentsline {subsubsection}{Memory Optimization}{61}{subsubsection*.127}%
+\contentsline {subsubsection}{Performance Monitoring}{61}{subsubsection*.128}%
+\contentsline {subsection}{\numberline {4.8.11}Running Benchmarks}{62}{subsection.4.8.11}%
+\contentsline {subsubsection}{Automated Benchmarking}{62}{subsubsection*.129}%
+\contentsline {subsubsection}{Custom Benchmarks}{62}{subsubsection*.130}%
+\contentsline {subsubsection}{Interpreting Results}{62}{subsubsection*.131}%
+\contentsline {subsection}{\numberline {4.8.12}Profiling Tools}{63}{subsection.4.8.12}%
+\contentsline {subsubsection}{Memory Profiling}{63}{subsubsection*.132}%
+\contentsline {subsubsection}{Time Profiling}{63}{subsubsection*.133}%
+\contentsline {subsection}{\numberline {4.8.13}Conclusion}{63}{subsection.4.8.13}%
+\contentsline {subsection}{\numberline {4.8.14}See Also}{63}{subsection.4.8.14}%
+\contentsline {section}{\numberline {4.9}Testing Overview}{64}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Test Suite Summary}{64}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Test Categories}{64}{subsection.4.9.2}%
+\contentsline {subsubsection}{Unit Tests (28 tests)}{64}{subsubsection*.134}%
+\contentsline {subsubsection}{Integration Tests (24 tests)}{64}{subsubsection*.135}%
+\contentsline {subsection}{\numberline {4.9.3}Running Tests}{65}{subsection.4.9.3}%
+\contentsline {subsubsection}{Using Docker}{65}{subsubsection*.136}%
+\contentsline {subsubsection}{Manual Installation}{65}{subsubsection*.137}%
+\contentsline {subsection}{\numberline {4.9.4}Test Configuration}{65}{subsection.4.9.4}%
+\contentsline {subsubsection}{pytest.ini}{65}{subsubsection*.138}%
+\contentsline {subsection}{\numberline {4.9.5}Test Fixtures}{66}{subsection.4.9.5}%
+\contentsline {subsubsection}{sample\_data\_small}{66}{subsubsection*.139}%
+\contentsline {subsubsection}{sample\_data\_medium}{66}{subsubsection*.140}%
+\contentsline {subsubsection}{temp\_dataset\_file}{66}{subsubsection*.141}%
+\contentsline {subsubsection}{test\_client}{67}{subsubsection*.142}%
+\contentsline {subsubsection}{reset\_global\_state}{67}{subsubsection*.143}%
+\contentsline {subsection}{\numberline {4.9.6}Coverage Report}{67}{subsection.4.9.6}%
+\contentsline {subsubsection}{Current Coverage by Module}{67}{subsubsection*.144}%
+\contentsline {subsubsection}{Viewing Coverage Reports}{67}{subsubsection*.145}%
+\contentsline {subsection}{\numberline {4.9.7}Example Test Cases}{68}{subsection.4.9.7}%
+\contentsline {subsubsection}{Unit Test Example}{68}{subsubsection*.146}%
+\contentsline {subsubsection}{Integration Test Example}{68}{subsubsection*.147}%
+\contentsline {subsection}{\numberline {4.9.8}Continuous Integration}{69}{subsection.4.9.8}%
+\contentsline {subsubsection}{GitHub Actions Example}{69}{subsubsection*.148}%
+\contentsline {subsection}{\numberline {4.9.9}Writing New Tests}{69}{subsection.4.9.9}%
+\contentsline {subsubsection}{Guidelines}{69}{subsubsection*.149}%
+\contentsline {subsubsection}{Example New Test}{69}{subsubsection*.150}%
+\contentsline {subsection}{\numberline {4.9.10}Performance Tests}{70}{subsection.4.9.10}%
+\contentsline {subsubsection}{Training Speed Test}{70}{subsubsection*.151}%
+\contentsline {subsection}{\numberline {4.9.11}Troubleshooting Tests}{70}{subsection.4.9.11}%
+\contentsline {subsubsection}{Common Issues}{70}{subsubsection*.152}%
+\contentsline {subsection}{\numberline {4.9.12}Next Steps}{70}{subsection.4.9.12}%
+\contentsline {section}{\numberline {4.10}Local Deployment Guide}{71}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Quick Deploy Script}{71}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Manual Deployment Steps}{71}{subsection.4.10.2}%
+\contentsline {subsubsection}{Step 1: Prerequisites Check}{71}{subsubsection*.153}%
+\contentsline {subsubsection}{Step 2: Backend Setup}{71}{subsubsection*.154}%
+\contentsline {subsubsection}{Step 3: Frontend Setup}{72}{subsubsection*.155}%
+\contentsline {subsubsection}{Step 4: Start Services}{72}{subsubsection*.156}%
+\contentsline {subsubsection}{Step 5: Verify Deployment}{72}{subsubsection*.157}%
+\contentsline {subsection}{\numberline {4.10.3}Access the Application}{73}{subsection.4.10.3}%
+\contentsline {subsection}{\numberline {4.10.4}Using the Application}{73}{subsection.4.10.4}%
+\contentsline {subsubsection}{Upload Sample Dataset}{73}{subsubsection*.158}%
+\contentsline {subsection}{\numberline {4.10.5}Environment Configuration}{74}{subsection.4.10.5}%
+\contentsline {subsection}{\numberline {4.10.6}Managing Services}{74}{subsection.4.10.6}%
+\contentsline {subsubsection}{Stop Services}{74}{subsubsection*.159}%
+\contentsline {subsubsection}{Restart Services}{74}{subsubsection*.160}%
+\contentsline {subsubsection}{Check Running Services}{74}{subsubsection*.161}%
+\contentsline {subsubsection}{Kill Services}{74}{subsubsection*.162}%
+\contentsline {subsection}{\numberline {4.10.7}Troubleshooting}{75}{subsection.4.10.7}%
+\contentsline {subsubsection}{Port Already in Use}{75}{subsubsection*.163}%
+\contentsline {subsubsection}{Module Not Found Errors}{75}{subsubsection*.164}%
+\contentsline {subsubsection}{Permission Errors}{75}{subsubsection*.165}%
+\contentsline {subsubsection}{Database/State Issues}{75}{subsubsection*.166}%
+\contentsline {subsection}{\numberline {4.10.8}Performance Optimization}{75}{subsection.4.10.8}%
+\contentsline {subsubsection}{Backend Optimization}{75}{subsubsection*.167}%
+\contentsline {subsubsection}{Frontend Optimization}{76}{subsubsection*.168}%
+\contentsline {subsection}{\numberline {4.10.9}Data Persistence}{76}{subsection.4.10.9}%
+\contentsline {subsection}{\numberline {4.10.10}Development Mode Features}{76}{subsection.4.10.10}%
+\contentsline {subsubsection}{Hot Reload}{76}{subsubsection*.169}%
+\contentsline {subsubsection}{Debug Mode}{76}{subsubsection*.170}%
+\contentsline {subsubsection}{API Testing}{76}{subsubsection*.171}%
+\contentsline {subsection}{\numberline {4.10.11}Next Steps}{77}{subsection.4.10.11}%
+\contentsline {section}{\numberline {4.11}System Architecture}{77}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Overview}{77}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Technology Stack}{78}{subsection.4.11.2}%
+\contentsline {subsubsection}{Frontend}{78}{subsubsection*.172}%
+\contentsline {subsubsection}{Backend}{78}{subsubsection*.173}%
+\contentsline {subsection}{\numberline {4.11.3}Data Flow}{79}{subsection.4.11.3}%
+\contentsline {subsubsection}{Training Workflow}{79}{subsubsection*.174}%
+\contentsline {subsubsection}{Prediction Workflow}{79}{subsubsection*.175}%
+\contentsline {subsection}{\numberline {4.11.4}State Management}{80}{subsection.4.11.4}%
+\contentsline {subsubsection}{Backend State}{80}{subsubsection*.176}%
+\contentsline {subsubsection}{Frontend State}{81}{subsubsection*.177}%
+\contentsline {subsection}{\numberline {4.11.5}API Design}{81}{subsection.4.11.5}%
+\contentsline {subsubsection}{RESTful Principles}{81}{subsubsection*.178}%
+\contentsline {subsubsection}{Endpoints}{81}{subsubsection*.179}%
+\contentsline {subsubsection}{Request/Response Format}{82}{subsubsection*.180}%
+\contentsline {subsection}{\numberline {4.11.6}Data Processing Pipeline}{83}{subsection.4.11.6}%
+\contentsline {subsubsection}{Data Validation}{83}{subsubsection*.181}%
+\contentsline {subsubsection}{Data Preprocessing}{84}{subsubsection*.182}%
+\contentsline {subsection}{\numberline {4.11.7}Security Considerations}{84}{subsection.4.11.7}%
+\contentsline {subsubsection}{Current Implementation}{84}{subsubsection*.183}%
+\contentsline {subsubsection}{Security Measures}{84}{subsubsection*.184}%
+\contentsline {subsection}{\numberline {4.11.8}Scalability}{85}{subsection.4.11.8}%
+\contentsline {subsubsection}{Current Limitations}{85}{subsubsection*.185}%
+\contentsline {subsubsection}{Potential Improvements}{85}{subsubsection*.186}%
+\contentsline {subsection}{\numberline {4.11.9}Deployment Options}{86}{subsection.4.11.9}%
+\contentsline {subsubsection}{Development}{86}{subsubsection*.187}%
+\contentsline {subsubsection}{Production}{86}{subsubsection*.188}%
+\contentsline {subsection}{\numberline {4.11.10}Monitoring \& Logging}{86}{subsection.4.11.10}%
+\contentsline {subsubsection}{Current Logging}{86}{subsubsection*.189}%
+\contentsline {subsubsection}{Production Logging}{87}{subsubsection*.190}%
+\contentsline {subsection}{\numberline {4.11.11}Testing Strategy}{87}{subsection.4.11.11}%
+\contentsline {subsection}{\numberline {4.11.12}Next Steps}{87}{subsection.4.11.12}%
+\contentsline {chapter}{\numberline {5}Indices and Tables}{89}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Project Information}{91}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Links}{91}{section.6.1}%
+\contentsline {chapter}{Python Module Index}{93}{section*.192}%

@@ -1,0 +1,160 @@
+5D Neural Network Interpolator Documentation
+============================================
+
+Welcome to the **5D Neural Network Interpolator** documentation. This application provides a complete solution for 5D function interpolation using neural networks, developed as coursework for the DIS course at the University of Cambridge.
+
+.. image:: https://img.shields.io/badge/python-3.12-blue.svg
+   :target: https://www.python.org/downloads/release/python-312/
+   :alt: Python Version
+
+.. image:: https://img.shields.io/badge/Next.js-16-black.svg
+   :target: https://nextjs.org/
+   :alt: Next.js Version
+
+Overview
+--------
+
+The 5D Interpolator is a full-stack web application that enables:
+
+* **Fast Neural Network Training**: CPU-optimized training in under 1 minute on datasets up to 10,000 samples
+* **Configurable Architecture**: Fully customizable hyperparameters including layer sizes, learning rate, and iterations
+* **Interactive Interface**: Modern React-based UI with real-time feedback
+* **Batch & Single Predictions**: Support for both bulk dataset predictions and individual feature inputs
+* **RESTful API**: Complete FastAPI backend with automatic documentation
+
+Key Features
+-----------
+
+Application Features
+~~~~~~~~~~~~~~~~~~~
+
+* 5D neural network interpolation with configurable architecture
+* Dataset upload (.pkl format) with automatic validation
+* Model training with customizable hyperparameters via sliders
+* Single and batch predictions
+* RESTful API with OpenAPI/Swagger documentation
+* Modern, responsive UI with dark mode support
+
+Development Features
+~~~~~~~~~~~~~~~~~~~
+
+* Docker containerization with hot reload
+* Comprehensive test suite (52 tests, 74% coverage)
+* Multi-stage Docker builds for development and production
+* Environment-based configuration
+* Helper scripts for common operations
+
+Quick Start
+----------
+
+**Using Docker (Recommended)**
+
+.. code-block:: bash
+
+   # Complete setup from scratch
+   ./scripts/docker-start.sh
+
+   # Access the application
+   # Frontend: http://localhost:3000
+   # Backend API: http://localhost:8000
+   # API Documentation: http://localhost:8000/docs
+
+**Manual Setup**
+
+.. code-block:: bash
+
+   # Backend
+   cd backend
+   pip install -r requirements.txt
+   uvicorn main:app --reload
+
+   # Frontend (separate terminal)
+   cd frontend
+   npm install
+   npm run dev
+
+**Download Documentation**
+
+This documentation is available in multiple formats:
+
+.. code-block:: bash
+
+   # Generate PDF and HTML archives
+   ./scripts/build-docs-pdf.sh
+
+Available formats:
+
+* **PDF** (~419 KB) - For offline reading and printing
+* **HTML Archive** (~8.2 MB) - Complete offline browsable documentation
+* **Online HTML** - This current format
+
+See :doc:`installation` for details on building and downloading documentation.
+
+Documentation Contents
+--------------------
+
+.. toctree::
+   :maxdepth: 2
+   :caption: User Guide
+
+   installation
+   quickstart
+   usage
+   datasets
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API Reference
+
+   api/backend
+   api/frontend
+   api/neural_network
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Performance
+
+   performance
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Testing
+
+   testing/overview
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Deployment
+
+   deployment/local
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Additional Resources
+
+   architecture
+
+Indices and Tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+Project Information
+==================
+
+:Author: Makimona Kiakisolako (bamk3)
+:Institution: University of Cambridge
+:Course: DIS Course 2025
+:License: MIT
+:Version: 0.1.0
+:Contact: bamk3@cam.ac.uk
+
+Links
+-----
+
+* `GitHub Repository <#>`_
+* `API Documentation <http://localhost:8000/docs>`_
+* `fivedreg Package Documentation <fivedreg-package/index.html>`_
+* `Issue Tracker <#>`_

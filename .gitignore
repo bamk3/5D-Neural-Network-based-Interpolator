@@ -1,0 +1,22 @@
+# Environment files
+.env
+.env.local
+
+# Docker
+docker-compose.override.yml.local
+
+# Backups
+backups/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

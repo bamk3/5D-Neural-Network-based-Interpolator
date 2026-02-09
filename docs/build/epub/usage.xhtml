@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Usage Guide</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="usage-guide">
+<h1>Usage Guide</h1>
+<p>Comprehensive guide to using the 5D Neural Network Interpolator.</p>
+<section id="application-workflow">
+<h2>Application Workflow</h2>
+<p>The typical workflow consists of three main steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Upload Training Dataset</strong> → 2. <strong>Train Model</strong> → 3. <strong>Make Predictions</strong></p></li>
+</ol>
+</section>
+<section id="step-1-upload-training-dataset">
+<h2>Step 1: Upload Training Dataset</h2>
+<p>Navigate to the Upload page and select a training dataset.</p>
+<section id="dataset-requirements">
+<h3>Dataset Requirements</h3>
+<p>The training dataset must be a Python pickle file (<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>) containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>  <span class="c1"># Shape: (n_samples, 5)</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>   <span class="c1"># Shape: (n_samples,)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: 5-dimensional feature vectors (independent variables)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: 1-dimensional target values (dependent variable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_samples</span></code>: Number of training examples</p></li>
+</ul>
+</section>
+<section id="example-dataset-creation">
+<h3>Example Dataset Creation</h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Generate 1000 samples</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Create 5D features</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Create target (example: sum of squares)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Save as pickle</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;training_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="upload-process">
+<h3>Upload Process</h3>
+<ol class="arabic simple">
+<li><p>Click <strong>“Training”</strong> dataset type</p></li>
+<li><p>Click upload area or drag file</p></li>
+<li><p>Wait for validation</p></li>
+<li><p>Review data preview showing:</p>
+<ul class="simple">
+<li><p>Total samples</p></li>
+<li><p>Data shape</p></li>
+<li><p>First 5 rows</p></li>
+</ul>
+</li>
+<li><p>Click <strong>“Proceed to Training →”</strong></p></li>
+</ol>
+</section>
+</section>
+<section id="step-2-train-model">
+<h2>Step 2: Train Model</h2>
+<p>Configure hyperparameters and train the neural network.</p>
+<section id="hyperparameter-configuration">
+<h3>Hyperparameter Configuration</h3>
+<p><strong>Neural Network Architecture</strong></p>
+<ul class="simple">
+<li><p><strong>Hidden Layer 1</strong> (8-256 neurons)</p>
+<ul>
+<li><p>Controls first layer capacity</p></li>
+<li><p>Default: 64 neurons</p></li>
+<li><p>Larger = more complex patterns</p></li>
+</ul>
+</li>
+<li><p><strong>Hidden Layer 2</strong> (8-128 neurons)</p>
+<ul>
+<li><p>Controls second layer capacity</p></li>
+<li><p>Default: 32 neurons</p></li>
+<li><p>Typically smaller than layer 1</p></li>
+</ul>
+</li>
+<li><p><strong>Hidden Layer 3</strong> (4-64 neurons)</p>
+<ul>
+<li><p>Controls third layer capacity</p></li>
+<li><p>Default: 16 neurons</p></li>
+<li><p>Smallest layer before output</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Training Parameters</strong></p>
+<ul class="simple">
+<li><p><strong>Learning Rate</strong> (0.0001-0.01)</p>
+<ul>
+<li><p>Speed of gradient descent</p></li>
+<li><p>Default: 0.001</p></li>
+<li><p>Higher = faster but less stable</p></li>
+<li><p>Lower = slower but more precise</p></li>
+</ul>
+</li>
+<li><p><strong>Max Iterations</strong> (100-2000)</p>
+<ul>
+<li><p>Maximum training epochs</p></li>
+<li><p>Default: 500</p></li>
+<li><p>Higher = more training time</p></li>
+<li><p>May stop early if enabled</p></li>
+</ul>
+</li>
+<li><p><strong>Early Stopping</strong> (On/Off)</p>
+<ul>
+<li><p>Stops when validation loss plateaus</p></li>
+<li><p>Default: On (recommended)</p></li>
+<li><p>Prevents overfitting</p></li>
+<li><p>Saves computation time</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="recommended-configurations">
+<h3>Recommended Configurations</h3>
+<p><strong>Default (Balanced)</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Architecture: [64, 32, 16]
+Learning Rate: 0.001
+Max Iterations: 500
+Early Stopping: On
+
+Use for: Most datasets
+Expected time: 15-30 seconds
+</pre></div>
+</div>
+<p><strong>Fast Training</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Architecture: [32, 16, 8]
+Learning Rate: 0.01
+Max Iterations: 200
+Early Stopping: On
+
+Use for: Quick experiments
+Expected time: 5-10 seconds
+</pre></div>
+</div>
+<p><strong>High Accuracy</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Architecture: [128, 64, 32]
+Learning Rate: 0.001
+Max Iterations: 1000
+Early Stopping: On
+
+Use for: Best possible fit
+Expected time: 30-60 seconds
+</pre></div>
+</div>
+</section>
+<section id="training-process">
+<h3>Training Process</h3>
+<ol class="arabic simple">
+<li><p>Adjust sliders to desired values</p></li>
+<li><p>Click <strong>“Start Training”</strong></p></li>
+<li><p>Wait for training (typically &lt;1 minute)</p></li>
+<li><p>Review results</p></li>
+</ol>
+</section>
+<section id="understanding-training-results">
+<h3>Understanding Training Results</h3>
+<p>After training completes, you’ll see:</p>
+<p><strong>Performance Metrics</strong></p>
+<ul class="simple">
+<li><p><strong>R² Score</strong>: Model fit quality (0-1)</p>
+<ul>
+<li><p>&gt;0.95: Excellent</p></li>
+<li><p>0.90-0.95: Very good</p></li>
+<li><p>0.80-0.90: Good</p></li>
+<li><p>&lt;0.80: May need tuning</p></li>
+</ul>
+</li>
+<li><p><strong>MSE (Mean Squared Error)</strong>: Average squared error</p>
+<ul>
+<li><p>Lower is better</p></li>
+<li><p>Scale depends on target values</p></li>
+</ul>
+</li>
+<li><p><strong>MAE (Mean Absolute Error)</strong>: Average absolute error</p>
+<ul>
+<li><p>Lower is better</p></li>
+<li><p>Same units as target variable</p></li>
+</ul>
+</li>
+<li><p><strong>RMSE (Root Mean Squared Error)</strong>: Square root of MSE</p>
+<ul>
+<li><p>Lower is better</p></li>
+<li><p>Same units as target variable</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Hyperparameters Used</strong></p>
+<p>Displays the configuration used for training.</p>
+</section>
+</section>
+<section id="step-3-make-predictions">
+<h2>Step 3: Make Predictions</h2>
+<p>Two prediction modes are available.</p>
+<section id="batch-prediction">
+<h3>Batch Prediction</h3>
+<p>For predicting multiple samples at once.</p>
+<p><strong>Dataset Requirements:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pickle file containing only X data</span>
+<span class="n">X_pred</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>  <span class="c1"># Shape: (n_samples, 5)</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="c1"># Create prediction inputs</span>
+<span class="n">X_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Save as pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;prediction_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">X_pred</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Upload prediction dataset (Upload page)</p></li>
+<li><p>Go to Predict page</p></li>
+<li><p>Select <strong>“Batch Prediction”</strong></p></li>
+<li><p>Click <strong>“Generate Batch Predictions”</strong></p></li>
+<li><p>View results</p></li>
+</ol>
+</section>
+<section id="single-prediction">
+<h3>Single Prediction</h3>
+<p>For predicting one sample at a time.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Go to Predict page</p></li>
+<li><p>Select <strong>“Single Prediction”</strong></p></li>
+<li><p>Enter values for all 5 features</p></li>
+<li><p>Click <strong>“Predict”</strong></p></li>
+<li><p>View result</p></li>
+</ol>
+<p><strong>Example Input:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Feature 1: 1.2345
+Feature 2: -0.5678
+Feature 3: 0.9876
+Feature 4: -1.2345
+Feature 5: 0.5432
+
+Result: 3.456789
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-usage">
+<h2>Advanced Usage</h2>
+<section id="experimenting-with-hyperparameters">
+<h3>Experimenting with Hyperparameters</h3>
+<p>To compare different configurations:</p>
+<ol class="arabic simple">
+<li><p>Train with configuration A</p></li>
+<li><p>Note R² score</p></li>
+<li><p>Go to Upload page</p></li>
+<li><p>Re-upload SAME dataset (resets state)</p></li>
+<li><p>Return to Train page</p></li>
+<li><p>Train with configuration B</p></li>
+<li><p>Compare results</p></li>
+</ol>
+</section>
+<section id="api-usage">
+<h3>API Usage</h3>
+<p>For programmatic access, use the REST API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000&quot;</span>
+
+<span class="c1"># Upload dataset</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/upload-fit-dataset/&quot;</span><span class="p">,</span>
+        <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">f</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="c1"># Train with custom hyperparameters</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/start-training/&quot;</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;hyperparameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;hidden_layer_1&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+            <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.01</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Make prediction</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/predict-single/&quot;</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="api/backend.xhtml"><span class="doc">Backend API Reference</span></a> for complete API reference.</p>
+</section>
+</section>
+<section id="tips-and-best-practices">
+<h2>Tips and Best Practices</h2>
+<section id="dataset-preparation">
+<h3>Dataset Preparation</h3>
+<ul class="simple">
+<li><p>Remove NaN/inf values before upload</p></li>
+<li><p>Ensure consistent data types</p></li>
+<li><p>Check for outliers</p></li>
+<li><p>Recommended size: 1,000-10,000 samples</p></li>
+</ul>
+</section>
+<section id="model-training">
+<h3>Model Training</h3>
+<ul class="simple">
+<li><p>Start with defaults</p></li>
+<li><p>Increase complexity if R² &lt; 0.9</p></li>
+<li><p>Reduce complexity if overfitting</p></li>
+<li><p>Use early stopping for efficiency</p></li>
+<li><p>Monitor training time</p></li>
+</ul>
+</section>
+<section id="prediction">
+<h3>Prediction</h3>
+<ul class="simple">
+<li><p>Ensure prediction data matches training scale</p></li>
+<li><p>Use batch mode for efficiency</p></li>
+<li><p>Single mode good for testing</p></li>
+<li><p>Validate results against known values</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting</h2>
+<section id="training-issues">
+<h3>Training Issues</h3>
+<p><strong>R² score too low (&lt;0.8):</strong></p>
+<ul class="simple">
+<li><p>Increase network size</p></li>
+<li><p>Increase iterations</p></li>
+<li><p>Try different learning rate</p></li>
+<li><p>Check data quality</p></li>
+</ul>
+<p><strong>Training too slow (&gt;60 seconds):</strong></p>
+<ul class="simple">
+<li><p>Reduce network size</p></li>
+<li><p>Reduce iterations</p></li>
+<li><p>Enable early stopping</p></li>
+<li><p>Use smaller dataset</p></li>
+</ul>
+<p><strong>Model fails to converge:</strong></p>
+<ul class="simple">
+<li><p>Reduce learning rate</p></li>
+<li><p>Increase iterations</p></li>
+<li><p>Check for data issues</p></li>
+</ul>
+</section>
+<section id="prediction-issues">
+<h3>Prediction Issues</h3>
+<p><strong>Predictions seem wrong:</strong></p>
+<ul class="simple">
+<li><p>Verify model is trained</p></li>
+<li><p>Check prediction data format</p></li>
+<li><p>Ensure feature scales match training</p></li>
+<li><p>Review R² score</p></li>
+</ul>
+<p><strong>Batch prediction fails:</strong></p>
+<ul class="simple">
+<li><p>Verify data shape (n, 5)</p></li>
+<li><p>Check file format (.pkl)</p></li>
+<li><p>Ensure model is trained</p></li>
+</ul>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard Shortcuts</h2>
+<p>While using the application:</p>
+<ul class="simple">
+<li><p><strong>Refresh page</strong>: Reset state</p></li>
+<li><p><strong>Browser back</strong>: Navigate between pages</p></li>
+<li><p><strong>Ctrl/Cmd + Click link</strong>: Open in new tab</p></li>
+</ul>
+</section>
+<section id="next-steps">
+<h2>Next Steps</h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/backend.xhtml"><span class="doc">Backend API Reference</span></a> - API reference</p></li>
+<li><p><a class="reference internal" href="testing/overview.xhtml"><span class="doc">Testing Overview</span></a> - Run tests</p></li>
+<li><p><a class="reference internal" href="datasets.xhtml"><span class="doc">Dataset Specifications</span></a> - Dataset specifications</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

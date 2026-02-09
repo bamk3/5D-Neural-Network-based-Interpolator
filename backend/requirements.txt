@@ -1,0 +1,12 @@
+#requirements.txt
+
+fastapi>0.115
+uvicorn[standard]>=0.30
+numpy
+scipy
+matplotlib
+python-multipart
+scikit-learn
+pydantic
+pandas
+tensorflow>=2.12
