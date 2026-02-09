@@ -267,7 +267,7 @@ Full API documentation: http://localhost:8000/docs
 
 ## 🤝 Use of LLM
 
-Major part of the frontend, the documentation and the tests were developed using Anthropic AI's Claude's Code. 
+Major part of the frontend, the documentation and the tests were developed using Claude AI. 
 
 ## 🤝 Contributing
 
